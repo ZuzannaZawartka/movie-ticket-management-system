@@ -13,4 +13,8 @@ public:
 
 private:
     Ui::MainWindowClass ui;
+
+    private slots:
+        void changeToManageMovieWindow();
+        void changeToMainWindow();
 };

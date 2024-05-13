@@ -8,3 +8,13 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {}
+
+void MainWindow::changeToMainWindow()
+{
+    	ui.stackedWidget->setCurrentWidget(ui.mainWindow);
+}
+
+void MainWindow::changeToManageMovieWindow()
+{
+		ui.stackedWidget->setCurrentWidget(ui.manageMovieWindow);
+}
