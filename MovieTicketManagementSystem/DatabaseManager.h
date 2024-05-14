@@ -1,8 +1,10 @@
+#pragma once
 #include <QString>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QVariant>
 #include <QDebug>
+
 class DatabaseManager
 {
 public:
@@ -11,7 +13,8 @@ public:
 
     bool isOpen() const;
     QSqlDatabase& database();
-
+    bool executeQueryWithBindings(const QString& query, const QVariantList& values);
+    QVariantList executeQueryWithBindingsAndReturn(const QString& query, const QVariantList& values);
 protected:
     QSqlDatabase db;
 };

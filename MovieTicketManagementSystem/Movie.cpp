@@ -1,14 +1,11 @@
 #include "Movie.h"
 
-Movie::Movie(int id, const QString& title, const QString& director, const QString& type, int duration)
-    : id(id), title(title), director(director), type(type), duration(duration)
+Movie::Movie(const QString& title, const QString& director, const QString& type, int duration)
+    :  title(title), director(director), type(type), duration(duration)
 {
 }
 
-int Movie::getId() const
-{
-    return id;
-}
+
 
 QString Movie::getTitle() const
 {

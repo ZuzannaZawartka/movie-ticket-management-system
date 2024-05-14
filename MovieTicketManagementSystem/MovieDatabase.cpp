@@ -1,112 +1,96 @@
 #include "MovieDatabase.h"
-#include <QSqlError>
-#include <QDebug>
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QMessageBox>
+#include <iostream>
 
-MovieDatabase::MovieDatabase(const QString& databasePath)
-    : DatabaseManager(databasePath)
+using namespace std;
+
+
+MovieDatabase::MovieDatabase()
 {
-    // Upewnij siê, ¿e tabela jest utworzona podczas inicjalizacji
     createTable();
-}
-
-bool MovieDatabase::isTableExists()
-{
-    // SprawdŸ czy tabela "movies" istnieje w bazie danych
-    QSqlQuery query(database());
-    return query.exec("SELECT 1 FROM movies LIMIT 1;");
 }
 
 bool MovieDatabase::createTable()
 {
-    if (!isOpen()) {
-        QMessageBox::critical(nullptr, "Database Error", "Database is not open!");
-        return false;
-    }
-
-    if (isTableExists()) {
-        QMessageBox::information(nullptr, "Table Exists", "Table 'movies' already exists.");
-        return true;
-    }
-
-    // Utwórz tabelê "movies" w bazie danych
-    QSqlQuery query(database());
-    bool success = query.exec("CREATE TABLE movies ("
+    QString query = "CREATE TABLE IF NOT EXISTS movies ("
         "id INTEGER PRIMARY KEY AUTOINCREMENT,"
         "title TEXT NOT NULL,"
         "director TEXT,"
         "type TEXT,"
         "duration INTEGER"
-        ");");
+        ");";
 
-    if (!success) {
-        QMessageBox::critical(nullptr, "Database Error", "Failed to create table 'movies': " + query.lastError().text());
-    }
-
-    return success;
+    return executeQueryWithBindings(query, QVariantList());
 }
 
-bool MovieDatabase::addMovie(const QString& title, const QString& director, const QString& type, int duration)
+bool MovieDatabase::addMovie(const Movie& movie)
 {
-    if (!isOpen()) {
-        QMessageBox::critical(nullptr, "Database Error", "Database is not open!");
-        return false;
-    }
+    QString query = "INSERT INTO movies (title, director, type, duration) "
+        "VALUES (?, ?, ?, ?);";
 
-    QSqlQuery query(database());
-    query.prepare("INSERT INTO movies (title, director, type, duration) "
-        "VALUES (?, ?, ?, ?);");
-    query.addBindValue(title);
-    query.addBindValue(director);
-    query.addBindValue(type);
-    query.addBindValue(duration);
+    QVariantList values;
+    values << movie.getTitle() << movie.getDirector() << movie.getType() << movie.getDuration();
 
-    if (!query.exec()) {
-        QMessageBox::critical(nullptr, "Database Error", "Failed to add movie: " + query.lastError().text());
-        return false;
-    }
-
-    return true;
+    return executeQueryWithBindings(query, values);
 }
 
-bool MovieDatabase::updateMovie(int id, const QString& title, const QString& director, const QString& type, int duration)
+
+//TODO: this function does not work properly
+bool MovieDatabase::updateMovie(const Movie& movie)
 {
-    if (!isOpen()) {
-        QMessageBox::critical(nullptr, "Database Error", "Database is not open!");
+    int movieId = getMovieIdByTitle(movie);
+
+    if (movieId == -1) {
         return false;
     }
 
-    QSqlQuery query(database());
-    query.prepare("UPDATE movies SET title = ?, director = ?, type = ?, duration = ? WHERE id = ?;");
-    query.addBindValue(title);
-    query.addBindValue(director);
-    query.addBindValue(type);
-    query.addBindValue(duration);
-    query.addBindValue(id);
+    QString query = "UPDATE movies SET title = ?, director = ?, type = ?, duration = ? WHERE id = ?;";
 
-    if (!query.exec()) {
-        QMessageBox::critical(nullptr, "Database Error", "Failed to update movie: " + query.lastError().text());
-        return false;
-    }
+    QVariantList values;
+    values << movie.getTitle() << movie.getDirector() << movie.getType() << movie.getDuration() << movieId;
 
-    return true;
+    return executeQueryWithBindings(query, values);
 }
 
-bool MovieDatabase::deleteMovie(int id)
+bool MovieDatabase::deleteMovie(const Movie& movie)
 {
-    if (!isOpen()) {
-        QMessageBox::critical(nullptr, "Database Error", "Database is not open!");
-        return false;
+    int movieId = getMovieIdByTitle(movie);
+
+    if (movieId == -1) {
+        cout << "Movie not found" << endl;
+		return false;
+	}
+    
+    QString query = "DELETE FROM movies WHERE id = ?;";
+
+    QVariantList values;
+    values << movie.getTitle();
+
+    return executeQueryWithBindings(query, values);
+}
+
+bool MovieDatabase::isTableExists()
+{
+    QString query = "SELECT 1 FROM movies LIMIT 1;";
+    return executeQueryWithBindings(query, QVariantList());
+}
+
+int MovieDatabase::getMovieIdByTitle(const Movie& movie) {
+    QString query = "SELECT id FROM movies WHERE title = ?;";
+
+    QVariantList values;
+    values << movie.getTitle();
+
+    QVariantList result = executeQueryWithBindingsAndReturn(query, values);
+
+    if (!result.isEmpty()) {
+        // Pobierz pierwszy element z listy wyników jako identyfikator filmu (jeœli jest)
+        return result.first().toInt();
     }
-
-    QSqlQuery query(database());
-    query.prepare("DELETE FROM movies WHERE id = ?;");
-    query.addBindValue(id);
-
-    if (!query.exec()) {
-        QMessageBox::critical(nullptr, "Database Error", "Failed to delete movie: " + query.lastError().text());
-        return false;
+    else {
+        // Jeœli nie ma wyników, zwróæ -1 lub jak¹œ inn¹ wartoœæ oznaczaj¹c¹ brak filmu
+        return -1;
     }
-
-    return true;
 }
