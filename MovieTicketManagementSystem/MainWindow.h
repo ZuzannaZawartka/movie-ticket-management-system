@@ -18,4 +18,6 @@ private:
         void changeToManageMovieWindow();
         void changeToMainWindow();
         void changeToBookTicketWindow();
+        void changeToShowMovieListWindow();
+        void changeToViewBookingsWindow();
 };
