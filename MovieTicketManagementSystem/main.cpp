@@ -10,12 +10,12 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     MovieDatabase db;
-    //db.addMovie(Movie("The Shawshank Redemption", "Frank Darabont", "Drama", 142));
-    //db.addMovie(Movie("The Godfather2", "Francis Ford Coppola", "Crime", 175));
-    Movie s = Movie("The Godfather2", "Frank Darabont", "Drama", 142);
+    Movie s = Movie("The Godfather", "Frank Darabont", "Drama", 142);
     Movie s2 = Movie("Roocekt sien", "Frank Darabont", "Drama", 142);
     Movie s3 = Movie("The God", "Frank ", "Dma", 1);
-    db.deleteMovie(s);
+    db.addMovie(s);
+
+
 
     w.show();
     return a.exec();

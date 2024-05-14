@@ -37,21 +37,11 @@ QSqlDatabase& DatabaseManager::database()
     return db;
 }
 
-bool DatabaseManager::executeQueryWithBindings(const QString& query, const QVariantList& values)
+bool DatabaseManager::executeQuery(const QString& queryStr, const QVariantList& values)
 {
-    if (!isOpen()) {
-        QMessageBox::critical(nullptr, "Database Error", "Database is not open!");
-        return false;
-    }
+    QSqlQuery query = prepareQueryWithBindings(queryStr, values);
 
-    QSqlQuery q(db);
-    q.prepare(query);
-
-    for (int i = 0; i < values.size(); ++i) {
-        q.bindValue(i, values.at(i));
-    }
-
-    if (!q.exec()) {
+    if (!query.exec()) {
         QMessageBox::critical(nullptr, "Database Error", "Failed to execute query: ");
         return false;
     }
@@ -59,21 +49,29 @@ bool DatabaseManager::executeQueryWithBindings(const QString& query, const QVari
     return true;
 }
 
-QSqlQuery DatabaseManager::prepareQuery(const QString& query, const QVariantList& values)
+
+QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr, const QVariantList& values)
 {
-    QSqlQuery q(db);
+    QSqlQuery query(db);
 
     if (!isOpen()) {
         QMessageBox::critical(nullptr, "Database Error", "Database is not open!");
-        return q;
+        return query;
     }
 
-    q.prepare(query);
+    query.prepare(queryStr);
 
     // Bindowanie wartoœci do zapytania
     for (int i = 0; i < values.size(); ++i) {
-        q.bindValue(i, values.at(i));
+        query.bindValue(i, values.at(i));
     }
 
-    return q;
+    return query;
+}
+
+
+QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr)
+{
+    QVariantList emptyValues;
+    return prepareQueryWithBindings(queryStr, emptyValues);
 }

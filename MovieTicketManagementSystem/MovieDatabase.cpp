@@ -22,7 +22,7 @@ bool MovieDatabase::createTable()
         "duration INTEGER"
         ");";
 
-    return executeQueryWithBindings(query, QVariantList());
+    return executeQuery(query, QVariantList());
 }
 
 bool MovieDatabase::addMovie(const Movie& movie)
@@ -33,25 +33,7 @@ bool MovieDatabase::addMovie(const Movie& movie)
     QVariantList values;
     values << movie.getTitle() << movie.getDirector() << movie.getType() << movie.getDuration();
 
-    return executeQueryWithBindings(query, values);
-}
-
-
-//TODO: this function does not work properly
-bool MovieDatabase::updateMovie(const Movie& movie)
-{
-    int movieId = getMovieId(movie);
-
-    if (movieId == -1) {
-        return false;
-    }
-
-    QString query = "UPDATE movies SET title = ?, director = ?, type = ?, duration = ? WHERE id = ?;";
-
-    QVariantList values;
-    values << movie.getTitle() << movie.getDirector() << movie.getType() << movie.getDuration() << movieId;
-
-    return executeQueryWithBindings(query, values);
+    return executeQuery(query, values);
 }
 
 bool MovieDatabase::deleteMovie(const Movie& movie)
@@ -68,34 +50,34 @@ bool MovieDatabase::deleteMovie(const Movie& movie)
     QVariantList values;
     values << movieId;
 
-    return executeQueryWithBindings(query, values);
+    return executeQuery(query, values);
 }
 
 bool MovieDatabase::isTableExists()
 {
     QString query = "SELECT 1 FROM movies LIMIT 1;";
-    return executeQueryWithBindings(query, QVariantList());
+    return executeQuery(query, QVariantList());
 }
 
 int MovieDatabase::getMovieId(const Movie& movie)
 {
     // Tworzenie zapytania SQL z parametrem nazwanym
-    QString query = "SELECT id FROM movies WHERE title = :title;";
+    QString queryStr = "SELECT id FROM movies WHERE title = :title;";
     QVariantList values;
     values << movie.getTitle();
 
     // Wykonanie zapytania przy u¿yciu prepareQuery() z DatabaseManager
-    QSqlQuery q = prepareQuery(query, values);
+    QSqlQuery query = prepareQueryWithBindings(queryStr, values);
 
     // Sprawdzenie czy zapytanie siê powiod³o
-    if (!q.exec()) {
+    if (!query.exec()) {
         QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie ID!");
         return -1;
     }
 
     // Pobranie pierwszego wyniku zapytania (jeœli istnieje)
-    if (q.next()) {
-        return q.value(0).toInt(); // Zwróæ wartoœæ pierwszej kolumny (id)
+    if (query.next()) {
+        return query.value(0).toInt(); // Zwróæ wartoœæ pierwszej kolumny (id)
     }
     else {
         QMessageBox::critical(nullptr, "Database Error", "Movie not found!");
@@ -107,21 +89,20 @@ QList<Movie> MovieDatabase::getAllMovies()
 {
     QList<Movie> movies;
 
-    QSqlQuery query(db);
+    QString queryStr = "SELECT * FROM movies;";
 
-    // Pobieranie wszystkich filmów z bazy danych
-    QString getAllMoviesQuery = "SELECT * FROM movies;";
+    QSqlQuery query = prepareQueryWithBindings(queryStr);
 
-    if (!query.exec(getAllMoviesQuery)) {
-        QMessageBox::critical(nullptr, "Database Error", "Failed to fetch movies from database!");
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movies!");
         return movies;
     }
 
     while (query.next()) {
-        QString title = query.value(1).toString();
-        QString director = query.value(2).toString();
-        QString type = query.value(3).toString();
-        int duration = query.value(4).toInt();
+        QString title = query.value("title").toString();
+        QString director = query.value("director").toString();
+        QString type = query.value("type").toString();
+        int duration = query.value("duration").toInt();
 
         Movie movie(title, director, type, duration);
         movies.append(movie);
@@ -129,4 +110,3 @@ QList<Movie> MovieDatabase::getAllMovies()
 
     return movies;
 }
-

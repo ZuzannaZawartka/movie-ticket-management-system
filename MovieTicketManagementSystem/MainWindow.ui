@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -129,6 +129,9 @@
             </item>
             <item row="1" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_5"/>
+            </item>
+            <item row="0" column="0">
+             <widget class="QListView" name="listView"/>
             </item>
            </layout>
           </item>
