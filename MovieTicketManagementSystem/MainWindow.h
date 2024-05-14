@@ -20,4 +20,5 @@ private:
         void changeToBookTicketWindow();
         void changeToShowMovieListWindow();
         void changeToViewBookingsWindow();
+        void changeToAddMovieWindow();
 };

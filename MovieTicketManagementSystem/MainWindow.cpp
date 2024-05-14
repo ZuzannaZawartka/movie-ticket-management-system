@@ -30,3 +30,7 @@ void MainWindow::changeToViewBookingsWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.viewBookingsWindow);
 }
+void MainWindow::changeToAddMovieWindow()
+{
+    ui.stackedWidget->setCurrentWidget(ui.addMovieWindow);
+}

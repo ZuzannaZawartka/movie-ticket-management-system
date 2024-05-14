@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>757</width>
-    <height>531</height>
+    <width>727</width>
+    <height>606</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -561,6 +561,239 @@ background-color: rgb(57, 79, 107);</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="addMovieWindow">
+       <layout class="QVBoxLayout" name="verticalLayout_20">
+        <item>
+         <widget class="QFrame" name="mainBodyAddMovie">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_21">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>3</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="headerAddMovie">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+background-color: rgb(36, 46, 61);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="0">
+               <widget class="QLabel" name="titleAddMovie">
+                <property name="styleSheet">
+                 <string notr="true">font: 900 20pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+                </property>
+                <property name="text">
+                 <string>ADD MOVIE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="mainBodyAddMovieFrame">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_22">
+              <item>
+               <widget class="QTextEdit" name="textTitleEdit">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(36, 46, 61);
+font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="textTitleLabel">
+                <property name="styleSheet">
+                 <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(36, 46, 61);</string>
+                </property>
+                <property name="text">
+                 <string>Title</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textDirectorEdit">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(36, 46, 61);
+font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="textDirectorLabel">
+                <property name="styleSheet">
+                 <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(36, 46, 61);</string>
+                </property>
+                <property name="text">
+                 <string>Director</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textTypeEdit">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(36, 46, 61);
+font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="textTypeLabel">
+                <property name="styleSheet">
+                 <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(36, 46, 61);</string>
+                </property>
+                <property name="text">
+                 <string>Type</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textDurationEdit">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(36, 46, 61);
+font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="textDurationLabel">
+                <property name="styleSheet">
+                 <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(36, 46, 61);</string>
+                </property>
+                <property name="text">
+                 <string>Duration</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="menuAddMovie">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+background-color: rgb(36, 46, 61);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QPushButton" name="goBackAddMovieButton">
+                <property name="maximumSize">
+                 <size>
+                  <width>150</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+background-color: rgb(57, 79, 107);
+border-radius: 1px;</string>
+                </property>
+                <property name="text">
+                 <string>GO BACK</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="addAddMovieButton">
+                <property name="maximumSize">
+                 <size>
+                  <width>150</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+background-color: rgb(57, 79, 107);
+border-radius: 1px;
+</string>
+                </property>
+                <property name="text">
+                 <string>ADD</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="showMovieListWindow">
        <layout class="QVBoxLayout" name="verticalLayout_13">
         <item>
@@ -589,6 +822,12 @@ background-color: rgb(57, 79, 107);</string>
            </property>
            <item>
             <widget class="QFrame" name="titleShowMovieFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
@@ -631,6 +870,20 @@ background-color: rgb(36, 46, 61);</string>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
+             <layout class="QVBoxLayout" name="verticalLayout_19">
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+             </layout>
             </widget>
            </item>
            <item>
@@ -999,8 +1252,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToManageMovieWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>145</x>
-     <y>129</y>
+     <x>167</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>694</x>
@@ -1015,8 +1268,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToBookTicketWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>107</x>
-     <y>270</y>
+     <x>156</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>292</x>
@@ -1032,7 +1285,7 @@ background-color: rgb(57, 79, 107);</string>
    <hints>
     <hint type="sourcelabel">
      <x>179</x>
-     <y>445</y>
+     <y>505</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -1047,8 +1300,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>309</x>
-     <y>479</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1063,8 +1316,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>151</x>
-     <y>479</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -1079,8 +1332,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToShowMovieListWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>102</x>
-     <y>458</y>
+     <x>151</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>266</x>
@@ -1095,12 +1348,12 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>127</x>
-     <y>474</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
-     <y>658</y>
+     <y>582</y>
     </hint>
    </hints>
   </connection>
@@ -1111,12 +1364,44 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToViewBookingsWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>96</x>
-     <y>378</y>
+     <x>145</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>165</x>
-     <y>609</y>
+     <y>582</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>goBackAddMovieButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToManageMovieWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>299</x>
+     <y>554</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>327</x>
+     <y>605</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addMovieButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToAddMovieWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>708</y>
     </hint>
    </hints>
   </connection>
@@ -1127,5 +1412,6 @@ background-color: rgb(57, 79, 107);</string>
   <slot>changeToBookTicketWindow()</slot>
   <slot>changeToShowMovieListWindow()</slot>
   <slot>changeToViewBookingsWindow()</slot>
+  <slot>changeToAddMovieWindow()</slot>
  </slots>
 </ui>
