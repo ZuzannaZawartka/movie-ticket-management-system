@@ -76,15 +76,12 @@ QVariantList DatabaseManager::executeQueryWithBindingsAndReturn(const QString& q
     }
 
     if (!q.exec()) {
-        QMessageBox::critical(nullptr, "Database Error", "Failed to execute query with returns: ");
+        qDebug() << "Failed to execute query: ";
         return result;
     }
 
-    QSqlRecord record = q.record();
     while (q.next()) {
-        for (int i = 0; i < record.count(); ++i) {
-            result.append(record.value(i));
-        }
+        result.append(q.value(0)); // Dodaj pierwsz¹ wartoœæ z ka¿dego wiersza do listy wyników
     }
 
     return result;

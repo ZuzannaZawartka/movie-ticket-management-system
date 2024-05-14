@@ -40,7 +40,7 @@ bool MovieDatabase::addMovie(const Movie& movie)
 //TODO: this function does not work properly
 bool MovieDatabase::updateMovie(const Movie& movie)
 {
-    int movieId = getMovieIdByTitle(movie);
+    int movieId = getMovieId(movie);
 
     if (movieId == -1) {
         return false;
@@ -56,17 +56,17 @@ bool MovieDatabase::updateMovie(const Movie& movie)
 
 bool MovieDatabase::deleteMovie(const Movie& movie)
 {
-    int movieId = getMovieIdByTitle(movie);
+    int movieId = getMovieId(movie);
 
     if (movieId == -1) {
-        cout << "Movie not found" << endl;
-		return false;
-	}
-    
-    QString query = "DELETE FROM movies WHERE id = ?;";
+        cout << "Movie not found." << endl;
+        return false;
+    }
+
+    QString query = "DELETE FROM movies WHERE id = :id;"; // U¿yj nazwanego parametru ":id"
 
     QVariantList values;
-    values << movie.getTitle();
+    values << movieId;
 
     return executeQueryWithBindings(query, values);
 }
@@ -77,20 +77,19 @@ bool MovieDatabase::isTableExists()
     return executeQueryWithBindings(query, QVariantList());
 }
 
-int MovieDatabase::getMovieIdByTitle(const Movie& movie) {
-    QString query = "SELECT id FROM movies WHERE title = ?;";
-
+int MovieDatabase::getMovieId(const Movie& movie)
+{
+    QString query = "SELECT id FROM movies WHERE title = :title;";
     QVariantList values;
     values << movie.getTitle();
 
     QVariantList result = executeQueryWithBindingsAndReturn(query, values);
 
     if (!result.isEmpty()) {
-        // Pobierz pierwszy element z listy wyników jako identyfikator filmu (jeœli jest)
-        return result.first().toInt();
+        return result.first().toInt(); // Zwróæ pierwszy identyfikator filmu (jeœli istnieje)
     }
     else {
-        // Jeœli nie ma wyników, zwróæ -1 lub jak¹œ inn¹ wartoœæ oznaczaj¹c¹ brak filmu
+        qDebug() << "Movie not found.";
         return -1;
     }
 }

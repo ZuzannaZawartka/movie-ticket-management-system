@@ -15,6 +15,8 @@ public:
     QSqlDatabase& database();
     bool executeQueryWithBindings(const QString& query, const QVariantList& values);
     QVariantList executeQueryWithBindingsAndReturn(const QString& query, const QVariantList& values);
+    
+
 protected:
     QSqlDatabase db;
 };

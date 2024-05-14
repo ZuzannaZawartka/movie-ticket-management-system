@@ -14,7 +14,7 @@ public:
     bool addMovie(const Movie& movie);
     bool updateMovie(const Movie& movie);
     bool deleteMovie(const Movie& movie);
-    int  getMovieIdByTitle(const Movie& movie);
+    int getMovieId(const Movie& movie);
 
 private:
     bool isTableExists();
