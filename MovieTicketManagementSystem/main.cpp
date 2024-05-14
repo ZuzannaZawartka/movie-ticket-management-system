@@ -13,7 +13,10 @@ int main(int argc, char *argv[])
     //db.addMovie(Movie("The Shawshank Redemption", "Frank Darabont", "Drama", 142));
     //db.addMovie(Movie("The Godfather2", "Francis Ford Coppola", "Crime", 175));
     Movie s = Movie("The Godfather2", "Frank Darabont", "Drama", 142);
+    Movie s2 = Movie("Roocekt sien", "Frank Darabont", "Drama", 142);
+    Movie s3 = Movie("The God", "Frank ", "Dma", 1);
     db.deleteMovie(s);
+
     w.show();
     return a.exec();
 }

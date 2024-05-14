@@ -59,30 +59,21 @@ bool DatabaseManager::executeQueryWithBindings(const QString& query, const QVari
     return true;
 }
 
-QVariantList DatabaseManager::executeQueryWithBindingsAndReturn(const QString& query, const QVariantList& values)
+QSqlQuery DatabaseManager::prepareQuery(const QString& query, const QVariantList& values)
 {
-    QVariantList result;
+    QSqlQuery q(db);
 
     if (!isOpen()) {
-        qDebug() << "Database is not open!";
-        return result;
+        QMessageBox::critical(nullptr, "Database Error", "Database is not open!");
+        return q;
     }
 
-    QSqlQuery q(db);
     q.prepare(query);
 
+    // Bindowanie wartoœci do zapytania
     for (int i = 0; i < values.size(); ++i) {
         q.bindValue(i, values.at(i));
     }
 
-    if (!q.exec()) {
-        qDebug() << "Failed to execute query: ";
-        return result;
-    }
-
-    while (q.next()) {
-        result.append(q.value(0)); // Dodaj pierwsz¹ wartoœæ z ka¿dego wiersza do listy wyników
-    }
-
-    return result;
+    return q;
 }

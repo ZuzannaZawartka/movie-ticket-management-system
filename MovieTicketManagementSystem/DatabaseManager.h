@@ -14,7 +14,7 @@ public:
     bool isOpen() const;
     QSqlDatabase& database();
     bool executeQueryWithBindings(const QString& query, const QVariantList& values);
-    QVariantList executeQueryWithBindingsAndReturn(const QString& query, const QVariantList& values);
+    QSqlQuery prepareQuery(const QString& query, const QVariantList& values);
     
 
 protected:

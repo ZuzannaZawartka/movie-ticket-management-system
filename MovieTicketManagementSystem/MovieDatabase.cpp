@@ -79,17 +79,54 @@ bool MovieDatabase::isTableExists()
 
 int MovieDatabase::getMovieId(const Movie& movie)
 {
+    // Tworzenie zapytania SQL z parametrem nazwanym
     QString query = "SELECT id FROM movies WHERE title = :title;";
     QVariantList values;
     values << movie.getTitle();
 
-    QVariantList result = executeQueryWithBindingsAndReturn(query, values);
+    // Wykonanie zapytania przy u¿yciu prepareQuery() z DatabaseManager
+    QSqlQuery q = prepareQuery(query, values);
 
-    if (!result.isEmpty()) {
-        return result.first().toInt(); // Zwróæ pierwszy identyfikator filmu (jeœli istnieje)
+    // Sprawdzenie czy zapytanie siê powiod³o
+    if (!q.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie ID!");
+        return -1;
+    }
+
+    // Pobranie pierwszego wyniku zapytania (jeœli istnieje)
+    if (q.next()) {
+        return q.value(0).toInt(); // Zwróæ wartoœæ pierwszej kolumny (id)
     }
     else {
-        qDebug() << "Movie not found.";
+        QMessageBox::critical(nullptr, "Database Error", "Movie not found!");
         return -1;
     }
 }
+
+QList<Movie> MovieDatabase::getAllMovies()
+{
+    QList<Movie> movies;
+
+    QSqlQuery query(db);
+
+    // Pobieranie wszystkich filmów z bazy danych
+    QString getAllMoviesQuery = "SELECT * FROM movies;";
+
+    if (!query.exec(getAllMoviesQuery)) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to fetch movies from database!");
+        return movies;
+    }
+
+    while (query.next()) {
+        QString title = query.value(1).toString();
+        QString director = query.value(2).toString();
+        QString type = query.value(3).toString();
+        int duration = query.value(4).toInt();
+
+        Movie movie(title, director, type, duration);
+        movies.append(movie);
+    }
+
+    return movies;
+}
+
