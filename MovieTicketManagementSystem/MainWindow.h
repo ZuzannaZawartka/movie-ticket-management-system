@@ -17,4 +17,5 @@ private:
     private slots:
         void changeToManageMovieWindow();
         void changeToMainWindow();
+        void changeToBookTicketWindow();
 };

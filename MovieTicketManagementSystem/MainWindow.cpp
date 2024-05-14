@@ -18,4 +18,8 @@ void MainWindow::changeToManageMovieWindow()
 {
 		ui.stackedWidget->setCurrentWidget(ui.manageMovieWindow);
 }
+void MainWindow::changeToBookTicketWindow()
+{
+    ui.stackedWidget->setCurrentWidget(ui.bookTicketWindow);
+}
 
