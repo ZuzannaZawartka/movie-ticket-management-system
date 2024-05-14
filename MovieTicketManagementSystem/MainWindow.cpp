@@ -18,3 +18,4 @@ void MainWindow::changeToManageMovieWindow()
 {
 		ui.stackedWidget->setCurrentWidget(ui.manageMovieWindow);
 }
+
