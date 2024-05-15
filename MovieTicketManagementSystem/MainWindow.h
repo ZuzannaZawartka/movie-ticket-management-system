@@ -16,7 +16,12 @@ private:
     Ui::MainWindowClass ui; 
     MovieListView* movieListView; 
 
-private slots:
-    void changeToManageMovieWindow(); 
-    void changeToMainWindow(); 
+    private slots:
+        void changeToManageMovieWindow();
+        void changeToMainWindow();
+        void changeToBookTicketWindow();
+        void changeToShowMovieListWindow();
+        void changeToViewBookingsWindow();
+        void changeToAddMovieWindow();
+
 };
