@@ -95,6 +95,7 @@
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieDatabase.cpp" />
     <ClCompile Include="MovieListView.cpp" />
+    <ClCompile Include="Schedule.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="DatabaseManager.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
+    <ClInclude Include="Schedule.h" />
     <QtMoc Include="MovieListView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
