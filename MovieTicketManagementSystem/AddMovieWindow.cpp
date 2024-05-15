@@ -6,32 +6,17 @@
 AddMovieWindow::AddMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorElement, QComboBox* typeElement, QLineEdit* durationTimeElement, QPushButton* addButtonElement, MovieListView* movieListViewElement)
 {
 
-	titleEdit = titleEditElement;
-	director = directorElement;
-	type = typeElement;
-	durationTime = durationTimeElement;
-	addButton = addButtonElement;
+    titleEdit = titleEditElement;
+    director = directorElement;
+    type = typeElement;
+    durationTime = durationTimeElement;
+    addButton = addButtonElement;
     movieListView = movieListViewElement;
 
-    setLimitationsOnFields();
-
-    if (movieDatabase.isTableExists()) {
-        QMessageBox::information(this, "Database", "Database is connected.");
-    }
-    else {
-		QMessageBox::critical(this, "Database", "Database is not connected.");
-	}
 
     connect(addButton, SIGNAL(clicked()), this, SLOT(addMovie()));
 }
 
-void AddMovieWindow::setLimitationsOnFields()
-{
- 
-    //TODO 
-    //set limitations on the fields
-    durationTime->setValidator(new QIntValidator(0, 500, this));
-}
 
 bool AddMovieWindow::checkInputFields()
 {
@@ -48,6 +33,14 @@ bool AddMovieWindow::checkInputFields()
     if (!ok) {
         throw std::invalid_argument("Duration must be a valid number.");
     }
+}
+
+void AddMovieWindow::setLimitationsOnFields()
+{
+
+    //TODO 
+    //set limitations on the fields
+    durationTime->setValidator(new QIntValidator(0, 500, this));
 }
 
 void AddMovieWindow::addMovie()
@@ -73,7 +66,7 @@ void AddMovieWindow::addMovie()
         type->setCurrentIndex(0); // Set the first item in the combobox
         durationTime->clear();
 
-     
+
     }
     catch (const std::invalid_argument& e) {
         // exception handling

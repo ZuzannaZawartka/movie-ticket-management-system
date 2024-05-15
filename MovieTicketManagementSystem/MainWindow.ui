@@ -27,7 +27,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -928,6 +928,21 @@ color: rgb(36, 46, 61);</string>
 color: rgb(36, 46, 61);
 font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
                 </property>
+                <item>
+                 <property name="text">
+                  <string>Adventure</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Romance</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Action</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item>
@@ -942,31 +957,7 @@ color: rgb(36, 46, 61);</string>
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="durationMovieBox">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(36, 46, 61);
-font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-               </widget>
+               <widget class="QLineEdit" name="timeDurationLineEdit"/>
               </item>
              </layout>
             </widget>

@@ -9,15 +9,11 @@
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
-
-
     ui.setupUi(this);
     movieListView = new MovieListView(ui.MovieListView);
     bookTicketListView = new MovieListView(ui.bookTicketListView);
     removeMovieListView = new MovieListView(ui.removeMovieListView);
-    setupMovieTypeBox();
-    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.movieTypeComboBox, ui.timeDurationLineEdit, ui.addMovieToDatabase,movieListView); 
-
+    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit, ui.addMovieToDatabase, movieListView);
 }
 
 MainWindow::~MainWindow()
@@ -53,13 +49,4 @@ void MainWindow::changeToAddMovieWindow()
 void MainWindow::changeToRemoveMovieWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.removeMovieWindow);
-}
-
-void MainWindow::setupMovieTypeBox()
-{
-    ui.chooseMovieTypeBox->addItem("Akcja");
-    ui.chooseMovieTypeBox->addItem("Dramat");
-    ui.chooseMovieTypeBox->addItem("Komedia");
-    ui.chooseMovieTypeBox->addItem("Romans");
-    ui.chooseMovieTypeBox->addItem("Horror");
 }
