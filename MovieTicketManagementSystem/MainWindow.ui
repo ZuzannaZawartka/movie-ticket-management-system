@@ -1212,7 +1212,7 @@ background-color: rgb(57, 79, 107);</string>
 font: 10pt &quot;Franklin Gothic Demi&quot;;
 border-radius: 1px;
 background-color: rgb(57, 79, 107);</string>
-                </property>
+      </property>
                 <property name="text">
                  <string>ACCEPT</string>
                 </property>
