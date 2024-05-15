@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    movieListView = new MovieListView(ui.listView);
+    movieListView = new MovieListView(ui.MovieListView);
 
 }
 
