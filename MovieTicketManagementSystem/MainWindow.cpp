@@ -3,11 +3,13 @@
 #include "Movie.h"
 #include <MovieListView.h>
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
     movieListView = new MovieListView(ui.MovieListView);
+    bookTicketListView = new MovieListView(ui.bookTicketListView);
+    setupMovieTypeBox();
 
 }
 
@@ -38,4 +40,12 @@ void MainWindow::changeToViewBookingsWindow()
 void MainWindow::changeToAddMovieWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.addMovieWindow);
+}
+void MainWindow::setupMovieTypeBox()
+{
+    ui.chooseMovieTypeBox->addItem("Akcja");
+    ui.chooseMovieTypeBox->addItem("Dramat");
+    ui.chooseMovieTypeBox->addItem("Komedia");
+    ui.chooseMovieTypeBox->addItem("Romans");
+    ui.chooseMovieTypeBox->addItem("Horror");
 }

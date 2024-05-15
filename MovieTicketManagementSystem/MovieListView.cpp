@@ -33,4 +33,6 @@ void MovieListView::setMoviesInListView()
     listModel->setStringList(moviesStringList);
 
     listView->setModel(listModel);
+
 }
+
