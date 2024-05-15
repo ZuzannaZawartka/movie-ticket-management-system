@@ -27,7 +27,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -640,15 +640,6 @@ background-color: rgb(36, 46, 61);</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_22">
               <item>
-               <widget class="QTextEdit" name="textTitleEdit">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(36, 46, 61);
-font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QLabel" name="textTitleLabel">
                 <property name="styleSheet">
                  <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
@@ -660,7 +651,7 @@ color: rgb(36, 46, 61);</string>
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textDirectorEdit">
+               <widget class="QTextEdit" name="textTitleEdit">
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(36, 46, 61);
@@ -680,7 +671,7 @@ color: rgb(36, 46, 61);</string>
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textTypeEdit">
+               <widget class="QTextEdit" name="textDirectorEdit">
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(36, 46, 61);
@@ -700,12 +691,22 @@ color: rgb(36, 46, 61);</string>
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textDurationEdit">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(36, 46, 61);
-font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
-                </property>
+               <widget class="QComboBox" name="movieTypeComboBox">
+                <item>
+                 <property name="text">
+                  <string>all</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>new</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>deym</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item>
@@ -718,6 +719,9 @@ color: rgb(36, 46, 61);</string>
                  <string>Duration</string>
                 </property>
                </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="timeDurationLineEdit"/>
               </item>
              </layout>
             </widget>
@@ -767,7 +771,7 @@ border-radius: 1px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="addAddMovieButton">
+               <widget class="QPushButton" name="addMovieToDatabase">
                 <property name="maximumSize">
                  <size>
                   <width>150</width>
