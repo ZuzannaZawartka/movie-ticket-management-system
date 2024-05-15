@@ -41,9 +41,9 @@ void MovieListView::setMoviesInListView()
         moviesStringList.append(movieInfo);
     }
 
-    // Ustawienie listy filmów w modelu danych
     listModel->setStringList(moviesStringList);
 
     // Aktualizacja widoku QListView
     listView->update();
 }
+

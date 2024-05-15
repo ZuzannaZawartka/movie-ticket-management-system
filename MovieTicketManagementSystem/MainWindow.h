@@ -15,10 +15,11 @@ public:
     ~MainWindow(); 
 
 private:
-    MovieDatabase movieDatabase;
     Ui::MainWindowClass ui;
-    MovieListView* movieListView;
     AddMovieWindow* addMovieWindow;
+    MovieListView* movieListView;
+    MovieListView* bookTicketListView;
+    MovieListView* removeMovieListView;
 
 
     private slots:
@@ -28,4 +29,5 @@ private:
         void changeToShowMovieListWindow();
         void changeToViewBookingsWindow();
         void changeToAddMovieWindow();
+        void changeToRemoveMovieWindow();
 };

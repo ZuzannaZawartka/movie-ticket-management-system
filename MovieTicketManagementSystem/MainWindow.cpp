@@ -6,15 +6,14 @@
 #include "MovieDatabase.h"
 #include <QMessageBox>
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
-
-
     ui.setupUi(this);
     movieListView = new MovieListView(ui.MovieListView);
-    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.movieTypeComboBox, ui.timeDurationLineEdit, ui.addMovieToDatabase,movieListView); 
-
+    bookTicketListView = new MovieListView(ui.bookTicketListView);
+    removeMovieListView = new MovieListView(ui.removeMovieListView);
+    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit, ui.addMovieToDatabase, movieListView);
 }
 
 MainWindow::~MainWindow()
@@ -47,4 +46,7 @@ void MainWindow::changeToAddMovieWindow()
     ui.stackedWidget->setCurrentWidget(ui.addMovieWindow);
 
 }
-
+void MainWindow::changeToRemoveMovieWindow()
+{
+    ui.stackedWidget->setCurrentWidget(ui.removeMovieWindow);
+}
