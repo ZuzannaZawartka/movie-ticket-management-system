@@ -1,8 +1,9 @@
 #include "AddMovieWindow.h"
 #include "Movie.h"
 #include <QMessageBox>
+#include "MovieListView.h"
 
-AddMovieWindow::AddMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorElement, QComboBox* typeElement, QLineEdit* durationTimeElement, QPushButton* addButtonElement, QWidget* parent)
+AddMovieWindow::AddMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorElement, QComboBox* typeElement, QLineEdit* durationTimeElement, QPushButton* addButtonElement, MovieListView* movieListViewElement)
 {
 
 	titleEdit = titleEditElement;
@@ -10,8 +11,16 @@ AddMovieWindow::AddMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorE
 	type = typeElement;
 	durationTime = durationTimeElement;
 	addButton = addButtonElement;
+    movieListView = movieListViewElement;
 
     setLimitationsOnFields();
+
+    if (movieDatabase.isTableExists()) {
+        QMessageBox::information(this, "Database", "Database is connected.");
+    }
+    else {
+		QMessageBox::critical(this, "Database", "Database is not connected.");
+	}
 
     connect(addButton, SIGNAL(clicked()), this, SLOT(addMovie()));
 }
@@ -56,12 +65,15 @@ void AddMovieWindow::addMovie()
         // Add the movie to the database
         movieDatabase.addMovie(Movie(titleStr, directorStr, typeStr, durationInt));
 
+        movieListView->setMoviesInListView();
+
         // Clear the fields after adding the movie
         titleEdit->clear();
         director->clear();
         type->setCurrentIndex(0); // Set the first item in the combobox
         durationTime->clear();
 
+     
     }
     catch (const std::invalid_argument& e) {
         // exception handling

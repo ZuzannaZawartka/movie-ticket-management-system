@@ -9,14 +9,17 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+
+
     ui.setupUi(this);
     movieListView = new MovieListView(ui.MovieListView);
-    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.movieTypeComboBox, ui.timeDurationLineEdit, ui.addMovieToDatabase); 
+    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.movieTypeComboBox, ui.timeDurationLineEdit, ui.addMovieToDatabase,movieListView); 
 
 }
 
 MainWindow::~MainWindow()
 {}
+
 
 void MainWindow::changeToMainWindow()
 {

@@ -6,6 +6,7 @@
 
 using namespace std;
 
+const QString DatabasePath = "database.db";
 
 MovieDatabase::MovieDatabase()
 {
@@ -88,6 +89,8 @@ int MovieDatabase::getMovieId(const Movie& movie)
 
 QList<Movie> MovieDatabase::getAllMovies()
 {
+    try {
+
     QList<Movie> movies;
 
     QString queryStr = "SELECT * FROM movies;";
@@ -110,4 +113,9 @@ QList<Movie> MovieDatabase::getAllMovies()
     }
 
     return movies;
+
+    }
+    catch (const std::exception& e) {
+            QMessageBox::critical(nullptr, "Database Error", QString("Error: ") + e.what());
+    }
 }

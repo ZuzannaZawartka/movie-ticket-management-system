@@ -15,10 +15,11 @@ public:
     ~MainWindow(); 
 
 private:
+    MovieDatabase movieDatabase;
     Ui::MainWindowClass ui;
-
-    MovieListView* movieListView; 
+    MovieListView* movieListView;
     AddMovieWindow* addMovieWindow;
+
 
     private slots:
         void changeToManageMovieWindow();
