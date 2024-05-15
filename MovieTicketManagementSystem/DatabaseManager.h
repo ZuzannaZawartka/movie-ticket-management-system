@@ -10,8 +10,6 @@ class DatabaseManager
 public:
     DatabaseManager();
     virtual ~DatabaseManager();
-
-    bool isOpen() const;
     QSqlDatabase& database();
     bool executeQuery(const QString& queryStr, const QVariantList& values);
     QSqlQuery prepareQueryWithBindings(const QString& queryStr, const QVariantList& values);
@@ -20,4 +18,3 @@ public:
 protected:
     QSqlDatabase db;
 };
-

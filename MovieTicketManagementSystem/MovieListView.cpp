@@ -2,8 +2,16 @@
 
 
 MovieListView::MovieListView(QListView* listView)
-    : listView(listView)  // Przypisanie wartoœci do pola listView w klasie MovieListView
+    : listView(listView)
+
 {
+
+    listModel = new QStringListModel(this);
+
+
+    listView->setModel(listModel);
+
+ 
     setMoviesInListView();
 
 }
@@ -18,8 +26,11 @@ MovieListView::~MovieListView()
 void MovieListView::setMoviesInListView()
 {
     QStringList moviesStringList;
+
+    // Pobranie wszystkich filmów z bazy danych
     QList<Movie> movies = movieDatabase.getAllMovies();
 
+    // Przechodzenie przez wszystkie filmy i dodawanie informacji o filmach do listy
     for (const Movie& movie : movies)
     {
         QString movieInfo = QString("%1 - %2 (%3 minutes)")
@@ -30,7 +41,9 @@ void MovieListView::setMoviesInListView()
         moviesStringList.append(movieInfo);
     }
 
+    // Ustawienie listy filmów w modelu danych
     listModel->setStringList(moviesStringList);
 
-    listView->setModel(listModel);
+    // Aktualizacja widoku QListView
+    listView->update();
 }

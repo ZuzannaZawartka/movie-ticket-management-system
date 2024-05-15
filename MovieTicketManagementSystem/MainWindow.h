@@ -3,18 +3,23 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_MainWindow.h"
 #include "MovieListView.h"
+#include "AddMovieWindow.h"
+#include "MovieDatabase.h"
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+    Q_OBJECT;
 
 public:
     MainWindow(QWidget* parent = nullptr); 
     ~MainWindow(); 
 
 private:
-    Ui::MainWindowClass ui; 
-    MovieListView* movieListView; 
+    MovieDatabase movieDatabase;
+    Ui::MainWindowClass ui;
+    MovieListView* movieListView;
+    AddMovieWindow* addMovieWindow;
+
 
     private slots:
         void changeToManageMovieWindow();
@@ -23,5 +28,4 @@ private:
         void changeToShowMovieListWindow();
         void changeToViewBookingsWindow();
         void changeToAddMovieWindow();
-
 };

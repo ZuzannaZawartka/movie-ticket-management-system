@@ -15,7 +15,7 @@ public:
     bool deleteMovie(const Movie& movie);
     int getMovieId(const Movie& movie);
     QList<Movie> getAllMovies();
-
-private:
     bool isTableExists();
+
+
 };
