@@ -17,16 +17,11 @@ DatabaseManager::DatabaseManager()
     if (!db.open()) {
         QMessageBox::critical(nullptr, "Database Error", "Failed to open database: ");
     }
-    else {
-        QMessageBox::information(nullptr, "Database Opened", "Database opened successfully");
-    }
 }
 
 DatabaseManager::~DatabaseManager()
 {
-   
-   db.close();
-    
+   db.close();   
 }
 
 
@@ -52,7 +47,6 @@ QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr, con
 {
     QSqlQuery query(db);
 
-
     query.prepare(queryStr);
 
     if (queryStr.isEmpty()) {
@@ -65,7 +59,7 @@ QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr, con
         return query;
     }
 
-    // Bindowanie wartoœci do zapytania
+    // Bind values to query
     for (int i = 0; i < values.size(); ++i) {
         query.bindValue(i, values.at(i));
     }

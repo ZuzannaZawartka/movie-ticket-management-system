@@ -63,21 +63,17 @@ bool MovieDatabase::isTableExists()
 
 int MovieDatabase::getMovieId(const Movie& movie)
 {
-    // Tworzenie zapytania SQL z parametrem nazwanym
     QString queryStr = "SELECT id FROM movies WHERE title = :title;";
     QVariantList values;
     values << movie.getTitle();
 
-    // Wykonanie zapytania przy u¿yciu prepareQuery() z DatabaseManager
     QSqlQuery query = prepareQueryWithBindings(queryStr, values);
 
-    // Sprawdzenie czy zapytanie siê powiod³o
     if (!query.exec()) {
         QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie ID!");
         return -1;
     }
 
-    // Pobranie pierwszego wyniku zapytania (jeœli istnieje)
     if (query.next()) {
         return query.value(0).toInt(); // Zwróæ wartoœæ pierwszej kolumny (id)
     }
