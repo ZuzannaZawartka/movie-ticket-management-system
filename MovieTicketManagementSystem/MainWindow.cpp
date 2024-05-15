@@ -1,21 +1,28 @@
 #include "MainWindow.h"
 #include <QStringListModel>
 #include "Movie.h"
-#include <MovieListView.h>
+#include "MovieListView.h"
+#include "AddMovieWindow.h"
+#include "MovieDatabase.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
+
+
     ui.setupUi(this);
     movieListView = new MovieListView(ui.MovieListView);
     bookTicketListView = new MovieListView(ui.bookTicketListView);
     removeMovieListView = new MovieListView(ui.removeMovieListView);
     setupMovieTypeBox();
+    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.movieTypeComboBox, ui.timeDurationLineEdit, ui.addMovieToDatabase,movieListView); 
 
 }
 
 MainWindow::~MainWindow()
 {}
+
 
 void MainWindow::changeToMainWindow()
 {
@@ -41,6 +48,7 @@ void MainWindow::changeToViewBookingsWindow()
 void MainWindow::changeToAddMovieWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.addMovieWindow);
+
 }
 void MainWindow::changeToRemoveMovieWindow()
 {

@@ -17,7 +17,7 @@ public:
 private:
     QListView* listView;         
     QStringListModel* listModel = new QStringListModel(this);  
-    MovieDatabase movieDatabase;  
+    MovieDatabase movieDatabase;
 
 };
 */

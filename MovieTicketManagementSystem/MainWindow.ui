@@ -1016,7 +1016,7 @@ border-radius: 1px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="addAddMovieButton">
+               <widget class="QPushButton" name="addMovieToDatabase">
                 <property name="maximumSize">
                  <size>
                   <width>150</width>
@@ -1619,8 +1619,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>179</x>
-     <y>505</y>
+     <x>158</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -1731,8 +1731,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToAddMovieWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>182</y>
+     <x>112</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
      <x>360</x>
@@ -1772,6 +1772,22 @@ background-color: rgb(57, 79, 107);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>addMovieToDatabase</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>refreshMovieList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>561</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>659</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>changeToManageMovieWindow()</slot>
@@ -1780,6 +1796,7 @@ background-color: rgb(57, 79, 107);</string>
   <slot>changeToShowMovieListWindow()</slot>
   <slot>changeToViewBookingsWindow()</slot>
   <slot>changeToAddMovieWindow()</slot>
+  <slot>refreshMovieList()</slot>
   <slot>changeToRemoveMovieWindow()</slot>
  </slots>
 </ui>
