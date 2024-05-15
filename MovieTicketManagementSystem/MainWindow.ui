@@ -694,17 +694,17 @@ color: rgb(36, 46, 61);</string>
                <widget class="QComboBox" name="movieTypeComboBox">
                 <item>
                  <property name="text">
-                  <string>all</string>
+                  <string>Adventure</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>new</string>
+                  <string>Horror</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>deym</string>
+                  <string>Romance</string>
                  </property>
                 </item>
                </widget>
@@ -1291,8 +1291,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>179</x>
-     <y>505</y>
+     <x>158</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -1403,12 +1403,28 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToAddMovieWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>182</y>
+     <x>112</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
      <x>360</x>
      <y>708</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addMovieToDatabase</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>refreshMovieList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>561</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>659</x>
+     <y>615</y>
     </hint>
    </hints>
   </connection>
@@ -1420,5 +1436,6 @@ background-color: rgb(57, 79, 107);</string>
   <slot>changeToShowMovieListWindow()</slot>
   <slot>changeToViewBookingsWindow()</slot>
   <slot>changeToAddMovieWindow()</slot>
+  <slot>refreshMovieList()</slot>
  </slots>
 </ui>

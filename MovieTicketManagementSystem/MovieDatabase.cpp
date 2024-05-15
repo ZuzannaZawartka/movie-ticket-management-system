@@ -12,6 +12,7 @@ MovieDatabase::MovieDatabase()
     createTable();
 }
 
+
 bool MovieDatabase::createTable()
 {
     QString query = "CREATE TABLE IF NOT EXISTS movies ("

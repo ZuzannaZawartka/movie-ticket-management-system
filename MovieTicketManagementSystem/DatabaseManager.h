@@ -20,4 +20,3 @@ public:
 protected:
     QSqlDatabase db;
 };
-

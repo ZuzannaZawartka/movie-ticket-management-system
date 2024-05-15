@@ -4,6 +4,8 @@
 #include <QTextEdit>
 #include <QComboBox>
 #include <QPushButton>
+#include "MovieDatabase.h"
+#include "MovieListView.h"
 
 class AddMovieWindow: public QWidget
 {
@@ -12,8 +14,6 @@ class AddMovieWindow: public QWidget
 public:
     explicit AddMovieWindow(QTextEdit* titleEdit, QTextEdit* director, QComboBox* type, QLineEdit* durationTime, QPushButton* addButton, QWidget* parent = nullptr);
 
-private slots:
-    void addMovie();
 
 private:
     QTextEdit* titleEdit;
@@ -21,4 +21,12 @@ private:
     QComboBox* type;
     QLineEdit* durationTime;
     QPushButton* addButton;
+    MovieDatabase movieDatabase;
+
+    void setLimitationsOnFields();
+    bool checkInputFields();
+
+private slots:
+    void addMovie();
+
 };

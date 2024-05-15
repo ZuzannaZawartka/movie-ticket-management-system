@@ -3,6 +3,7 @@
 #include <QSqlRecord>
 #include <QSqlQuery>
 
+
 const QString DatabasePath = "database.db";
 
 DatabaseManager::DatabaseManager()
@@ -24,8 +25,11 @@ DatabaseManager::DatabaseManager()
 
 DatabaseManager::~DatabaseManager()
 {
-    db.close();
+    if (db.isOpen()) {
+        db.close();
+    }
 }
+
 
 bool DatabaseManager::isOpen() const
 {
