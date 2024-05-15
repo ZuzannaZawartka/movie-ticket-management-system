@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget* parent)
     ui.setupUi(this);
     movieListView = new MovieListView(ui.MovieListView);
     bookTicketListView = new MovieListView(ui.bookTicketListView);
+    removeMovieListView = new MovieListView(ui.removeMovieListView);
     setupMovieTypeBox();
 
 }
@@ -41,6 +42,11 @@ void MainWindow::changeToAddMovieWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.addMovieWindow);
 }
+void MainWindow::changeToRemoveMovieWindow()
+{
+    ui.stackedWidget->setCurrentWidget(ui.removeMovieWindow);
+}
+
 void MainWindow::setupMovieTypeBox()
 {
     ui.chooseMovieTypeBox->addItem("Akcja");
