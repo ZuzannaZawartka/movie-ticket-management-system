@@ -1,7 +1,10 @@
 #include "MainWindow.h"
 #include <QStringListModel>
 #include "Movie.h"
-#include <MovieListView.h>
+#include "MovieListView.h"
+#include "AddMovieWindow.h"
+#include "MovieDatabase.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
@@ -10,12 +13,12 @@ MainWindow::MainWindow(QWidget* parent)
     movieListView = new MovieListView(ui.MovieListView);
     bookTicketListView = new MovieListView(ui.bookTicketListView);
     removeMovieListView = new MovieListView(ui.removeMovieListView);
-    setupMovieTypeBox();
-
+    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit, ui.addMovieToDatabase, movieListView);
 }
 
 MainWindow::~MainWindow()
 {}
+
 
 void MainWindow::changeToMainWindow()
 {
@@ -41,17 +44,9 @@ void MainWindow::changeToViewBookingsWindow()
 void MainWindow::changeToAddMovieWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.addMovieWindow);
+
 }
 void MainWindow::changeToRemoveMovieWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.removeMovieWindow);
-}
-
-void MainWindow::setupMovieTypeBox()
-{
-    ui.chooseMovieTypeBox->addItem("Akcja");
-    ui.chooseMovieTypeBox->addItem("Dramat");
-    ui.chooseMovieTypeBox->addItem("Komedia");
-    ui.chooseMovieTypeBox->addItem("Romans");
-    ui.chooseMovieTypeBox->addItem("Horror");
 }

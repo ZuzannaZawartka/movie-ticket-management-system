@@ -52,6 +52,9 @@
     <ClCompile Include="Schedule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AddMovieWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseManager.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="MainWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AddMovieWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

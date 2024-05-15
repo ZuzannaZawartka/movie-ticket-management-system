@@ -17,20 +17,13 @@ DatabaseManager::DatabaseManager()
     if (!db.open()) {
         QMessageBox::critical(nullptr, "Database Error", "Failed to open database: ");
     }
-    else {
-        QMessageBox::information(nullptr, "Database Opened", "Database opened successfully");
-    }
 }
 
 DatabaseManager::~DatabaseManager()
 {
-    db.close();
+   db.close();   
 }
 
-bool DatabaseManager::isOpen() const
-{
-    return db.isOpen();
-}
 
 QSqlDatabase& DatabaseManager::database()
 {
@@ -54,14 +47,19 @@ QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr, con
 {
     QSqlQuery query(db);
 
-    if (!isOpen()) {
-        QMessageBox::critical(nullptr, "Database Error", "Database is not open!");
+    query.prepare(queryStr);
+
+    if (queryStr.isEmpty()) {
+        QMessageBox::critical(nullptr, "Query Error", "Empty SQL query!");
         return query;
     }
 
-    query.prepare(queryStr);
+    if (!query.prepare(queryStr)) {
+        QMessageBox::critical(nullptr, "Query Error", "Failed to prepare SQL query!");
+        return query;
+    }
 
-    // Bindowanie wartoœci do zapytania
+    // Bind values to query
     for (int i = 0; i < values.size(); ++i) {
         query.bindValue(i, values.at(i));
     }

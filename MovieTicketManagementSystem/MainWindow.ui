@@ -27,7 +27,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -928,6 +928,21 @@ color: rgb(36, 46, 61);</string>
 color: rgb(36, 46, 61);
 font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
                 </property>
+                <item>
+                 <property name="text">
+                  <string>Adventure</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Romance</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Action</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item>
@@ -942,31 +957,7 @@ color: rgb(36, 46, 61);</string>
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="durationMovieBox">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(36, 46, 61);
-font: 900 18pt &quot;Source Sans Pro Black&quot;;</string>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-               </widget>
+               <widget class="QLineEdit" name="timeDurationLineEdit"/>
               </item>
              </layout>
             </widget>
@@ -1016,7 +1007,7 @@ border-radius: 1px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="addAddMovieButton">
+               <widget class="QPushButton" name="addMovieToDatabase">
                 <property name="maximumSize">
                  <size>
                   <width>150</width>
@@ -1619,8 +1610,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>179</x>
-     <y>505</y>
+     <x>158</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -1731,8 +1722,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToAddMovieWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>182</y>
+     <x>112</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
      <x>360</x>
@@ -1772,6 +1763,22 @@ background-color: rgb(57, 79, 107);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>addMovieToDatabase</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>refreshMovieList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>561</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>659</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>changeToManageMovieWindow()</slot>
@@ -1780,6 +1787,7 @@ background-color: rgb(57, 79, 107);</string>
   <slot>changeToShowMovieListWindow()</slot>
   <slot>changeToViewBookingsWindow()</slot>
   <slot>changeToAddMovieWindow()</slot>
+  <slot>refreshMovieList()</slot>
   <slot>changeToRemoveMovieWindow()</slot>
  </slots>
 </ui>
