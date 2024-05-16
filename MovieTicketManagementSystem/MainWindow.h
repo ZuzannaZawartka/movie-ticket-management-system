@@ -3,7 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_MainWindow.h"
 #include "MovieListView.h"
-#include "AddMovieWindow.h"
+#include "ManageMovieWindow.h"
 #include "MovieDatabase.h"
 
 class MainWindow : public QMainWindow
@@ -16,7 +16,7 @@ public:
 
 private:
     Ui::MainWindowClass ui;
-    AddMovieWindow* addMovieWindow;
+    ManageMovieWindow* manageMovieWindow;
     MovieListView* movieListView;
     MovieListView* bookTicketListView;
     MovieListView* removeMovieListView;
@@ -28,6 +28,4 @@ private:
         void changeToBookTicketWindow();
         void changeToShowMovieListWindow();
         void changeToViewBookingsWindow();
-        void changeToAddMovieWindow();
-        void changeToRemoveMovieWindow();
 };

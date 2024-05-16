@@ -2,7 +2,7 @@
 #include <QStringListModel>
 #include "Movie.h"
 #include "MovieListView.h"
-#include "AddMovieWindow.h"
+#include "ManageMovieWindow.h"
 #include "MovieDatabase.h"
 #include <QMessageBox>
 
@@ -12,8 +12,7 @@ MainWindow::MainWindow(QWidget* parent)
     ui.setupUi(this);
     movieListView = new MovieListView(ui.MovieListView);
     bookTicketListView = new MovieListView(ui.bookTicketListView);
-    removeMovieListView = new MovieListView(ui.removeMovieListView);
-    addMovieWindow = new AddMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit, ui.addMovieToDatabase, movieListView);
+    manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit,ui.saveMovieButton, ui.addMovieToDatabase,ui.removeMovieButon, ui.manageMovieListView);
 }
 
 MainWindow::~MainWindow()
@@ -35,18 +34,12 @@ void MainWindow::changeToBookTicketWindow()
 }
 void MainWindow::changeToShowMovieListWindow()
 {
+
+    movieListView->setMoviesInListView();
     ui.stackedWidget->setCurrentWidget(ui.showMovieListWindow);
+
 }
 void MainWindow::changeToViewBookingsWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.viewBookingsWindow);
-}
-void MainWindow::changeToAddMovieWindow()
-{
-    ui.stackedWidget->setCurrentWidget(ui.addMovieWindow);
-
-}
-void MainWindow::changeToRemoveMovieWindow()
-{
-    ui.stackedWidget->setCurrentWidget(ui.removeMovieWindow);
 }

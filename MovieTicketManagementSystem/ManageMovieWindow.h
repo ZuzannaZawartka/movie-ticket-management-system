@@ -9,12 +9,12 @@
 #include "MovieDatabase.h"
 #include "MovieListView.h"
 
-class AddMovieWindow : public QWidget
+class ManageMovieWindow : public QWidget
 {
     Q_OBJECT;
 
 public:
-    explicit AddMovieWindow(QTextEdit* titleEdit, QTextEdit* director, QComboBox* type, QLineEdit* durationTime, QPushButton* addButton, MovieListView* movieListView);
+    explicit ManageMovieWindow(QTextEdit* titleEdit, QTextEdit* director, QComboBox* type, QLineEdit* durationTime, QPushButton* saveButton, QPushButton* addButton, QPushButton* removeButton, QListView* movieListView);
 
 
 private:
@@ -23,6 +23,8 @@ private:
     QComboBox* type;
     QLineEdit* durationTime;
     QPushButton* addButton;
+    QPushButton* saveButton;
+    QPushButton* removeButton;
     MovieDatabase movieDatabase;
     MovieListView* movieListView;
 

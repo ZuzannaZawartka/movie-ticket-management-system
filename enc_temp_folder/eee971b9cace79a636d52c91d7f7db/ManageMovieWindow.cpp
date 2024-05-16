@@ -1,24 +1,26 @@
-#include "AddMovieWindow.h"
+#include "ManageMovieWindow.h"
 #include "Movie.h"
 #include <QMessageBox>
 #include "MovieListView.h"
 
-AddMovieWindow::AddMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorElement, QComboBox* typeElement, QLineEdit* durationTimeElement, QPushButton* addButtonElement, MovieListView* movieListViewElement)
+ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorElement, QComboBox* typeElement, QLineEdit* durationTimeElement, QPushButton* saveButtonElement, QPushButton* addButtonElement, QPushButton* removeButtonElement, QListView* movieListViewElement)
 {
 
     titleEdit = titleEditElement;
     director = directorElement;
     type = typeElement;
     durationTime = durationTimeElement;
+    saveButton = saveButtonElement;
     addButton = addButtonElement;
-    movieListView = movieListViewElement;
+    removeButton = removeButtonElement;
+    movieListView = new MovieListView(movieListViewElement);
 
 
     connect(addButton, SIGNAL(clicked()), this, SLOT(addMovie()));
 }
 
 
-bool AddMovieWindow::checkInputFields()
+bool ManageMovieWindow::checkInputFields()
 {
     //TODO 
 
@@ -35,7 +37,7 @@ bool AddMovieWindow::checkInputFields()
     }
 }
 
-void AddMovieWindow::setLimitationsOnFields()
+void ManageMovieWindow::setLimitationsOnFields()
 {
 
     //TODO 
@@ -43,7 +45,7 @@ void AddMovieWindow::setLimitationsOnFields()
     durationTime->setValidator(new QIntValidator(0, 500, this));
 }
 
-void AddMovieWindow::addMovie()
+void ManageMovieWindow::addMovie()
 {
     try {
         // Check if the input fields are valid
