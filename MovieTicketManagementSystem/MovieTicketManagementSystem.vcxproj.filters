@@ -52,7 +52,10 @@
     <ClCompile Include="Schedule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AddMovieWindow.cpp">
+    <ClCompile Include="ManageMovieWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RemoveMovieListView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -69,6 +72,9 @@
     <ClInclude Include="Schedule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RemoveMovieListView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MovieListView.h">
@@ -77,7 +83,7 @@
     <QtMoc Include="MainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="AddMovieWindow.h">
+    <QtMoc Include="ManageMovieWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

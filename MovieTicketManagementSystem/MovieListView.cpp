@@ -1,19 +1,14 @@
 #include "MovieListView.h"
+#include <QMessageBox>
 
 
 MovieListView::MovieListView(QListView* listView)
     : listView(listView)
 
 {
-
-    listModel = new QStringListModel(this);
-
-
     listView->setModel(listModel);
-
  
     setMoviesInListView();
-
 }
 
 
@@ -46,4 +41,10 @@ void MovieListView::setMoviesInListView()
     // Aktualizacja widoku QListView
     listView->update();
 }
+
+void MovieListView::setSelectionMode()
+{
+    	listView->setSelectionMode(QAbstractItemView::SingleSelection);
+}
+
 

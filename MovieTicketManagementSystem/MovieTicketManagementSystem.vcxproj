@@ -92,10 +92,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddMovieWindow.cpp" />
+    <ClCompile Include="ManageMovieWindow.cpp" />
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieDatabase.cpp" />
     <ClCompile Include="MovieListView.cpp" />
+    <ClCompile Include="RemoveMovieListView.cpp" />
     <ClCompile Include="Schedule.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
@@ -105,10 +106,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="AddMovieWindow.h" />
+    <QtMoc Include="ManageMovieWindow.h" />
     <ClInclude Include="DatabaseManager.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
+    <ClInclude Include="RemoveMovieListView.h" />
     <ClInclude Include="Schedule.h" />
     <QtMoc Include="MovieListView.h" />
   </ItemGroup>
