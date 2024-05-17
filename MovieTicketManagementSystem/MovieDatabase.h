@@ -13,9 +13,12 @@ public:
     bool createTable();
     bool addMovie(const Movie& movie);
     bool deleteMovie(const Movie& movie);
+    bool updateMovie(const Movie& oldMovie, const Movie& newMovie);
+    bool movieExists(const Movie& movie);
     int getMovieId(const Movie& movie);
     QList<Movie> getAllMovies();
     bool isTableExists();
+    Movie getMovieById(int id);
 
 
 };
