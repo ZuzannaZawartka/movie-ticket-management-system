@@ -34,9 +34,10 @@ void MovieListView::setMoviesInListView()
     // Przechodzenie przez wszystkie filmy i dodawanie informacji o filmach do listy
     for (const Movie& movie : movies)
     {
-        QString movieInfo = QString("%1 - %2 (%3 minutes)")
+        QString movieInfo = QString("%1 - %2 - %3 (%4 minutes)")
             .arg(movie.getTitle())
             .arg(movie.getDirector())
+            .arg(movie.getType()) // Dodanie typu filmu
             .arg(movie.getDuration());
 
         moviesStringList.append(movieInfo);
@@ -47,4 +48,3 @@ void MovieListView::setMoviesInListView()
     // Aktualizacja widoku QListView
     listView->update();
 }
-
