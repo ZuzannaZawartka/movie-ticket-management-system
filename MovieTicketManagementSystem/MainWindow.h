@@ -7,6 +7,7 @@
 #include "MovieDatabase.h"
 #include "ScheduleListView.h"
 #include "ScheduleDatabase.h"
+#include "ManageRoomWindow.h"
 
 class MainWindow : public QMainWindow
 {
@@ -22,7 +23,7 @@ private:
     MovieTableWidget* movieTableWidget;
     MovieTableWidget* bookTicketListView;
     ScheduleListView* scheduleListView;
-
+    ManageRoomWindow* manageRoomWindow;
 
     private slots:
         void changeToManageMovieWindow();
@@ -30,4 +31,5 @@ private:
         void changeToBookTicketWindow();
         void changeToShowMovieListWindow();
         void changeToViewBookingsWindow();
+        void changeToManageRoomWindow();
 };

@@ -13,7 +13,7 @@ class ManageMovieWindow : public QWidget
 
 public:
     explicit ManageMovieWindow(QTextEdit* titleEdit, QTextEdit* director, QComboBox* type, QLineEdit* durationTime, QPushButton* saveButton, QPushButton* addButton, QPushButton* removeButton, QTableWidget* movieTableWidget);
-
+    ~ManageMovieWindow();
 
 private:
     QTextEdit* titleEdit;
