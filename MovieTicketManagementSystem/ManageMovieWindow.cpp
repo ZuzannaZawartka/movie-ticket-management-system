@@ -14,6 +14,7 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
     addButton = addButtonElement;
     removeButton = removeButtonElement;
     movieTableWidget = new MovieTableWidget(movieTableWidgetElement);
+    selectedMovieId = -1; //initialize the selected movie id to -1
 
     //connect the save button to the addMovie slot
     connect(addButton, SIGNAL(clicked()), this, SLOT(addMovie()));
@@ -23,6 +24,9 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
 
     //connection that on clicking the remove button, the movie is removed from the database
     connect(removeButtonElement, SIGNAL(clicked()), this, SLOT(removeMovie()));
+
+    //connection that on clicking the save button, the movie is updated in the database
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(updateMovie()));
 }
 
 void ManageMovieWindow::onMovieSelected(const QModelIndex& index)
@@ -53,18 +57,25 @@ void ManageMovieWindow::onMovieSelected(const QModelIndex& index)
 
 bool ManageMovieWindow::checkInputFields()
 {
-    //TODO 
+    try {
+        // Check if the input fields are valid, not empty
+        if (titleEdit->toPlainText().isEmpty() || director->toPlainText().isEmpty() || type->currentText().isEmpty() || durationTime->text().isEmpty()) {
+            throw std::invalid_argument("All fields must be filled out.");
+        }
 
-    //Check if the input fields are valid
-    if (titleEdit->toPlainText().isEmpty() || director->toPlainText().isEmpty() || type->currentText().isEmpty() || durationTime->text().isEmpty()) {
-        throw std::invalid_argument("All fields must be filled out.");
+        // check if the duration is a valid number
+        bool ok;
+        durationTime->text().toInt(&ok);
+        if (!ok) {
+            throw std::invalid_argument("Duration must be a valid number.");
+        }
+
+        return true; //if all fields are valid
     }
-
-    // check if the duration is a valid number
-    bool ok;
-    int durationInt = durationTime->text().toInt(&ok);
-    if (!ok) {
-        throw std::invalid_argument("Duration must be a valid number.");
+    catch (const std::invalid_argument& e) {
+        // if an exception is thrown, display an error message
+        QMessageBox::critical(this, "Error", e.what());
+        return false;
     }
 }
 
@@ -78,46 +89,56 @@ void ManageMovieWindow::updateFields(const Movie& movie)
 
 }
 
+Movie ManageMovieWindow::getMovieFromFields()
+{
+    // Check if the input fields are valid
+    checkInputFields();
+
+    // Get the values from the input fields
+    QString titleStr = titleEdit->toPlainText();
+    QString directorStr = director->toPlainText();
+    QString typeStr = type->currentText();
+    int durationInt = durationTime->text().toInt();
+
+    Movie movie(titleStr, directorStr, typeStr, durationInt);
+
+    return movie;
+}
+
+
+
 void ManageMovieWindow::updateFields()
 {
     titleEdit->clear();
     director->clear();
     type->setCurrentIndex(0);
     durationTime->clear();
+
+    // set the selected movie id to -1
+    selectedMovieId = -1;
+
+    // clear the selection in the tableWidget
+    movieTableWidget->getTableWidget()->clearSelection();
 }
 
 void ManageMovieWindow::setLimitationsOnFields()
 {
-
     //TODO 
     durationTime->setValidator(new QIntValidator(0, 500, this));
 }
 
 void ManageMovieWindow::addMovie()
 {
-    try {
-        // Check if the input fields are valid
-        checkInputFields();
+    // Get the movie from the input fields
+    Movie movie = getMovieFromFields();
 
-        // Get the values from the input fields
-        QString titleStr = titleEdit->toPlainText();
-        QString directorStr = director->toPlainText();
-        QString typeStr = type->currentText();
-        int durationInt = durationTime->text().toInt();
+    // Add the movie to the database
+    movieDatabase.addMovie(movie);
 
-        // Add the movie to the database
-        movieDatabase.addMovie(Movie(titleStr, directorStr, typeStr, durationInt));
+    //Set Movies in the tableWidget
+    movieTableWidget->setMoviesInTableWidget();
 
-        //Set Movies in the tableWidget
-        movieTableWidget->setMoviesInTableWidget();
-
-        updateFields();
-
-    }
-    catch (const std::invalid_argument& e) {
-        // exception handling
-        QMessageBox::critical(this, "Error", e.what());
-    }
+    updateFields(); 
 }
 
 void ManageMovieWindow::removeMovie()
@@ -130,7 +151,7 @@ void ManageMovieWindow::removeMovie()
         return;
     }
 
-    // Pobranie indeksu zaznaczonego wiersza
+    // get the row index of the selected item
     int rowIndex = selectedItems.first()->row();
 
     // get data from the selected row
@@ -142,10 +163,8 @@ void ManageMovieWindow::removeMovie()
 
     Movie movie(title, director, type, duration);
 
-    if (!movieDatabase.deleteMovie(movie)) {
-        QMessageBox::critical(this, "Error", "Failed to remove movie.");
-    }
-
+    // remove the movie from the database
+    if (!movieDatabase.deleteMovie(movie)) return;
 
     // update the tableWidget
     movieTableWidget->setMoviesInTableWidget();
@@ -153,4 +172,27 @@ void ManageMovieWindow::removeMovie()
     // clear the input fields
     updateFields();
 
+}
+
+void ManageMovieWindow::updateMovie()
+{
+    if (selectedMovieId == -1) {
+        QMessageBox::information(this, "Information", "Select a movie to update.");
+        return;
+    }
+
+    // Get the movie from the input fields
+    Movie newMovie = getMovieFromFields();
+
+    // Get the old movie from the database
+    Movie oldMovie = movieDatabase.getMovieById(selectedMovieId);
+
+    // Update the movie in the database
+    if (!movieDatabase.updateMovie(oldMovie, newMovie)) return;
+
+    // update the tableWidget
+    movieTableWidget->setMoviesInTableWidget();
+
+    // clear the input fields
+    updateFields();
 }

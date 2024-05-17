@@ -29,6 +29,12 @@ bool MovieDatabase::createTable()
 
 bool MovieDatabase::addMovie(const Movie& movie)
 {
+    //if movie already exists, return false
+    if (movieExists(movie)) {
+        QMessageBox::critical(nullptr, "Database Error", "Movie already exists!");
+        return false;
+    }
+
     QString query = "INSERT INTO movies (title, director, type, duration) "
         "VALUES (?, ?, ?, ?);";
 
@@ -43,7 +49,7 @@ bool MovieDatabase::deleteMovie(const Movie& movie)
     int movieId = getMovieId(movie);
 
     if (movieId == -1) {
-        cout << "Movie not found." << endl;
+        QMessageBox::critical(nullptr, "Database Error", "Movie not found!");
         return false;
     }
 

@@ -31,9 +31,11 @@ private:
     bool checkInputFields();
     void updateFields();
     void updateFields(const Movie& movie);
+    Movie getMovieFromFields();
 
 private slots:
     void addMovie();
     void removeMovie();
+    void updateMovie();
     void onMovieSelected(const QModelIndex& index); // Deklaracja nowego slotu
 };
