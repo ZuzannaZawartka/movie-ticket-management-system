@@ -13,6 +13,8 @@ public:
     MovieListView(QTableWidget* tableWidget);
     ~MovieListView();
     void setMoviesInListView();
+    QTableWidget* getTableWidget() const;
+
 
 private:
     QTableWidget* tableWidget;

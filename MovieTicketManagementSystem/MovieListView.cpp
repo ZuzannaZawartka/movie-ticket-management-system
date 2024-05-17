@@ -6,16 +6,16 @@ MovieListView::MovieListView(QTableWidget* tableWidget)
     : tableWidget(tableWidget)
 
 {
-
     tableWidget->setColumnCount(4);
 
     tableWidget->setHorizontalHeaderLabels({ "Title", "Director", "Type", "Duration" });
 
+    tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers); // Wy³¹czenie edycji komórek
+    tableWidget->setSelectionMode(QAbstractItemView::ExtendedSelection); // Lub ExtendedSelection lub ContiguousSelection
+
+
     setMoviesInListView();
-
 }
-
-
 
 MovieListView::~MovieListView()
 {
@@ -48,4 +48,9 @@ void MovieListView::setMoviesInListView()
     }
 
     tableWidget->resizeColumnsToContents();
+}
+
+QTableWidget* MovieListView::getTableWidget() const
+{
+    return tableWidget;
 }

@@ -24,27 +24,28 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
 
 void ManageMovieWindow::onMovieSelected(const QModelIndex& index)
 {
-
-    QMessageBox::information(this, "Movie selected", "Movie selected");
     if (!index.isValid()) {
         return;
     }
 
-    QString selectedMovieInfo = index.data().toString();
-    QStringList movieDetails = selectedMovieInfo.split(" | ");
+    QTableWidgetItem* titleItem = movieTableWidget->getTableWidget()->item(index.row(), 0);
+    QTableWidgetItem* directorItem = movieTableWidget->getTableWidget()->item(index.row(), 1);
+    QTableWidgetItem* typeItem = movieTableWidget->getTableWidget()->item(index.row(), 2);
+    QTableWidgetItem* durationItem = movieTableWidget->getTableWidget()->item(index.row(), 3);
 
-    QMessageBox::information(this, "Movie selected", selectedMovieInfo);
+    if (titleItem && directorItem && typeItem && durationItem) {
+        QString titleStr = titleItem->text();
+        QString directorStr = directorItem->text();
+        QString typeStr = typeItem->text();
+        QString durationStr = durationItem->text();
 
-    QString titleStr = movieDetails[0];
-    QString directorStr = movieDetails[1];
-    QString typeStr = movieDetails[2];
-    QString durationStr = movieDetails[3].split(" ")[2]; // Pobranie samej wartoœci czasu trwania
-
-    titleEdit->setText(titleStr);
-    director->setText(directorStr);
-    type->setCurrentText(typeStr);
-    durationTime->setText(durationStr);
+        titleEdit->setText(titleStr);
+        director->setText(directorStr);
+        type->setCurrentText(typeStr);
+        durationTime->setText(durationStr);
+    }
 }
+
 
 bool ManageMovieWindow::checkInputFields()
 {
