@@ -31,7 +31,8 @@ private:
     void setLimitationsOnFields();
     bool checkInputFields();
 
+
 private slots:
     void addMovie();
-
+    void updateFieldsWithMovie(const Movie& movie);
 };

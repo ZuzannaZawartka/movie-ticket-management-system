@@ -17,6 +17,7 @@ MovieListView::MovieListView(QListView* listView)
 }
 
 
+
 MovieListView::~MovieListView()
 {
     delete listModel;

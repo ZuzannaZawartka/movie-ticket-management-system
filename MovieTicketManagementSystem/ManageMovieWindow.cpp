@@ -37,6 +37,15 @@ bool ManageMovieWindow::checkInputFields()
     }
 }
 
+void ManageMovieWindow::updateFieldsWithMovie(const Movie& movie)
+{
+	//Update the fields with the movie details
+	titleEdit->setText(movie.getTitle());
+	director->setText(movie.getDirector());
+	type->setCurrentText(movie.getType());
+	durationTime->setText(QString::number(movie.getDuration()));
+}
+
 void ManageMovieWindow::setLimitationsOnFields()
 {
 
