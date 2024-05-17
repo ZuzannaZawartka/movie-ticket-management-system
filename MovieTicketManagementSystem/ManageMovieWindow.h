@@ -32,6 +32,8 @@ private:
 
 private slots:
     void addMovie();
-    void updateFieldsWithMovie(const Movie& movie);
+    void removeMovie();
+    void updateFields();
+    void updateFields(const Movie& movie);
     void onMovieSelected(const QModelIndex& index); // Deklaracja nowego slotu
 };

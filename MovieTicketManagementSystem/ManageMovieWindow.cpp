@@ -20,6 +20,9 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
 
     //connection that on selected item in the list view, the fields are updated with the movie details
     connect(movieTableWidgetElement, SIGNAL(clicked(const QModelIndex&)), this, SLOT(onMovieSelected(const QModelIndex&)));
+
+    //connection that on clicking the remove button, the movie is removed from the database
+    connect(removeButtonElement, SIGNAL(clicked()), this, SLOT(removeMovie()));
 }
 
 void ManageMovieWindow::onMovieSelected(const QModelIndex& index)
@@ -39,10 +42,9 @@ void ManageMovieWindow::onMovieSelected(const QModelIndex& index)
         QString typeStr = typeItem->text();
         QString durationStr = durationItem->text();
 
-        titleEdit->setText(titleStr);
-        director->setText(directorStr);
-        type->setCurrentText(typeStr);
-        durationTime->setText(durationStr);
+        Movie movie(titleStr, directorStr, typeStr, durationStr.toInt());
+
+        updateFields(movie);
     }
 }
 
@@ -64,20 +66,28 @@ bool ManageMovieWindow::checkInputFields()
     }
 }
 
-void ManageMovieWindow::updateFieldsWithMovie(const Movie& movie)
+void ManageMovieWindow::updateFields(const Movie& movie)
 {
-	//Update the fields with the movie details
+
 	titleEdit->setText(movie.getTitle());
 	director->setText(movie.getDirector());
 	type->setCurrentText(movie.getType());
-	durationTime->setText(QString::number(movie.getDuration()));
+    durationTime->setText(QString::number(movie.getDuration()));
+
+}
+
+void ManageMovieWindow::updateFields()
+{
+    titleEdit->clear();
+    director->clear();
+    type->setCurrentIndex(0);
+    durationTime->clear();
 }
 
 void ManageMovieWindow::setLimitationsOnFields()
 {
 
     //TODO 
-    //set limitations on the fields
     durationTime->setValidator(new QIntValidator(0, 500, this));
 }
 
@@ -96,17 +106,49 @@ void ManageMovieWindow::addMovie()
         // Add the movie to the database
         movieDatabase.addMovie(Movie(titleStr, directorStr, typeStr, durationInt));
 
+        //Set Movies in the tableWidget
         movieTableWidget->setMoviesInListView();
 
-        // Clear the fields after adding the movie
-        titleEdit->clear();
-        director->clear();
-        type->setCurrentIndex(0); // Set the first item in the combobox
-        durationTime->clear();
+        updateFields();
 
     }
     catch (const std::invalid_argument& e) {
         // exception handling
         QMessageBox::critical(this, "Error", e.what());
     }
+}
+
+void ManageMovieWindow::removeMovie()
+{
+    QList<QTableWidgetItem*> selectedItems = movieTableWidget->getTableWidget()->selectedItems();
+
+    // check if any row is selected
+    if (selectedItems.isEmpty()) {
+        QMessageBox::information(this, "Information", "Select a movie to remove.");
+        return;
+    }
+
+    // Pobranie indeksu zaznaczonego wiersza
+    int rowIndex = selectedItems.first()->row();
+
+    // get data from the selected row
+    QString title = movieTableWidget->getTableWidget()->item(rowIndex, 0)->text();
+    QString director = movieTableWidget->getTableWidget()->item(rowIndex, 1)->text();
+    QString type = movieTableWidget->getTableWidget()->item(rowIndex, 2)->text();
+    int duration = movieTableWidget->getTableWidget()->item(rowIndex, 3)->text().toInt();
+
+
+    Movie movie(title, director, type, duration);
+
+    if (!movieDatabase.deleteMovie(movie)) {
+        QMessageBox::critical(this, "Error", "Failed to remove movie.");
+    }
+
+
+    // update the tableWidget
+    movieTableWidget->setMoviesInListView();
+
+    // clear the input fields
+    updateFields();
+
 }

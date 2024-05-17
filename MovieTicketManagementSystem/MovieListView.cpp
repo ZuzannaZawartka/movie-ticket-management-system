@@ -10,6 +10,7 @@ MovieListView::MovieListView(QTableWidget* tableWidget)
 
     tableWidget->setHorizontalHeaderLabels({ "Title", "Director", "Type", "Duration" });
 
+    tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers); // Wy³¹czenie edycji komórek
     tableWidget->setSelectionMode(QAbstractItemView::ExtendedSelection); // Lub ExtendedSelection lub ContiguousSelection
 
