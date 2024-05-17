@@ -3,11 +3,6 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QMessageBox>
-#include <iostream>
-
-using namespace std;
-
-const QString DatabasePath = "database.db";
 
 
 ScheduleDatabase::ScheduleDatabase()  {
@@ -45,7 +40,7 @@ bool ScheduleDatabase::deleteSchedule(const Schedule& schedule)
     int scheduleId = getScheduleId(schedule);
 
     if (scheduleId == -1) {
-        cout << "Schedule not found." << endl;
+        QMessageBox::critical(nullptr, "Database Error", "Schedule not found!");
         return false;
     }
 
