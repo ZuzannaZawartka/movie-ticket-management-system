@@ -44,6 +44,8 @@ void ManageMovieWindow::onMovieSelected(const QModelIndex& index)
 
         Movie movie(titleStr, directorStr, typeStr, durationStr.toInt());
 
+        selectedMovieId = movieDatabase.getMovieId(movie);//get the id of the selected movie
+
         updateFields(movie);
     }
 }

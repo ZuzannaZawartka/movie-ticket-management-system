@@ -80,6 +80,34 @@ bool MovieDatabase::isTableExists()
     return executeQuery(query, QVariantList());
 }
 
+Movie MovieDatabase::getMovieById(int id)
+{
+    QString queryStr = "SELECT * FROM movies WHERE id = :id;";
+    QVariantList values;
+    values << id;
+
+    QSqlQuery query = prepareQueryWithBindings(queryStr, values);
+
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie by ID!");
+        return Movie("", "", "", -1); //return empty movie object
+    }
+
+    if (query.next()) {
+        QString title = query.value("title").toString();
+        QString director = query.value("director").toString();
+        QString type = query.value("type").toString();
+        int duration = query.value("duration").toInt();
+
+        return Movie(title, director, type, duration);
+    }
+    else {
+        QMessageBox::critical(nullptr, "Database Error", "Movie not found!");
+        return Movie("", "", "", -1); //return empty movie object
+    }
+}
+
+
 int MovieDatabase::getMovieId(const Movie& movie)
 {
     QString queryStr = "SELECT id FROM movies WHERE title = :title AND director = :director AND type = :type AND duration = :duration;";
@@ -138,15 +166,22 @@ QList<Movie> MovieDatabase::getAllMovies()
 
 bool MovieDatabase::updateMovie(const Movie& oldMovie, const Movie& newMovie)
 {
-    if (!movieExists(oldMovie)) {
-        QMessageBox::critical(nullptr, "Database Error", "Movie does not exist!");
+    // check if the old movie exists
+    int movieId = getMovieId(oldMovie);
+    if (movieId == -1) {
+        QMessageBox::critical(nullptr, "Database Error", "Old movie not found.");
         return false;
     }
 
-    QString query = "UPDATE movies SET title = :newTitle, director = :newDirector, type = :newType, duration = :newDuration WHERE title = :oldTitle AND director = :oldDirector AND type = :oldType AND duration = :oldDuration;";
-    QVariantList values;
-    values << newMovie.getTitle() << newMovie.getDirector() << newMovie.getType() << newMovie.getDuration()
-        << oldMovie.getTitle() << oldMovie.getDirector() << oldMovie.getType() << oldMovie.getDuration();
+    // check if the new movie already exists
+    if (movieExists(newMovie)) {
+        QMessageBox::critical(nullptr, "Database Error", "New movie already exists.");
+        return false;
+    }
 
-    return executeQuery(query, values);
+    QString queryStr = "UPDATE movies SET title = :newTitle, director = :newDirector, type = :newType, duration = :newDuration WHERE id = :id;";
+    QVariantList values;
+    values << newMovie.getTitle() << newMovie.getDirector() << newMovie.getType() << newMovie.getDuration() << movieId;
+
+    return executeQuery(queryStr, values);
 }

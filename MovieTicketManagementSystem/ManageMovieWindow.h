@@ -25,15 +25,15 @@ private:
     QPushButton* removeButton;
     MovieDatabase movieDatabase;
     MovieTableWidget* movieTableWidget;
+    int selectedMovieId;
 
     void setLimitationsOnFields();
     bool checkInputFields();
-
+    void updateFields();
+    void updateFields(const Movie& movie);
 
 private slots:
     void addMovie();
     void removeMovie();
-    void updateFields();
-    void updateFields(const Movie& movie);
     void onMovieSelected(const QModelIndex& index); // Deklaracja nowego slotu
 };
