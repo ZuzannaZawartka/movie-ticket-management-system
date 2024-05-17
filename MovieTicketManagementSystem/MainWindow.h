@@ -5,6 +5,8 @@
 #include "MovieTableWidget.h"
 #include "ManageMovieWindow.h"
 #include "MovieDatabase.h"
+#include "ScheduleListView.h"
+#include "ScheduleDatabase.h"
 
 class MainWindow : public QMainWindow
 {
@@ -19,6 +21,7 @@ private:
     ManageMovieWindow* manageMovieWindow;
     MovieTableWidget* movieTableWidget;
     MovieTableWidget* bookTicketListView;
+    ScheduleListView* scheduleListView;
 
 
     private slots:

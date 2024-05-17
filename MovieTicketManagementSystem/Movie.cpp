@@ -6,7 +6,6 @@ Movie::Movie(const QString& title, const QString& director, const QString& type,
 }
 
 
-
 QString Movie::getTitle() const
 {
     return title;

@@ -96,7 +96,11 @@
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieDatabase.cpp" />
     <ClCompile Include="MovieTableWidget.cpp" />
+    <ClCompile Include="Person.cpp" />
     <ClCompile Include="Schedule.cpp" />
+    <ClCompile Include="ScheduleDatabase.cpp" />
+    <ClCompile Include="ScheduleListView.cpp" />
+    <ClCompile Include="Ticket.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
@@ -109,8 +113,12 @@
     <ClInclude Include="DatabaseManager.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="Schedule.h" />
     <QtMoc Include="MovieTableWidget.h" />
+    <ClInclude Include="ScheduleDatabase.h" />
+    <QtMoc Include="ScheduleListView.h" />
+    <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

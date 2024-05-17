@@ -2,11 +2,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QMessageBox>
-#include <iostream>
 
-using namespace std;
-
-const QString DatabasePath = "database.db";
 
 MovieDatabase::MovieDatabase()
 {

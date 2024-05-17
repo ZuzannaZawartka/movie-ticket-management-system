@@ -1,16 +1,16 @@
 #include "MainWindow.h"
-#include <QStringListModel>
-#include "Movie.h"
+#include "MovieDatabase.h"
 #include "MovieTableWidget.h"
 #include "ManageMovieWindow.h"
-#include "MovieDatabase.h"
 #include <QMessageBox>
+#include <QStringListModel>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
     movieTableWidget = new MovieTableWidget(ui.MovieTableWidget);
+    //scheduleListView = new ScheduleListView(ui.ScheduleListView);
     manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit,ui.saveMovieButton, ui.addMovieToDatabase,ui.removeMovieButon, ui.manageMovieTableWidget);
 }
 
