@@ -115,3 +115,30 @@ QList<Movie> MovieDatabase::getAllMovies()
             QMessageBox::critical(nullptr, "Database Error", QString("Error: ") + e.what());
     }
 }
+
+Movie MovieDatabase::getMovieById(int id)
+{
+    QString queryStr = "SELECT * FROM movies WHERE id = :id;";
+    QVariantList values;
+    values << id;
+
+    QSqlQuery query = prepareQueryWithBindings(queryStr, values);
+
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie!");
+        throw std::runtime_error("Failed to retrieve movie!");
+    }
+
+    if (query.next()) {
+        QString title = query.value("title").toString();
+        QString director = query.value("director").toString();
+        QString type = query.value("type").toString();
+        int duration = query.value("duration").toInt();
+
+        return Movie(title, director, type, duration);
+    }
+    else {
+        QMessageBox::critical(nullptr, "Database Error", "Movie not found!");
+        throw std::runtime_error("Movie not found!");
+    }
+}

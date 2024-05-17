@@ -3,13 +3,15 @@
 #include "Movie.h"
 #include "MovieListView.h"
 #include "AddMovieWindow.h"
-#include "MovieDatabase.h"
+#include "Schedule.h"
+#include "ScheduleListView.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
+    scheduleListView = new ScheduleListView(ui.ScheduleListView);
     movieListView = new MovieListView(ui.MovieListView);
     bookTicketListView = new MovieListView(ui.bookTicketListView);
     removeMovieListView = new MovieListView(ui.removeMovieListView);

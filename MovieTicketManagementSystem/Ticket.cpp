@@ -1,8 +1,8 @@
 #include "Ticket.h"
-#include "Movie.h"
+#include "Schedule.h"
 
-Ticket::Ticket(char row, int seat, double price, Movie& movie)
-    : row(row), seat(seat), price(price), movie(movie)
+Ticket::Ticket(char row, int seat, double price, Schedule& schedule)
+    : row(row), seat(seat), price(price), schedule(schedule)
 {
 }
 
@@ -20,7 +20,7 @@ int Ticket::getSeat() const
 {
     return seat;
 }
-Movie& Ticket::getMovie() const
+Schedule& Ticket::getSchedule() 
 {
-    return movie;
+    return schedule;
 }

@@ -98,6 +98,8 @@
     <ClCompile Include="MovieListView.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Schedule.cpp" />
+    <ClCompile Include="ScheduleDatabase.cpp" />
+    <ClCompile Include="ScheduleListView.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
@@ -113,6 +115,8 @@
     <ClInclude Include="MovieDatabase.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Schedule.h" />
+    <ClInclude Include="ScheduleDatabase.h" />
+    <QtMoc Include="ScheduleListView.h" />
     <ClInclude Include="Ticket.h" />
     <QtMoc Include="MovieListView.h" />
   </ItemGroup>

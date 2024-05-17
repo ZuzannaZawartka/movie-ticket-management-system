@@ -5,6 +5,8 @@
 #include "MovieListView.h"
 #include "AddMovieWindow.h"
 #include "MovieDatabase.h"
+#include "ScheduleListView.h"
+#include "ScheduleDatabase.h"
 
 class MainWindow : public QMainWindow
 {
@@ -20,6 +22,7 @@ private:
     MovieListView* movieListView;
     MovieListView* bookTicketListView;
     MovieListView* removeMovieListView;
+    ScheduleListView* scheduleListView;
 
 
     private slots:

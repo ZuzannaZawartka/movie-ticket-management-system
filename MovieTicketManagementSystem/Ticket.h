@@ -1,20 +1,20 @@
 #pragma once
 #include <QString>
-#include <Movie.h>
+#include <Schedule.h>
 
 class Ticket
 {
 public:
-	Ticket(char row, int seat, double price, Movie& movie);
+	Ticket(char row, int seat, double price, Schedule& schedule);
 	int getSeat() const;
 	char getRow() const;
 	double getPrice() const;
-	Movie& getMovie() const;
+	Schedule& getSchedule();
 
 private:
 	char row;
 	int seat;
-	Movie& movie;
+	Schedule& schedule;
 	double price;
 
 };
