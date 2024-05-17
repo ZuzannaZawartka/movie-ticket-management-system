@@ -134,19 +134,3 @@ QList<Movie> MovieDatabase::getAllMovies()
             QMessageBox::critical(nullptr, "Database Error", QString("Error: ") + e.what());
     }
 }
-
-
-bool MovieDatabase::updateMovie(const Movie& oldMovie, const Movie& newMovie)
-{
-    if (!movieExists(oldMovie)) {
-        QMessageBox::critical(nullptr, "Database Error", "Movie does not exist!");
-        return false;
-    }
-
-    QString query = "UPDATE movies SET title = :newTitle, director = :newDirector, type = :newType, duration = :newDuration WHERE title = :oldTitle AND director = :oldDirector AND type = :oldType AND duration = :oldDuration;";
-    QVariantList values;
-    values << newMovie.getTitle() << newMovie.getDirector() << newMovie.getType() << newMovie.getDuration()
-        << oldMovie.getTitle() << oldMovie.getDirector() << oldMovie.getType() << oldMovie.getDuration();
-
-    return executeQuery(query, values);
-}

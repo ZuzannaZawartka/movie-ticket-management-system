@@ -5,20 +5,19 @@
 #include <QStringListModel>
 #include "MovieDatabase.h"
 
-class MovieListView : public QWidget
+class MovieTableWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    MovieListView(QTableWidget* tableWidget);
-    ~MovieListView();
-    void setMoviesInListView();
+    MovieTableWidget(QTableWidget* tableWidget);
+    ~MovieTableWidget();
+    void setMoviesInTableWidget();
     QTableWidget* getTableWidget() const;
 
 
 private:
     QTableWidget* tableWidget;
-    QStringListModel* listModel = new QStringListModel(this);
     MovieDatabase movieDatabase;
 
 };

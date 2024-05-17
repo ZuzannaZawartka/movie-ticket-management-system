@@ -46,13 +46,13 @@
     <ClCompile Include="Movie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MovieListView.cpp">
+    <ClCompile Include="MovieTableWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Schedule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AddMovieWindow.cpp">
+    <ClCompile Include="ManageMovieWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,13 +71,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="MovieListView.h">
+    <QtMoc Include="MovieTableWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="MainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="AddMovieWindow.h">
+    <QtMoc Include="ManageMovieWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #include "ManageMovieWindow.h"
 #include "Movie.h"
 #include <QMessageBox>
-#include "MovieListView.h"
+#include "MovieTableWidget.h"
 
 ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorElement, QComboBox* typeElement, QLineEdit* durationTimeElement, QPushButton* saveButtonElement, QPushButton* addButtonElement, QPushButton* removeButtonElement, QTableWidget* movieTableWidgetElement)
 {
@@ -13,7 +13,7 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
     saveButton = saveButtonElement;
     addButton = addButtonElement;
     removeButton = removeButtonElement;
-    movieTableWidget = new MovieListView(movieTableWidgetElement);
+    movieTableWidget = new MovieTableWidget(movieTableWidgetElement);
 
     //connect the save button to the addMovie slot
     connect(addButton, SIGNAL(clicked()), this, SLOT(addMovie()));
@@ -107,7 +107,7 @@ void ManageMovieWindow::addMovie()
         movieDatabase.addMovie(Movie(titleStr, directorStr, typeStr, durationInt));
 
         //Set Movies in the tableWidget
-        movieTableWidget->setMoviesInListView();
+        movieTableWidget->setMoviesInTableWidget();
 
         updateFields();
 
@@ -146,7 +146,7 @@ void ManageMovieWindow::removeMovie()
 
 
     // update the tableWidget
-    movieTableWidget->setMoviesInListView();
+    movieTableWidget->setMoviesInTableWidget();
 
     // clear the input fields
     updateFields();

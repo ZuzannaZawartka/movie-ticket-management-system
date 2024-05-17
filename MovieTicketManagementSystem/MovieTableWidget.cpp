@@ -1,8 +1,8 @@
-#include "MovieListView.h"
+#include "MovieTableWidget.h"
 #include <QStandardItem>
 
 
-MovieListView::MovieListView(QTableWidget* tableWidget)
+MovieTableWidget::MovieTableWidget(QTableWidget* tableWidget)
     : tableWidget(tableWidget)
 
 {
@@ -10,20 +10,18 @@ MovieListView::MovieListView(QTableWidget* tableWidget)
 
     tableWidget->setHorizontalHeaderLabels({ "Title", "Director", "Type", "Duration" });
 
-    tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers); // Wy³¹czenie edycji komórek
-    tableWidget->setSelectionMode(QAbstractItemView::ExtendedSelection); // Lub ExtendedSelection lub ContiguousSelection
+    tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows); // select entire row
+    tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers); // turn off editing
 
 
-    setMoviesInListView();
+    setMoviesInTableWidget();
 }
 
-MovieListView::~MovieListView()
+MovieTableWidget::~MovieTableWidget()
 {
-    delete listModel;
 }
 
-void MovieListView::setMoviesInListView()
+void MovieTableWidget::setMoviesInTableWidget()
 {
 
     tableWidget->clearContents();
@@ -51,7 +49,7 @@ void MovieListView::setMoviesInListView()
     tableWidget->resizeColumnsToContents();
 }
 
-QTableWidget* MovieListView::getTableWidget() const
+QTableWidget* MovieTableWidget::getTableWidget() const
 {
     return tableWidget;
 }

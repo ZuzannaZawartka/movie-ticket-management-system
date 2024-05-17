@@ -5,7 +5,7 @@
 #include <QComboBox>
 #include <QPushButton>
 #include "MovieDatabase.h"
-#include "MovieListView.h"
+#include "MovieTableWidget.h"
 
 class ManageMovieWindow : public QWidget
 {
@@ -24,7 +24,7 @@ private:
     QPushButton* saveButton;
     QPushButton* removeButton;
     MovieDatabase movieDatabase;
-    MovieListView* movieTableWidget;
+    MovieTableWidget* movieTableWidget;
 
     void setLimitationsOnFields();
     bool checkInputFields();

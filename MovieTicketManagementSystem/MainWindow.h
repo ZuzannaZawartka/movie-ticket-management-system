@@ -2,7 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_MainWindow.h"
-#include "MovieListView.h"
+#include "MovieTableWidget.h"
 #include "ManageMovieWindow.h"
 #include "MovieDatabase.h"
 
@@ -17,8 +17,8 @@ public:
 private:
     Ui::MainWindowClass ui;
     ManageMovieWindow* manageMovieWindow;
-    MovieListView* movieListView;
-    MovieListView* bookTicketListView;
+    MovieTableWidget* movieTableWidget;
+    MovieTableWidget* bookTicketListView;
 
 
     private slots:
