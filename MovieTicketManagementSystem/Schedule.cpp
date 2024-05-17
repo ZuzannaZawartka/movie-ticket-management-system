@@ -1,4 +1,5 @@
 #include "Schedule.h"
+#include "Movie.h"
 
 Schedule::Schedule(const Movie& movie, const QDate& date, const QTime& time, int durationMinutes)
     : movie(movie), date(date), time(time), durationMinutes(durationMinutes)
