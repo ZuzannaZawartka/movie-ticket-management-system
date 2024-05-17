@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "MovieListView.h"
 
-ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorElement, QComboBox* typeElement, QLineEdit* durationTimeElement, QPushButton* saveButtonElement, QPushButton* addButtonElement, QPushButton* removeButtonElement, QListView* movieListViewElement)
+ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* directorElement, QComboBox* typeElement, QLineEdit* durationTimeElement, QPushButton* saveButtonElement, QPushButton* addButtonElement, QPushButton* removeButtonElement, QTableWidget* movieTableWidgetElement)
 {
 
     titleEdit = titleEditElement;
@@ -13,12 +13,38 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
     saveButton = saveButtonElement;
     addButton = addButtonElement;
     removeButton = removeButtonElement;
-    movieListView = new MovieListView(movieListViewElement);
+    movieTableWidget = new MovieListView(movieTableWidgetElement);
 
-
+    //connect the save button to the addMovie slot
     connect(addButton, SIGNAL(clicked()), this, SLOT(addMovie()));
+
+    //connection that on selected item in the list view, the fields are updated with the movie details
+    connect(movieTableWidgetElement, SIGNAL(clicked(const QModelIndex&)), this, SLOT(onMovieSelected(const QModelIndex&)));
 }
 
+void ManageMovieWindow::onMovieSelected(const QModelIndex& index)
+{
+
+    QMessageBox::information(this, "Movie selected", "Movie selected");
+    if (!index.isValid()) {
+        return;
+    }
+
+    QString selectedMovieInfo = index.data().toString();
+    QStringList movieDetails = selectedMovieInfo.split(" | ");
+
+    QMessageBox::information(this, "Movie selected", selectedMovieInfo);
+
+    QString titleStr = movieDetails[0];
+    QString directorStr = movieDetails[1];
+    QString typeStr = movieDetails[2];
+    QString durationStr = movieDetails[3].split(" ")[2]; // Pobranie samej wartoœci czasu trwania
+
+    titleEdit->setText(titleStr);
+    director->setText(directorStr);
+    type->setCurrentText(typeStr);
+    durationTime->setText(durationStr);
+}
 
 bool ManageMovieWindow::checkInputFields()
 {
@@ -69,7 +95,7 @@ void ManageMovieWindow::addMovie()
         // Add the movie to the database
         movieDatabase.addMovie(Movie(titleStr, directorStr, typeStr, durationInt));
 
-        movieListView->setMoviesInListView();
+        movieTableWidget->setMoviesInListView();
 
         // Clear the fields after adding the movie
         titleEdit->clear();

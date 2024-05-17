@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>590</width>
+    <width>865</width>
     <height>618</height>
    </rect>
   </property>
@@ -27,7 +27,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -424,7 +424,7 @@ background-color: rgb(36, 46, 61);</string>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <item>
-                 <widget class="QListView" name="manageMovieListView"/>
+                 <widget class="QTableWidget" name="manageMovieTableWidget"/>
                 </item>
                </layout>
               </item>
@@ -595,36 +595,7 @@ background-color: rgb(36, 46, 61);</string>
                <number>0</number>
               </property>
               <item row="0" column="0">
-               <widget class="QListView" name="MovieListView">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 17pt &quot;Franklin Gothic Demi&quot;;
-border-color: rgb(36, 46, 61);
-gridline-color: rgb(36, 46, 61);
-color: rgb(57, 79, 107);
-</string>
-                </property>
-                <property name="sizeAdjustPolicy">
-                 <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-                </property>
-                <property name="editTriggers">
-                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-                </property>
-                <property name="dragDropOverwriteMode">
-                 <bool>false</bool>
-                </property>
-                <property name="textElideMode">
-                 <enum>Qt::TextElideMode::ElideMiddle</enum>
-                </property>
-               </widget>
+               <widget class="QTableWidget" name="MovieTableWidget"/>
               </item>
              </layout>
             </widget>

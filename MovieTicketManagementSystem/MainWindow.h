@@ -19,7 +19,6 @@ private:
     ManageMovieWindow* manageMovieWindow;
     MovieListView* movieListView;
     MovieListView* bookTicketListView;
-    MovieListView* removeMovieListView;
 
 
     private slots:

@@ -10,9 +10,8 @@ MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    movieListView = new MovieListView(ui.MovieListView);
-    bookTicketListView = new MovieListView(ui.bookTicketListView);
-    manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit,ui.saveMovieButton, ui.addMovieToDatabase,ui.removeMovieButon, ui.manageMovieListView);
+    movieListView = new MovieListView(ui.MovieTableWidget);
+    manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit,ui.saveMovieButton, ui.addMovieToDatabase,ui.removeMovieButon, ui.manageMovieTableWidget);
 }
 
 MainWindow::~MainWindow()

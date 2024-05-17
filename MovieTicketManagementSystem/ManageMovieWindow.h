@@ -1,7 +1,5 @@
 #pragma once
 #include <QWidget>
-#pragma once
-#include <QWidget>
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QComboBox>
@@ -14,7 +12,7 @@ class ManageMovieWindow : public QWidget
     Q_OBJECT;
 
 public:
-    explicit ManageMovieWindow(QTextEdit* titleEdit, QTextEdit* director, QComboBox* type, QLineEdit* durationTime, QPushButton* saveButton, QPushButton* addButton, QPushButton* removeButton, QListView* movieListView);
+    explicit ManageMovieWindow(QTextEdit* titleEdit, QTextEdit* director, QComboBox* type, QLineEdit* durationTime, QPushButton* saveButton, QPushButton* addButton, QPushButton* removeButton, QTableWidget* movieTableWidget);
 
 
 private:
@@ -26,7 +24,7 @@ private:
     QPushButton* saveButton;
     QPushButton* removeButton;
     MovieDatabase movieDatabase;
-    MovieListView* movieListView;
+    MovieListView* movieTableWidget;
 
     void setLimitationsOnFields();
     bool checkInputFields();
@@ -35,4 +33,5 @@ private:
 private slots:
     void addMovie();
     void updateFieldsWithMovie(const Movie& movie);
+    void onMovieSelected(const QModelIndex& index); // Deklaracja nowego slotu
 };

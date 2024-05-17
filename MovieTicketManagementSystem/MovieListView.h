@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QWidget>
-#include <QListView>
+#include <QTableWidget>
 #include <QStringListModel>
 #include "MovieDatabase.h"
 
@@ -10,12 +10,12 @@ class MovieListView : public QWidget
     Q_OBJECT
 
 public:
-    MovieListView(QListView* listView);
+    MovieListView(QTableWidget* tableWidget);
     ~MovieListView();
     void setMoviesInListView();
 
 private:
-    QListView* listView;
+    QTableWidget* tableWidget;
     QStringListModel* listModel = new QStringListModel(this);
     MovieDatabase movieDatabase;
 

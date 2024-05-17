@@ -1,17 +1,16 @@
 #include "MovieListView.h"
+#include <QStandardItem>
 
 
-MovieListView::MovieListView(QListView* listView)
-    : listView(listView)
+MovieListView::MovieListView(QTableWidget* tableWidget)
+    : tableWidget(tableWidget)
 
 {
 
-    listModel = new QStringListModel(this);
+    tableWidget->setColumnCount(4);
 
+    tableWidget->setHorizontalHeaderLabels({ "Title", "Director", "Type", "Duration" });
 
-    listView->setModel(listModel);
-
- 
     setMoviesInListView();
 
 }
@@ -23,28 +22,30 @@ MovieListView::~MovieListView()
     delete listModel;
 }
 
-
 void MovieListView::setMoviesInListView()
 {
-    QStringList moviesStringList;
 
-    // Pobranie wszystkich filmów z bazy danych
+    tableWidget->clearContents();
+
+    // download all movies from database
     QList<Movie> movies = movieDatabase.getAllMovies();
 
-    // Przechodzenie przez wszystkie filmy i dodawanie informacji o filmach do listy
-    for (const Movie& movie : movies)
-    {
-        QString movieInfo = QString("%1 - %2 - %3 (%4 minutes)")
-            .arg(movie.getTitle())
-            .arg(movie.getDirector())
-            .arg(movie.getType()) // Dodanie typu filmu
-            .arg(movie.getDuration());
+    // set number of rows in QTableWidget to the number of movies
+    tableWidget->setRowCount(movies.size());
 
-        moviesStringList.append(movieInfo);
+    for (int row = 0; row < movies.size(); ++row) {
+        Movie movie = movies[row];
+
+        QTableWidgetItem* titleItem = new QTableWidgetItem(movie.getTitle());
+        QTableWidgetItem* directorItem = new QTableWidgetItem(movie.getDirector());
+        QTableWidgetItem* typeItem = new QTableWidgetItem(movie.getType());
+        QTableWidgetItem* durationItem = new QTableWidgetItem(QString::number(movie.getDuration()));
+
+        tableWidget->setItem(row, 0, titleItem);
+        tableWidget->setItem(row, 1, directorItem);
+        tableWidget->setItem(row, 2, typeItem);
+        tableWidget->setItem(row, 3, durationItem);
     }
 
-    listModel->setStringList(moviesStringList);
-
-    // Aktualizacja widoku QListView
-    listView->update();
+    tableWidget->resizeColumnsToContents();
 }
