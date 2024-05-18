@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget* parent)
 {
     ui.setupUi(this);
     movieTableWidget = new MovieTableWidget(ui.movieTableWidget);
-    //scheduleListView = new ScheduleListView(ui.ScheduleListView);
+    
     manageRoomWindow = new ManageRoomWindow(ui.plainTextEditManageRoom,ui.acceptManageRoomButton);
     manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit,ui.saveMovieButton, ui.addMovieToDatabase,ui.removeMovieButon, ui.manageMovieTableWidget);
 }

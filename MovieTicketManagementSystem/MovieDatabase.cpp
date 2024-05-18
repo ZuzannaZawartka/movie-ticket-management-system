@@ -136,32 +136,32 @@ QList<Movie> MovieDatabase::getAllMovies()
 {
     try {
 
-    QList<Movie> movies;
+        QList<Movie> movies;
 
-    QString queryStr = "SELECT * FROM movies;";
+        QString queryStr = "SELECT * FROM movies;";
 
-    QSqlQuery query = prepareQueryWithBindings(queryStr);
+        QSqlQuery query = prepareQueryWithBindings(queryStr);
 
-    if (!query.exec()) {
-        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movies!");
+        if (!query.exec()) {
+            QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movies!");
+            return movies;
+        }
+
+        while (query.next()) {
+            QString title = query.value("title").toString();
+            QString director = query.value("director").toString();
+            QString type = query.value("type").toString();
+            int duration = query.value("duration").toInt();
+
+            Movie movie(title, director, type, duration);
+            movies.append(movie);
+        }
+
         return movies;
-    }
-
-    while (query.next()) {
-        QString title = query.value("title").toString();
-        QString director = query.value("director").toString();
-        QString type = query.value("type").toString();
-        int duration = query.value("duration").toInt();
-
-        Movie movie(title, director, type, duration);
-        movies.append(movie);
-    }
-
-    return movies;
 
     }
     catch (const std::exception& e) {
-            QMessageBox::critical(nullptr, "Database Error", QString("Error: ") + e.what());
+        QMessageBox::critical(nullptr, "Database Error", QString("Error: ") + e.what());
     }
 }
 
@@ -186,4 +186,29 @@ bool MovieDatabase::updateMovie(const Movie& oldMovie, const Movie& newMovie)
     values << newMovie.getTitle() << newMovie.getDirector() << newMovie.getType() << newMovie.getDuration() << movieId;
 
     return executeQuery(queryStr, values);
+}
+Movie MovieDatabase::getMovieByTitle(const QString& title)
+{
+    QString queryStr = "SELECT * FROM movies WHERE title = :title;";
+    QVariantList values;
+    values << title;
+
+    QSqlQuery query = prepareQueryWithBindings(queryStr, values);
+
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie by title!");
+        return Movie("", "", "", -1); // Return empty movie object
+    }
+
+    if (query.next()) {
+        QString director = query.value("director").toString();
+        QString type = query.value("type").toString();
+        int duration = query.value("duration").toInt();
+
+        return Movie(title, director, type, duration);
+    }
+    else {
+        QMessageBox::critical(nullptr, "Database Error", "Movie with title " + title + " not found!");
+        return Movie("", "", "", -1); // Return empty movie object
+    }
 }

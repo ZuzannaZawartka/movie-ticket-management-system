@@ -5,7 +5,7 @@
 #include "MovieTableWidget.h"
 #include "ManageMovieWindow.h"
 #include "MovieDatabase.h"
-#include "ScheduleListView.h"
+#include "ScheduleTableWidget.h"
 #include "ScheduleDatabase.h"
 #include "ManageRoomWindow.h"
 
@@ -22,7 +22,7 @@ private:
     ManageMovieWindow* manageMovieWindow;
     MovieTableWidget* movieTableWidget;
     MovieTableWidget* bookTicketListView;
-    ScheduleListView* scheduleListView;
+    ScheduleTableWidget* scheduletableView;
     ManageRoomWindow* manageRoomWindow;
 
     private slots:

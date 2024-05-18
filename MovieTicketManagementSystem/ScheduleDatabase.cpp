@@ -5,7 +5,7 @@
 #include <QMessageBox>
 
 
-ScheduleDatabase::ScheduleDatabase()  {
+ScheduleDatabase::ScheduleDatabase() {
     createScheduleTable();
 }
 
@@ -44,7 +44,7 @@ bool ScheduleDatabase::deleteSchedule(const Schedule& schedule)
         return false;
     }
 
-    QString query = "DELETE FROM schedule WHERE id = :id;"; 
+    QString query = "DELETE FROM schedule WHERE id = :id;";
 
     QVariantList values;
     values << scheduleId;
@@ -72,7 +72,7 @@ int ScheduleDatabase::getScheduleId(const Schedule& schedule)
     }
 
     if (query.next()) {
-        return query.value(0).toInt(); 
+        return query.value(0).toInt();
     }
     else {
         QMessageBox::critical(nullptr, "Database Error", "Schedule not found!");
@@ -95,11 +95,11 @@ QList<Schedule> ScheduleDatabase::getAllSchedules()
         }
 
         while (query.next()) {
-            int movieId = query.value("movieId").toInt(); 
+            int movieId = query.value("movieId").toInt();
             Movie movie = movieDatabase.getMovieById(movieId);
             QDate date = query.value("date").toDate();
             QTime time = query.value("time").toTime();
-            int durationMinutes = query.value("duration").toInt(); 
+            int durationMinutes = query.value("duration").toInt();
 
             Schedule schedule(movie, date, time, durationMinutes);
 
@@ -110,6 +110,55 @@ QList<Schedule> ScheduleDatabase::getAllSchedules()
     }
     catch (const std::exception& e) {
         QMessageBox::critical(nullptr, "Database Error", QString("Error: ") + e.what());
-        return QList<Schedule>(); 
+        return QList<Schedule>();
     }
+}
+Schedule ScheduleDatabase::getScheduleById(int id)
+{
+    QString queryStr = "SELECT * FROM schedule WHERE id = :id;";
+    QVariantList values;
+    values << id;
+
+    QSqlQuery query = prepareQueryWithBindings(queryStr, values);
+
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve schedule by ID!");
+
+    }
+
+    if (query.next()) {
+        int movieId = query.value("movieId").toInt();
+        Movie movie = movieDatabase.getMovieById(movieId);
+        QDate date = query.value("date").toDate();
+        QTime time = query.value("time").toTime();
+        int durationMinutes = query.value("duration").toInt();
+
+        return Schedule(movie, date, time, durationMinutes);
+    }
+    else {
+        QMessageBox::critical(nullptr, "Database Error", "Schedule with ID " + QString::number(id) + " not found!");
+
+    }
+}
+bool ScheduleDatabase::updateSchedule(const Schedule& oldSchedule, const Schedule& newSchedule)
+{
+    // SprawdŸ, czy stary harmonogram istnieje
+    int scheduleId = getScheduleId(oldSchedule);
+    if (scheduleId == -1) {
+        QMessageBox::critical(nullptr, "Database Error", "Old schedule not found.");
+        return false;
+    }
+
+    // SprawdŸ, czy nowy harmonogram nie istnieje ju¿ w bazie danych
+    if (getScheduleId(newSchedule) != -1) {
+        QMessageBox::critical(nullptr, "Database Error", "New schedule already exists.");
+        return false;
+    }
+
+    QString queryStr = "UPDATE schedule SET movieId = :newMovieId, date = :newDate, time = :newTime, duration = :newDuration WHERE id = :id;";
+    QVariantList values;
+    values << movieDatabase.getMovieId(newSchedule.getMovie()) << newSchedule.getDate().toString("yyyy-MM-dd")
+        << newSchedule.getTime().toString("hh:mm:ss") << newSchedule.getDurationMinutes() << scheduleId;
+
+    return executeQuery(queryStr, values);
 }

@@ -18,6 +18,8 @@ public:
     int getScheduleId(const Schedule& schedule);
     QList<Schedule> getAllSchedules();
     bool isTableExists();
+    bool updateSchedule(const Schedule& oldSchedule, const Schedule& newSchedule);
+    Schedule getScheduleById(int id);
 private:
     MovieDatabase movieDatabase;
 };
