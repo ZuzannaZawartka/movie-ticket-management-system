@@ -28,9 +28,6 @@ bool ScheduleDatabase::addSchedule(const Schedule& schedule)
         // Pobierz identyfikator filmu z harmonogramu
         int movieId = schedule.getMovieId();
 
-        // Wyœwietl identyfikator filmu w MessageBox
-        QMessageBox::information(nullptr, "Movie ID", "Movie ID: " + QString::number(movieId));
-
         // SprawdŸ, czy film istnieje w bazie danych filmów
         if (!movieDatabase.movieExists(movieDatabase.getMovieById(movieId))) {
             QMessageBox::critical(nullptr, "Database Error", "Movie does not exist!");

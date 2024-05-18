@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "ScheduleTableWidget.h"
 
-ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdit* dateEditElement, QTimeEdit* timeEditElement, QLineEdit* durationTimeElement, QPushButton* addButtonElement, QTableWidget* scheduleTableWidgetElement)
+ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdit* dateEditElement, QTimeEdit* timeEditElement, QLineEdit* durationTimeElement, QPushButton* addButtonElement, QPushButton* removeButtonElement, QTableWidget* scheduleTableWidgetElement)
 {
 
     titleEdit = titleEditElement;
@@ -11,22 +11,25 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
     timeEdit = timeEditElement;
     durationTime = durationTimeElement;
     addButton = addButtonElement;
+    removeButton = removeButtonElement;
     scheduleTableWidget = new ScheduleTableWidget(scheduleTableWidgetElement);
     selectedScheduleId = -1; //initialize the selected movie id to -1
 
-    // Pobierz wszystkie filmy z bazy danych filmów
+    //Get all movie titles from movieDatabase
     QList<Movie> allMovies = movieDatabase.getAllMovies();
 
-    // Wyczyœæ ComboBox, aby upewniæ siê, ¿e jest pusty przed dodaniem nowych elementów
+    //Clear QComboBox
     titleEdit->clear();
 
-    // Dodaj tytu³y filmów do ComboBoxa
+    //Add movie titles to QComboBox
     for (const Movie& movie : allMovies) {
         titleEdit->addItem(movie.getTitle());
     }
 
     //connect the save button to the addSchedule slot
     connect(addButton, SIGNAL(clicked()), this, SLOT(addNewSchedule()));
+    //connect the remove button to removeSchedule slot
+    connect(removeButton, SIGNAL(clicked()), this, SLOT(removeCurrentSchedule()));
 
 }
 
@@ -164,4 +167,40 @@ void ManageScheduleWindow::addNewSchedule()
 
     updateFields();
 }
+void ManageScheduleWindow::removeCurrentSchedule()
+{
+    QList<QTableWidgetItem*> selectedItems = scheduleTableWidget->getTableWidget()->selectedItems();
 
+    // check if any row is selected
+    if (selectedItems.isEmpty()) {
+        QMessageBox::information(this, "Information", "Select a schedule to remove.");
+        return;
+    }
+
+    // get the row index of the selected item
+    int rowIndex = selectedItems.first()->row();
+
+    // get data from the selected row
+    
+    QString title = scheduleTableWidget->getTableWidget()->item(rowIndex, 0)->text();
+    QString dateString = scheduleTableWidget->getTableWidget()->item(rowIndex, 1)->text();
+    QString timeString = scheduleTableWidget->getTableWidget()->item(rowIndex, 2)->text();
+    int duration = scheduleTableWidget->getTableWidget()->item(rowIndex, 3)->text().toInt();
+
+    QDate date = QDate::fromString(dateString, "yyyy-MM-dd");
+    QTime time = QTime::fromString(timeString, "HH:mm:ss");
+
+    Movie movie = movieDatabase.getMovieByTitle(title);
+    int movieId = movieDatabase.getMovieId(movie);
+    
+    Schedule schedule(movieId, date, time, duration);
+
+    // remove the schedule from the database
+    if (!scheduleDatabase.deleteSchedule(schedule)) return;
+
+    // update the tableWidget
+    scheduleTableWidget->setSchedulesInTableWidget();
+    
+    
+    updateFields();
+}

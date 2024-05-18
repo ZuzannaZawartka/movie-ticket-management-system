@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget* parent)
     ui.setupUi(this);
     movieTableWidget = new MovieTableWidget(ui.movieTableWidget);
     scheduleTableWidget = new ScheduleTableWidget(ui.tableScheduleWidget);
-    manageScheduleWindow = new ManageScheduleWindow(ui.movieChoose,ui.dateChoose,ui.timeChoose,ui.durationChoose,ui.addScheduleButton, ui.tableScheduleWidget);
+    manageScheduleWindow = new ManageScheduleWindow(ui.movieChoose,ui.dateChoose,ui.timeChoose,ui.durationChoose,ui.addScheduleButton,ui.removeScheduleButton, ui.tableScheduleWidget);
     manageRoomWindow = new ManageRoomWindow(ui.plainTextEditManageRoom, ui.acceptManageRoomButton);
     manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit, ui.saveMovieButton, ui.addMovieToDatabase, ui.removeMovieButon, ui.manageMovieTableWidget);
 }
