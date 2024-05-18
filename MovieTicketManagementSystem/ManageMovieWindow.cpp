@@ -29,6 +29,19 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
     connect(saveButton, SIGNAL(clicked()), this, SLOT(updateMovie()));
 }
 
+ManageMovieWindow::~ManageMovieWindow()
+{
+    
+	delete titleEdit;
+	delete director;
+	delete type;
+	delete durationTime;
+	delete saveButton;
+	delete addButton;
+	delete removeButton;
+	delete movieTableWidget;
+}
+
 void ManageMovieWindow::onMovieSelected(const QModelIndex& index)
 {
     if (!index.isValid()) {
