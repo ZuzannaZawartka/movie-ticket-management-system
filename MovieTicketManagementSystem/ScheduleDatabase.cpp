@@ -6,6 +6,7 @@
 
 
 ScheduleDatabase::ScheduleDatabase() {
+    //TO DO after removing movie removeInvalidSchedules works only after closing app so it has to be refreshed
     removeInvalidSchedules();
     createScheduleTable();
 }

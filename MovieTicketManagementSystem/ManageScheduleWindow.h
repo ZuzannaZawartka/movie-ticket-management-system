@@ -15,7 +15,7 @@ class ManageScheduleWindow : public QWidget
     Q_OBJECT;
 
 public:
-    explicit ManageScheduleWindow(QComboBox* titleEdit, QDateEdit* dateEdit, QTimeEdit* timeEdit,  QLineEdit* durationTime, QPushButton* addButton, QPushButton* removeButton, QTableWidget* scheduleTableWidget);
+    explicit ManageScheduleWindow(QComboBox* titleEdit, QDateEdit* dateEdit, QTimeEdit* timeEdit,  QLineEdit* durationTime, QPushButton* addButton, QPushButton* removeButton, QPushButton* editButton, QTableWidget* scheduleTableWidget);
     ~ManageScheduleWindow();
 
 private:
@@ -25,6 +25,7 @@ private:
     QLineEdit* durationTime;
     QPushButton* addButton;
     QPushButton* removeButton;
+    QPushButton* editButton;
     ScheduleDatabase scheduleDatabase;
     ScheduleTableWidget* scheduleTableWidget;
     int selectedScheduleId;
@@ -37,7 +38,7 @@ private:
 private slots:
     void addNewSchedule();
     void removeCurrentSchedule();
+    void editCurrentSchedule();
     void setLimitationsOnFields();
-    bool validateFields();
     void onScheduleSelected(const QModelIndex& index); 
 };

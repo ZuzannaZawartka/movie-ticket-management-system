@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "ScheduleTableWidget.h"
 
-ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdit* dateEditElement, QTimeEdit* timeEditElement, QLineEdit* durationTimeElement, QPushButton* addButtonElement, QPushButton* removeButtonElement, QTableWidget* scheduleTableWidgetElement)
+ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdit* dateEditElement, QTimeEdit* timeEditElement, QLineEdit* durationTimeElement, QPushButton* addButtonElement, QPushButton* removeButtonElement, QPushButton* editButtonElement, QTableWidget* scheduleTableWidgetElement)
 {
 
     titleEdit = titleEditElement;
@@ -12,6 +12,7 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
     durationTime = durationTimeElement;
     addButton = addButtonElement;
     removeButton = removeButtonElement;
+    editButton = editButtonElement;
     scheduleTableWidget = new ScheduleTableWidget(scheduleTableWidgetElement);
     selectedScheduleId = -1; //initialize the selected movie id to -1
 
@@ -33,6 +34,9 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
     //connect the remove button to removeSchedule slot
     connect(removeButton, SIGNAL(clicked()), this, SLOT(removeCurrentSchedule()));
 
+    connect(editButton, SIGNAL(clicked()), this, SLOT(editCurrentSchedule()));
+
+    connect(scheduleTableWidget, SIGNAL(clicked(const QModelIndex&)), this, SLOT(onScheduleSelected(const QModelIndex&)));
 }
 
 ManageScheduleWindow::~ManageScheduleWindow()
@@ -78,34 +82,39 @@ void ManageScheduleWindow::onScheduleSelected(const QModelIndex& index)
 bool ManageScheduleWindow::checkInputFields()
 {
     try {
-        // SprawdŸ, czy wszystkie pola wejœciowe s¹ poprawnie wype³nione
+       
         if (titleEdit->currentText().isEmpty() || dateEdit->text().isEmpty() || timeEdit->text().isEmpty() || durationTime->text().isEmpty()) {
             throw std::invalid_argument("All fields must be filled out.");
         }
 
-        // SprawdŸ, czy czas trwania jest poprawn¹ liczb¹
-        bool ok;
-        int duration = durationTime->text().toInt(&ok);
-        if (!ok || duration <= 0) {
-            throw std::invalid_argument("Duration must be a positive integer.");
+        // Check date
+        if (dateEdit->date() < QDate::currentDate()) {
+            throw std::invalid_argument("Wrong date input.");
         }
 
-        // SprawdŸ, czy wybrana data jest poprawna
+        // Check duration time
+        bool ok;
+        int duration = durationTime->text().toInt(&ok);
+        if (!ok || duration <= 0 || duration > 500) {
+            throw std::invalid_argument("Wrong duration time input.");
+        }
+
+
+        
         QDate date = dateEdit->date();
         if (!date.isValid()) {
             throw std::invalid_argument("Invalid date.");
         }
 
-        // SprawdŸ, czy wybrany czas jest poprawny
         QTime time = timeEdit->time();
         if (!time.isValid()) {
             throw std::invalid_argument("Invalid time.");
         }
 
-        return true; // Jeœli wszystkie pola s¹ poprawne
+        return true; 
     }
     catch (const std::invalid_argument& e) {
-        // Jeœli zostanie zg³oszony wyj¹tek, wyœwietl komunikat o b³êdzie
+        
         QMessageBox::critical(this, "Error", e.what());
         return false;
     }
@@ -162,30 +171,36 @@ void ManageScheduleWindow::setLimitationsOnFields()
     dateEdit->setMinimumDate(QDate::currentDate());
     durationTime->setValidator(new QIntValidator(0, 500, this));
 }
-
-bool ManageScheduleWindow::validateFields()
+void ManageScheduleWindow::editCurrentSchedule()
 {
-    // Check date
-    if (dateEdit->date() < QDate::currentDate()) {
-        QMessageBox::critical(this, "Error", "Wrong date input.");
-        return false;
+    if (!checkInputFields()) {
+        return;
     }
 
-    // Check duration time
-    bool ok;
-    int duration = durationTime->text().toInt(&ok);
-    if (!ok || duration <= 0 || duration > 500) {
-        QMessageBox::critical(this, "Error", "Wrong duration time input.");
-        return false;
+    if (selectedScheduleId == -1) {
+        QMessageBox::information(this, "Information", "Select a schedule to update.");
+        return;
     }
 
+    // Get the schedule from the input fields
+    Schedule newSchedule = getScheduleFromFields();
 
-    return true;
+    // Get the old schedule from the database
+    Schedule oldSchedule = scheduleDatabase.getScheduleById(selectedScheduleId);
+
+    // Update the schedule in the database
+    if (!scheduleDatabase.updateSchedule(oldSchedule, newSchedule)) return;
+
+    // update the tableWidget
+    scheduleTableWidget->setSchedulesInTableWidget();
+
+    // clear the input fields
+    updateFields();
 }
 
 void ManageScheduleWindow::addNewSchedule()
 {
-    if (!validateFields()) {
+    if (!checkInputFields()) {
         return; 
     }
     // Get the movie from the input fields
