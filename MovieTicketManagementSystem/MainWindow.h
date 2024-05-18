@@ -7,6 +7,7 @@
 #include "MovieDatabase.h"
 #include "ScheduleTableWidget.h"
 #include "ScheduleDatabase.h"
+#include "ManageScheduleWindow.h"
 #include "ManageRoomWindow.h"
 
 class MainWindow : public QMainWindow
@@ -14,22 +15,24 @@ class MainWindow : public QMainWindow
     Q_OBJECT;
 
 public:
-    MainWindow(QWidget* parent = nullptr); 
-    ~MainWindow(); 
+    MainWindow(QWidget* parent = nullptr);
+    ~MainWindow();
 
 private:
     Ui::MainWindowClass ui;
     ManageMovieWindow* manageMovieWindow;
     MovieTableWidget* movieTableWidget;
     MovieTableWidget* bookTicketListView;
-    ScheduleTableWidget* scheduletableView;
+    ScheduleTableWidget* scheduleTableWidget;
+    ManageScheduleWindow* manageScheduleWindow;
     ManageRoomWindow* manageRoomWindow;
 
-    private slots:
-        void changeToManageMovieWindow();
-        void changeToMainWindow();
-        void changeToBookTicketWindow();
-        void changeToShowMovieListWindow();
-        void changeToViewBookingsWindow();
-        void changeToManageRoomWindow();
+private slots:
+    void changeToManageMovieWindow();
+    void changeToMainWindow();
+    void changeToBookTicketWindow();
+    void changeToShowMovieListWindow();
+    void changeToViewBookingsWindow();
+    void changeToManageRoomWindow();
+    void changeToManageScheduleWindow();
 };

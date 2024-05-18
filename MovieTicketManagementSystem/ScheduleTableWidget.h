@@ -19,5 +19,6 @@ public:
 private:
     QTableWidget* tableWidget;
     ScheduleDatabase scheduleDatabase;
+    MovieDatabase movieDatabase;
 
 };

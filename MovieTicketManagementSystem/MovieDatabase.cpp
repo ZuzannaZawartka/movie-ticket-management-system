@@ -212,3 +212,4 @@ Movie MovieDatabase::getMovieByTitle(const QString& title)
         return Movie("", "", "", -1); // Return empty movie object
     }
 }
+

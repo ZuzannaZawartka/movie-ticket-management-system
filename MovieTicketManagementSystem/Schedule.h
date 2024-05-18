@@ -6,15 +6,15 @@
 class Schedule
 {
 public:
-    Schedule(const Movie& movie, const QDate& date, const QTime& time, int durationMinutes);
+    Schedule(int movieId, const QDate& date, const QTime& time, int durationMinutes);
 
-    const Movie& getMovie() const;
+    int getMovieId() const;
     QDate getDate() const;
     QTime getTime() const;
     int getDurationMinutes() const;
 
 private:
-    const Movie& movie;
+    int movieId;
     QDate date;
     QTime time;
     int durationMinutes;

@@ -720,6 +720,21 @@ border-radius: 1px;</string>
            <enum>QFrame::Shadow::Raised</enum>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_19">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>3</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
             <widget class="QFrame" name="frame_3">
              <property name="minimumSize">
@@ -768,6 +783,21 @@ background-color: rgb(36, 46, 61);</string>
               <enum>QFrame::Shadow::Raised</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QFrame" name="frame_4">
                 <property name="sizePolicy">
@@ -806,20 +836,75 @@ background-color: rgb(36, 46, 61);</string>
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_20">
+                 <property name="spacing">
+                  <number>3</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
-                  <widget class="QComboBox" name="movieChoose"/>
+                  <widget class="QComboBox" name="movieChoose">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QDateEdit" name="dateChoose"/>
+                  <widget class="QDateEdit" name="dateChoose">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QTimeEdit" name="timeChoose"/>
+                  <widget class="QTimeEdit" name="timeChoose">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="durationChoose"/>
+                  <widget class="QLineEdit" name="durationChoose">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="saveScheduleButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+border-radius: 1px;
+background-color: rgb(57, 79, 107);</string>
+                   </property>
                    <property name="text">
                     <string>PushButton</string>
                    </property>
@@ -827,6 +912,18 @@ background-color: rgb(36, 46, 61);</string>
                  </item>
                  <item>
                   <widget class="QPushButton" name="addScheduleButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+border-radius: 1px;
+background-color: rgb(57, 79, 107);</string>
+                   </property>
                    <property name="text">
                     <string>PushButton</string>
                    </property>
@@ -834,6 +931,18 @@ background-color: rgb(36, 46, 61);</string>
                  </item>
                  <item>
                   <widget class="QPushButton" name="removeScheduleButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+border-radius: 1px;
+background-color: rgb(57, 79, 107);</string>
+                   </property>
                    <property name="text">
                     <string>PushButton</string>
                    </property>
@@ -841,8 +950,20 @@ background-color: rgb(36, 46, 61);</string>
                  </item>
                  <item>
                   <widget class="QPushButton" name="goBackScheduleButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+border-radius: 1px;
+background-color: rgb(57, 79, 107);</string>
+                   </property>
                    <property name="text">
-                    <string>PushButton</string>
+                    <string>GO BACK</string>
                    </property>
                   </widget>
                  </item>
@@ -1391,7 +1512,7 @@ background-color: rgb(57, 79, 107);</string>
    <hints>
     <hint type="sourcelabel">
      <x>178</x>
-     <y>191</y>
+     <y>181</y>
     </hint>
     <hint type="destinationlabel">
      <x>589</x>
@@ -1406,8 +1527,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToBookTicketWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>176</x>
-     <y>357</y>
+     <x>178</x>
+     <y>327</y>
     </hint>
     <hint type="destinationlabel">
      <x>292</x>
@@ -1422,8 +1543,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>566</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1438,8 +1559,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>554</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -1470,8 +1591,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>554</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
@@ -1527,6 +1648,38 @@ background-color: rgb(57, 79, 107);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>goBackScheduleButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToMainWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>432</x>
+     <y>507</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>412</x>
+     <y>677</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToManageScheduleWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>97</x>
+     <y>378</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>654</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>changeToManageMovieWindow()</slot>
@@ -1538,5 +1691,6 @@ background-color: rgb(57, 79, 107);</string>
   <slot>refreshMovieList()</slot>
   <slot>changeToRemoveMovieWindow()</slot>
   <slot>changeToManageRoomWindow()</slot>
+  <slot>changeToManageScheduleWindow()</slot>
  </slots>
 </ui>
