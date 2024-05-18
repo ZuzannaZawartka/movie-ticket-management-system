@@ -53,5 +53,24 @@ void ReserveSeatsWindow::generateSeats()
 
 void ReserveSeatsWindow::onButtonClicked(int row, int col)
 {
-	QMessageBox::information(nullptr, "Info", "Seat clicked: " + QString(QChar('A' + row)) + QString::number(col + 1));
+    QString seatNumber = QString(QChar('A' + row)) + QString::number(col + 1);
+
+    //check if seat is reserved
+    if (std::find(reservedSeats.begin(), reservedSeats.end(), seatNumber) != reservedSeats.end()) {
+        //remove seat from reservedSeats
+        reservedSeats.erase(std::remove(reservedSeats.begin(), reservedSeats.end(), seatNumber), reservedSeats.end());
+
+        QMessageBox::information(nullptr, "Seat Clicked", QString("Seat %1 unclicked").arg(seatNumber));
+    }
+    else {
+        //add seat to reservedSeats
+        reservedSeats.push_back(seatNumber);
+
+        QMessageBox::information(nullptr, "Seat Clicked", QString("Seat %1 clicked").arg(seatNumber));
+    }
+}
+
+std::vector<QString> ReserveSeatsWindow::getReservedSeats() const
+{
+    return reservedSeats;
 }

@@ -11,6 +11,7 @@ class ReserveSeatsWindow : public QObject
 public:
     ReserveSeatsWindow(QGridLayout* layout);
     ~ReserveSeatsWindow();
+    std::vector<QString> getReservedSeats() const;
 
 private:
     void generateSeats();
@@ -18,4 +19,5 @@ private:
 
     QGridLayout* layout;
     QString fileName;
+    std::vector<QString> reservedSeats;
 };
