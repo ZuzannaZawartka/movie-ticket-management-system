@@ -158,6 +158,7 @@ void ManageScheduleWindow::updateFields()
 
 void ManageScheduleWindow::setLimitationsOnFields() 
 {
+    //TO DO (check if it's today's date - if true set limitation on timeEdit
     dateEdit->setMinimumDate(QDate::currentDate());
     durationTime->setValidator(new QIntValidator(0, 500, this));
 }

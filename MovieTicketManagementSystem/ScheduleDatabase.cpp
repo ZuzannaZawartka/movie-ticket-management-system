@@ -6,6 +6,7 @@
 
 
 ScheduleDatabase::ScheduleDatabase() {
+    removeInvalidSchedules();
     createScheduleTable();
 }
 
