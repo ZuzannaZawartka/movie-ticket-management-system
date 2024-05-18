@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>831</width>
-    <height>615</height>
+    <width>721</width>
+    <height>619</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -421,10 +421,31 @@ background-color: rgb(36, 46, 61);</string>
               <enum>QFrame::Shadow::Raised</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <item>
-                 <widget class="QTableWidget" name="manageMovieTableWidget"/>
+                 <widget class="QTableWidget" name="manageMovieTableWidget">
+                  <property name="styleSheet">
+                   <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
+color: rgb(36, 46, 61);
+</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
@@ -437,13 +458,104 @@ background-color: rgb(36, 46, 61);</string>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_23">
              <item>
-              <widget class="QTextEdit" name="textTitleEdit"/>
+              <widget class="QLabel" name="titleLabel_2">
+               <property name="styleSheet">
+                <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+               </property>
+               <property name="text">
+                <string>Title:</string>
+               </property>
+              </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="textDirectorEdit"/>
+              <widget class="QTextEdit" name="textTitleEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="DirectorLabel">
+               <property name="styleSheet">
+                <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+               </property>
+               <property name="text">
+                <string>Director:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="textDirectorEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="TypeLabel">
+               <property name="styleSheet">
+                <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+               </property>
+               <property name="text">
+                <string>Type:</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QComboBox" name="chooseMovieTypeBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+border-radius: 1px;</string>
+               </property>
                <item>
                 <property name="text">
                  <string>Adventure</string>
@@ -462,33 +574,112 @@ background-color: rgb(36, 46, 61);</string>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="timeDurationLineEdit"/>
+              <widget class="QLabel" name="DurationLabel">
+               <property name="styleSheet">
+                <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+               </property>
+               <property name="text">
+                <string>Duration:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="timeDurationLineEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="saveMovieButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+background-color: rgb(57, 79, 107);
+border-radius: 1px;</string>
+               </property>
                <property name="text">
-                <string>Save</string>
+                <string>SAVE</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="addMovieToDatabase">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+background-color: rgb(57, 79, 107);
+border-radius: 1px;</string>
+               </property>
                <property name="text">
-                <string>Add New</string>
+                <string>ADD NEW</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="removeMovieButon">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+background-color: rgb(57, 79, 107);
+border-radius: 1px;</string>
+               </property>
                <property name="text">
-                <string>Remove</string>
+                <string>REMOVE</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="manageMovieGoBackButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+background-color: rgb(57, 79, 107);
+border-radius: 1px;</string>
+               </property>
                <property name="text">
-                <string>GoBack</string>
+                <string>GO BACK</string>
                </property>
               </widget>
              </item>
