@@ -118,7 +118,7 @@
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
     <ClInclude Include="Person.h" />
-    <ClInclude Include="ReserveSeatsWindow.h" />
+    <QtMoc Include="ReserveSeatsWindow.h" />
     <ClInclude Include="Schedule.h" />
     <QtMoc Include="MovieTableWidget.h" />
     <ClInclude Include="ScheduleDatabase.h" />

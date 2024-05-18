@@ -36,7 +36,9 @@ void ReserveSeatsWindow::generateSeats()
 
             QChar number = line[col]; // Aktualna liczba okreœla typ miejsca (0 - zajête, 1 - normalne, 2 - VIP)
             Seat* seat = new Seat(row, col, number); // Tworzymy nowe miejsce na podstawie odczytanej liczby
-            layout->addWidget(seat->getLabel(), row + 1, col + 1); // Dodajemy etykietê miejsca do layoutu
+
+            connect(seat, &Seat::clicked, this, &ReserveSeatsWindow::onButtonClicked);
+            layout->addWidget(seat->getButton(), row + 1, col + 1); // Dodajemy etykietê miejsca do layoutu
         }
 
         // Dodajemy etykietê z numerem rzêdu
@@ -47,4 +49,9 @@ void ReserveSeatsWindow::generateSeats()
     }
 
     file.close();
+}
+
+void ReserveSeatsWindow::onButtonClicked(int row, int col)
+{
+	QMessageBox::information(nullptr, "Info", "Seat clicked: " + QString(QChar('A' + row)) + QString::number(col + 1));
 }

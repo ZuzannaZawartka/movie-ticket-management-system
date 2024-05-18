@@ -1,27 +1,27 @@
 #include "Seat.h"
-#include <QLabel>
+#include <QPushButton>
 #include <QString>
 
 Seat::Seat(int row, int col, QChar type,QWidget* parent) : QObject(parent), seatRow(row), seatCol(col), seatType(type)
 {
     seatNumber = QString(QChar('A' + seatRow)) + QString::number(seatCol + 1);
-    label = new QLabel(seatNumber);
-    label->setAlignment(Qt::AlignCenter);
-    label->setFrameStyle(QFrame::Box | QFrame::Plain);
+    button = new QPushButton(seatNumber, parent);
+    button->setCheckable(true);
+    button->setStyleSheet("background-color: lightgray;");
     updateColor();
 
-    connect(label, &QLabel::linkActivated, this, &Seat::onLinkActivated);
+    connect(button, &QPushButton::clicked, this, &Seat::onButtonClicked);
 }
 
 Seat::~Seat()
 {
-    delete label;
+    delete button;
 }
 
 
-QLabel* Seat::getLabel() const
+QPushButton* Seat::getButton() const
 {
-    return label;
+    return button;
 }
 
 int Seat::row() const
@@ -57,30 +57,28 @@ void Seat::updateColor()
 {
     if (isSelected)
     {
-        label->setStyleSheet("background-color: grey;");
+        button->setStyleSheet("background-color: grey;");
         return;
     }
 
     switch (seatType.unicode()) {
     case '0':
-        label->setStyleSheet("background-color: red;");
+        button->setStyleSheet("background-color: red;");
         break;
     case '1':
-        label->setStyleSheet("background-color: green;");
+        button->setStyleSheet("background-color: green;");
         break;
     case '2':
-        label->setStyleSheet("background-color: gold;");
+        button->setStyleSheet("background-color: gold;");
         break;
     default:
-        label->setStyleSheet("");
+        button->setStyleSheet("");
         break;
     }
 }
 
-void Seat::onLinkActivated()
+void Seat::onButtonClicked()
 {
     takeSeat();
-
     emit clicked(seatRow, seatCol);
-
 }

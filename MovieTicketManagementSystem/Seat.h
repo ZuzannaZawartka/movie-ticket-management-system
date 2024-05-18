@@ -1,7 +1,7 @@
 #pragma once
 #include <QObject>
 #include <QWidget>
-#include <QLabel>
+#include <QPushButton>
 
 class Seat : public QObject
 {
@@ -10,7 +10,7 @@ public:
     Seat(int row, int col,QChar type, QWidget* parent = nullptr);
     ~Seat();
 
-    QLabel* getLabel() const;
+    QPushButton* getButton() const;
     int row() const;
     int col() const;
     QChar type() const;
@@ -26,10 +26,10 @@ private:
     QChar seatType;
     bool isSelected = false;
     QString seatNumber;
-    QLabel* label;
+    QPushButton* button;
 
     void updateColor();
 
 private slots:
-    void onLinkActivated();
+    void onButtonClicked();
 };
