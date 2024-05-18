@@ -37,5 +37,7 @@ private:
 private slots:
     void addNewSchedule();
     void removeCurrentSchedule();
+    void setLimitationsOnFields();
+    bool validateFields();
     void onScheduleSelected(const QModelIndex& index); 
 };

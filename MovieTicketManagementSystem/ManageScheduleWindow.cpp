@@ -15,6 +15,8 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
     scheduleTableWidget = new ScheduleTableWidget(scheduleTableWidgetElement);
     selectedScheduleId = -1; //initialize the selected movie id to -1
 
+    setLimitationsOnFields();
+
     //Get all movie titles from movieDatabase
     QList<Movie> allMovies = movieDatabase.getAllMovies();
 
@@ -154,8 +156,37 @@ void ManageScheduleWindow::updateFields()
     scheduleTableWidget->getTableWidget()->clearSelection();
 }
 
+void ManageScheduleWindow::setLimitationsOnFields() 
+{
+    dateEdit->setMinimumDate(QDate::currentDate());
+    durationTime->setValidator(new QIntValidator(0, 500, this));
+}
+
+bool ManageScheduleWindow::validateFields()
+{
+    // Check date
+    if (dateEdit->date() < QDate::currentDate()) {
+        QMessageBox::critical(this, "Error", "Wrong date input.");
+        return false;
+    }
+
+    // Check duration time
+    bool ok;
+    int duration = durationTime->text().toInt(&ok);
+    if (!ok || duration <= 0 || duration > 500) {
+        QMessageBox::critical(this, "Error", "Wrong duration time input.");
+        return false;
+    }
+
+
+    return true;
+}
+
 void ManageScheduleWindow::addNewSchedule()
 {
+    if (!validateFields()) {
+        return; 
+    }
     // Get the movie from the input fields
     Schedule schedule = getScheduleFromFields();
 
