@@ -2,6 +2,7 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QPlainTextEdit>
+#include <QRegularExpression>
 
 ManageRoomWindow::ManageRoomWindow(QPlainTextEdit* plainTextEdit, QPushButton* acceptButton): plainTextEdit(plainTextEdit), acceptButton(acceptButton)
 {
@@ -55,15 +56,31 @@ void ManageRoomWindow::saveToFile()
     }
 
 }
+
+
 bool ManageRoomWindow::validateFile()
 {
-    QString text = plainTextEdit->toPlainText(); 
+    QString text = plainTextEdit->toPlainText();
 
+    // Split the text into lines
     QStringList lines = text.split('\n', Qt::SkipEmptyParts);
-
 
     int expectedNumberCount = -1;
     foreach(const QString & line, lines) {
+        // Check if the line contains spaces
+        if (!line.contains(' ')) {
+            QMessageBox::critical(nullptr, "Error", "Each line must contain numbers separated by spaces.");
+            return false;
+        }
+
+        // Check if the line contains only 0, 1, 2, or spaces
+        QRegularExpression validCharsPattern("^[0-2 ]+$");
+        if (!validCharsPattern.match(line).hasMatch()) {
+            QMessageBox::critical(nullptr, "Error", "Lines can only contain the digits 0, 1, 2, and spaces.");
+            return false;
+        }
+
+        // Check if the number of digits in each line is the same
         QStringList numbers = line.split(' ', Qt::SkipEmptyParts);
         if (expectedNumberCount == -1) {
             expectedNumberCount = numbers.size();
@@ -76,7 +93,6 @@ bool ManageRoomWindow::validateFile()
 
     return true;
 }
-
 /*
 void ManageRoomWindow::loadGridFromFile(const QString& fileName) {
     QFile file(fileName);
