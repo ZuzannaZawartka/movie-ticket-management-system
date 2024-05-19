@@ -9,7 +9,6 @@
 #include "ScheduleDatabase.h"
 #include "ManageScheduleWindow.h"
 #include "ManageRoomWindow.h"
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT;

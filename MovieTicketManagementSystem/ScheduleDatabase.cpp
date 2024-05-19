@@ -6,8 +6,7 @@
 
 
 ScheduleDatabase::ScheduleDatabase() {
-    //TO DO after removing movie removeInvalidSchedules works only after closing app so it has to be refreshed
-    removeInvalidSchedules();
+  
     createScheduleTable();
 }
 
@@ -230,11 +229,9 @@ void ScheduleDatabase::removeInvalidSchedules()
             if (!deleteQuery.exec()) {
                 QString errorMessage = QString("Failed to delete invalid schedule for movie ID %1").arg(movieId);
                 QMessageBox::critical(nullptr, "Database Error", errorMessage);
-                qDebug() << errorMessage;
+                
             }
-            else {
-                qDebug() << "Deleted invalid schedule for movie ID" << movieId;
-            }
+            
         }
     }
 }

@@ -35,6 +35,9 @@ private:
     void updateFields(const Schedule& schedule);
     Schedule getScheduleFromFields();
 
+public slots:
+    void refreshSchedules();
+
 private slots:
     void addNewSchedule();
     void removeCurrentSchedule();

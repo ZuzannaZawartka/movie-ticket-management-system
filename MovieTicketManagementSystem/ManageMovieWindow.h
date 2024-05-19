@@ -32,6 +32,9 @@ private:
     void updateFields();
     void updateFields(const Movie& movie);
     Movie getMovieFromFields();
+signals:
+    void movieAdded();
+    void movieRemoved();
 
 private slots:
     void addMovie();

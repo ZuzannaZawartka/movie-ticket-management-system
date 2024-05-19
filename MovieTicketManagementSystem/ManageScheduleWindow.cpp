@@ -18,16 +18,7 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
 
     setLimitationsOnFields();
 
-    //Get all movie titles from movieDatabase
-    QList<Movie> allMovies = movieDatabase.getAllMovies();
-
-    //Clear QComboBox
-    titleEdit->clear();
-
-    //Add movie titles to QComboBox
-    for (const Movie& movie : allMovies) {
-        titleEdit->addItem(movie.getTitle());
-    }
+    refreshSchedules();
 
     //connect the add button to the addSchedule slot
     connect(addButton, SIGNAL(clicked()), this, SLOT(addNewSchedule()));
@@ -38,6 +29,8 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
 
     //connection to the selection
     connect(scheduleTableWidget->getTableWidget(), &QTableWidget::clicked, this, &ManageScheduleWindow::onScheduleSelected);
+
+    
     
 }
 
@@ -50,6 +43,25 @@ ManageScheduleWindow::~ManageScheduleWindow()
     delete durationTime;
     delete addButton;
     delete scheduleTableWidget;
+}
+
+void ManageScheduleWindow::refreshSchedules()
+{
+    
+    scheduleDatabase.removeInvalidSchedules();
+
+    //Get all movie titles from movieDatabase
+    QList<Movie> allMovies = movieDatabase.getAllMovies();
+
+    //Clear QComboBox
+    titleEdit->clear();
+
+    //Add movie titles to QComboBox
+    for (const Movie& movie : allMovies) {
+        titleEdit->addItem(movie.getTitle());
+    }
+
+    scheduleTableWidget->setSchedulesInTableWidget();
 }
 
 void ManageScheduleWindow::onScheduleSelected(const QModelIndex& index)
