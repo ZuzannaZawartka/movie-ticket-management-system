@@ -24,12 +24,14 @@ private:
     MovieTableWidget* movieTableWidget;
     MovieTableWidget* bookTicketListView;
     ScheduleTableWidget* scheduleTableWidget;
+    ScheduleTableWidget* showScheduleTable;
     ManageScheduleWindow* manageScheduleWindow;
     ManageRoomWindow* manageRoomWindow;
 
 private slots:
-    void changeToManageMovieWindow();
     void changeToMainWindow();
+    void changeToShowScheduleWindow();
+    void changeToManageMovieWindow();
     void changeToBookTicketWindow();
     void changeToShowMovieListWindow();
     void changeToViewBookingsWindow();

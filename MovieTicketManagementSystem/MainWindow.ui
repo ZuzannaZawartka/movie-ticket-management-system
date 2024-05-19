@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>721</width>
-    <height>619</height>
+    <width>735</width>
+    <height>611</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>150</width>
+    <height>30</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Cinema Ticket Management System</string>
@@ -30,7 +36,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -160,7 +166,7 @@ color: rgb(243, 250, 250);</string>
                 <property name="lineWidth">
                  <number>2</number>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0,0,0,0,0">
+                <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0,0,0,0,0,0">
                  <property name="spacing">
                   <number>3</number>
                  </property>
@@ -234,7 +240,7 @@ border-radius: 1px;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton">
+                  <widget class="QPushButton" name="manageScheduleButton">
                    <property name="minimumSize">
                     <size>
                      <width>150</width>
@@ -290,6 +296,25 @@ border-radius: 1px;</string>
                    </property>
                   </widget>
                  </item>
+                 <item>
+                  <widget class="QPushButton" name="showScheduleButton">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+background-color: rgb(57, 79, 107);
+border-radius: 1px;</string>
+                   </property>
+                   <property name="text">
+                    <string>SHOW SCHEDULE</string>
+                   </property>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>
@@ -314,6 +339,141 @@ border-radius: 1px;</string>
               <enum>QFrame::Shadow::Raised</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11"/>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="showScheduleWindow">
+       <layout class="QGridLayout" name="gridLayout_9">
+        <item row="0" column="0">
+         <widget class="QFrame" name="mainBodyShowSchedule">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_21">
+           <item>
+            <widget class="QFrame" name="headerShowSchedule">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(36, 46, 61);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="0" column="0">
+               <widget class="QLabel" name="titleShowScheduleLabel">
+                <property name="styleSheet">
+                 <string notr="true">font: 900 20pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);</string>
+                </property>
+                <property name="text">
+                 <string>SCHEDULE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="scheduleBodyFrame">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_10">
+              <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QTableWidget" name="showScheduleTable">
+                <property name="minimumSize">
+                 <size>
+                  <width>400</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
+color: rgb(36, 46, 61);</string>
+                </property>
+                <property name="textElideMode">
+                 <enum>Qt::TextElideMode::ElideMiddle</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="menuShowScheduleFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(36, 46, 61);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_12">
+              <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
+               <widget class="QPushButton" name="goBackShowScheduleButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>150</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+background-color: rgb(57, 79, 107);
+border-radius: 1px;</string>
+                </property>
+                <property name="text">
+                 <string>GO BACK</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
@@ -460,12 +620,21 @@ background-color: rgb(36, 46, 61);</string>
               </property>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_4">
-                <item>
+                <item alignment="Qt::AlignmentFlag::AlignHCenter">
                  <widget class="QTableWidget" name="manageMovieTableWidget">
+                  <property name="minimumSize">
+                   <size>
+                    <width>330</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
 color: rgb(36, 46, 61);
 </string>
+                  </property>
+                  <property name="textElideMode">
+                   <enum>Qt::TextElideMode::ElideMiddle</enum>
                   </property>
                  </widget>
                 </item>
@@ -816,11 +985,20 @@ background-color: rgb(36, 46, 61);</string>
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_7">
-                 <item row="0" column="0">
+                 <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
                   <widget class="QTableWidget" name="tableScheduleWidget">
+                   <property name="minimumSize">
+                    <size>
+                     <width>330</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
 color: rgb(36, 46, 61);</string>
+                   </property>
+                   <property name="textElideMode">
+                    <enum>Qt::TextElideMode::ElideMiddle</enum>
                    </property>
                   </widget>
                  </item>
@@ -1203,8 +1381,22 @@ background-color: rgb(36, 46, 61);</string>
               <property name="rightMargin">
                <number>0</number>
               </property>
-              <item row="0" column="0">
-               <widget class="QTableWidget" name="movieTableWidget"/>
+              <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QTableWidget" name="movieTableWidget">
+                <property name="minimumSize">
+                 <size>
+                  <width>400</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
+color: rgb(36, 46, 61);</string>
+                </property>
+                <property name="textElideMode">
+                 <enum>Qt::TextElideMode::ElideMiddle</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </widget>
@@ -1642,7 +1834,7 @@ background-color: rgb(57, 79, 107);</string>
    <hints>
     <hint type="sourcelabel">
      <x>178</x>
-     <y>181</y>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>589</x>
@@ -1658,7 +1850,7 @@ background-color: rgb(57, 79, 107);</string>
    <hints>
     <hint type="sourcelabel">
      <x>178</x>
-     <y>327</y>
+     <y>286</y>
     </hint>
     <hint type="destinationlabel">
      <x>292</x>
@@ -1673,8 +1865,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>55</y>
+     <x>301</x>
+     <y>560</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1689,8 +1881,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>55</y>
+     <x>178</x>
+     <y>540</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -1705,8 +1897,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToShowMovieListWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>171</x>
-     <y>523</y>
+     <x>178</x>
+     <y>469</y>
     </hint>
     <hint type="destinationlabel">
      <x>266</x>
@@ -1721,8 +1913,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>55</y>
+     <x>178</x>
+     <y>540</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
@@ -1737,8 +1929,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToViewBookingsWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>165</x>
-     <y>440</y>
+     <x>178</x>
+     <y>408</y>
     </hint>
     <hint type="destinationlabel">
      <x>165</x>
@@ -1753,12 +1945,12 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>396</x>
-     <y>565</y>
+     <x>714</x>
+     <y>569</y>
     </hint>
     <hint type="destinationlabel">
      <x>411</x>
-     <y>617</y>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -1769,12 +1961,12 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToManageRoomWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>159</x>
-     <y>246</y>
+     <x>178</x>
+     <y>225</y>
     </hint>
     <hint type="destinationlabel">
      <x>613</x>
-     <y>654</y>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -1785,28 +1977,60 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>432</x>
-     <y>507</y>
+     <x>713</x>
+     <y>562</y>
     </hint>
     <hint type="destinationlabel">
      <x>412</x>
-     <y>677</y>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>manageScheduleButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindowClass</receiver>
    <slot>changeToManageScheduleWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>97</x>
-     <y>378</y>
+     <x>117</x>
+     <y>347</y>
     </hint>
     <hint type="destinationlabel">
      <x>105</x>
-     <y>654</y>
+     <y>590</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>goBackShowScheduleButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToMainWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>125</x>
+     <y>551</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>115</x>
+     <y>610</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showScheduleButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToShowScheduleWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>86</x>
+     <y>534</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>152</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
@@ -1822,5 +2046,6 @@ background-color: rgb(57, 79, 107);</string>
   <slot>changeToRemoveMovieWindow()</slot>
   <slot>changeToManageRoomWindow()</slot>
   <slot>changeToManageScheduleWindow()</slot>
+  <slot>changeToShowScheduleWindow()</slot>
  </slots>
 </ui>
