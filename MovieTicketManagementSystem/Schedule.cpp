@@ -1,14 +1,14 @@
 #include "Schedule.h"
 #include "Movie.h"
 
-Schedule::Schedule(const Movie& movie, const QDate& date, const QTime& time, int durationMinutes)
-    : movie(movie), date(date), time(time), durationMinutes(durationMinutes)
+Schedule::Schedule(int movieId, const QDate& date, const QTime& time, int durationMinutes)
+    : movieId(movieId), date(date), time(time), durationMinutes(durationMinutes)
 {
 }
 
-const Movie& Schedule::getMovie() const
+int Schedule::getMovieId() const
 {
-    return movie;
+    return movieId;
 }
 
 QDate Schedule::getDate() const
