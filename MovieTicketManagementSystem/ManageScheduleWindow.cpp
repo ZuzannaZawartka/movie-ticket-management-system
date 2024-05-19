@@ -29,14 +29,16 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
         titleEdit->addItem(movie.getTitle());
     }
 
-    //connect the save button to the addSchedule slot
+    //connect the add button to the addSchedule slot
     connect(addButton, SIGNAL(clicked()), this, SLOT(addNewSchedule()));
     //connect the remove button to removeSchedule slot
     connect(removeButton, SIGNAL(clicked()), this, SLOT(removeCurrentSchedule()));
 
     connect(editButton, SIGNAL(clicked()), this, SLOT(editCurrentSchedule()));
 
-    connect(scheduleTableWidget, SIGNAL(clicked(const QModelIndex&)), this, SLOT(onScheduleSelected(const QModelIndex&)));
+    //connection to the selection
+    connect(scheduleTableWidget->getTableWidget(), &QTableWidget::clicked, this, &ManageScheduleWindow::onScheduleSelected);
+    
 }
 
 ManageScheduleWindow::~ManageScheduleWindow()
@@ -73,7 +75,7 @@ void ManageScheduleWindow::onScheduleSelected(const QModelIndex& index)
         Schedule schedule(movieId, date, time, durationStr.toInt());
 
         selectedScheduleId = scheduleDatabase.getScheduleId(schedule);//get the id of the selected movie
-
+        
         updateFields(schedule);
     }
 }
@@ -82,6 +84,7 @@ void ManageScheduleWindow::onScheduleSelected(const QModelIndex& index)
 bool ManageScheduleWindow::checkInputFields()
 {
     try {
+        
        
         if (titleEdit->currentText().isEmpty() || dateEdit->text().isEmpty() || timeEdit->text().isEmpty() || durationTime->text().isEmpty()) {
             throw std::invalid_argument("All fields must be filled out.");
@@ -98,7 +101,6 @@ bool ManageScheduleWindow::checkInputFields()
         if (!ok || duration <= 0 || duration > 500) {
             throw std::invalid_argument("Wrong duration time input.");
         }
-
 
         
         QDate date = dateEdit->date();
@@ -154,7 +156,7 @@ Schedule ManageScheduleWindow::getScheduleFromFields()
 void ManageScheduleWindow::updateFields()
 {
     titleEdit->setCurrentIndex(0);
-    dateEdit->setDate(QDate(0,0,0));
+    dateEdit->setDate(QDate::currentDate());
     timeEdit->setTime(QTime(0,0));
     durationTime->clear();
 
@@ -167,9 +169,14 @@ void ManageScheduleWindow::updateFields()
 
 void ManageScheduleWindow::setLimitationsOnFields() 
 {
-    //TO DO (check if it's today's date - if true set limitation on timeEdit
+    //TO DO - if not working, probably has to be called in different moment
+    /*if (dateEdit->date() == QDate::currentDate()) {
+        
+        timeEdit->setMinimumTime(QTime::currentTime());
+    }*/ 
     dateEdit->setMinimumDate(QDate::currentDate());
     durationTime->setValidator(new QIntValidator(0, 500, this));
+    
 }
 void ManageScheduleWindow::editCurrentSchedule()
 {

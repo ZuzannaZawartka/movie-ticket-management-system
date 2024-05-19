@@ -27,16 +27,16 @@ bool ScheduleDatabase::createScheduleTable()
 bool ScheduleDatabase::addSchedule(const Schedule& schedule)
 {
     try {
-        // Pobierz identyfikator filmu z harmonogramu
+        
         int movieId = schedule.getMovieId();
 
-        // Sprawdü, czy film istnieje w bazie danych filmÛw
+        // Check if movie exists in movieDatabase
         if (!movieDatabase.movieExists(movieDatabase.getMovieById(movieId))) {
             QMessageBox::critical(nullptr, "Database Error", "Movie does not exist!");
             return false;
         }
 
-        // Sprawdü, czy harmonogram juø istnieje w bazie danych
+        // Check if schedule already exists in scheduleDatabase
         if (isScheduleExists(schedule)) {
             QMessageBox::critical(nullptr, "Database Error", "Schedule already exists!");
             return false;
@@ -97,7 +97,6 @@ int ScheduleDatabase::getScheduleId(const Schedule& schedule)
         return query.value(0).toInt();
     }
     else {
-        QMessageBox::critical(nullptr, "Database Error", "Schedule not found!");
         return -1;
     }
 }
