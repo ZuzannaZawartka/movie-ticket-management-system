@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget* parent)
 {
     ui.setupUi(this);
     movieTableWidget = new MovieTableWidget(ui.movieTableWidget);
-    scheduleTableWidget = new ScheduleTableWidget(ui.tableScheduleWidget);
     showScheduleTable = new ScheduleTableWidget(ui.showScheduleTable);
     manageScheduleWindow = new ManageScheduleWindow(ui.movieChoose, ui.dateChoose, ui.timeChoose, ui.durationChoose, ui.addScheduleButton, ui.removeScheduleButton, ui.saveScheduleButton, ui.tableScheduleWidget);
     manageRoomWindow = new ManageRoomWindow(ui.plainTextEditManageRoom, ui.acceptManageRoomButton);
@@ -38,6 +37,7 @@ void MainWindow::changeToManageScheduleWindow()
 
 void MainWindow::changeToShowScheduleWindow()
 {
+    showScheduleTable->setSchedulesInTableWidget();
     ui.stackedWidget->setCurrentWidget(ui.showScheduleWindow);
 }
 

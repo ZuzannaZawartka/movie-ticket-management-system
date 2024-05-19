@@ -22,7 +22,6 @@ private:
     ManageMovieWindow* manageMovieWindow;
     MovieTableWidget* movieTableWidget;
     MovieTableWidget* bookTicketListView;
-    ScheduleTableWidget* scheduleTableWidget;
     ScheduleTableWidget* showScheduleTable;
     ManageScheduleWindow* manageScheduleWindow;
     ManageRoomWindow* manageRoomWindow;
