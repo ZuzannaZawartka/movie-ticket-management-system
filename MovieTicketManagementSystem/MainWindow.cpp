@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget* parent)
     manageScheduleWindow = new ManageScheduleWindow(ui.movieChoose, ui.dateChoose, ui.timeChoose, ui.durationChoose, ui.addScheduleButton, ui.removeScheduleButton, ui.saveScheduleButton, ui.tableScheduleWidget);
     manageRoomWindow = new ManageRoomWindow(ui.plainTextEditManageRoom, ui.acceptManageRoomButton);
     manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit, ui.saveMovieButton, ui.addMovieToDatabase, ui.removeMovieButon, ui.manageMovieTableWidget);
+    reserveSeatsWindow = new ReserveSeatsWindow(ui.reserveSeatsGrid);
 
     connect(manageMovieWindow, &ManageMovieWindow::movieAdded, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
     connect(manageMovieWindow, &ManageMovieWindow::movieRemoved, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
@@ -66,4 +67,9 @@ void MainWindow::changeToViewBookingsWindow()
 void MainWindow::changeToManageRoomWindow()
 {
     ui.stackedWidget->setCurrentWidget(ui.manageRoomWindow);
+}
+
+void MainWindow::changeToReserveSeatsWindow()
+{
+    ui.stackedWidget->setCurrentWidget(ui.reserveSeatsWindow);
 }
