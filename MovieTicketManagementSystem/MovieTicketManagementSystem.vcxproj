@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="ManageMovieWindow.cpp" />
     <ClCompile Include="ManageRoomWindow.cpp" />
+    <ClCompile Include="ManageScheduleWindow.cpp" />
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieDatabase.cpp" />
     <ClCompile Include="MovieTableWidget.cpp" />
@@ -101,8 +102,8 @@
     <ClCompile Include="ReserveSeatsWindow.cpp" />
     <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="ScheduleDatabase.cpp" />
-    <ClCompile Include="ScheduleListView.cpp" />
     <ClCompile Include="Seat.cpp" />
+    <ClCompile Include="ScheduleTableWidget.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
@@ -115,6 +116,7 @@
     <QtMoc Include="ManageMovieWindow.h" />
     <ClInclude Include="DatabaseManager.h" />
     <QtMoc Include="ManageRoomWindow.h" />
+    <QtMoc Include="ManageScheduleWindow.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
     <ClInclude Include="Person.h" />
@@ -122,8 +124,8 @@
     <ClInclude Include="Schedule.h" />
     <QtMoc Include="MovieTableWidget.h" />
     <ClInclude Include="ScheduleDatabase.h" />
-    <QtMoc Include="ScheduleListView.h" />
     <QtMoc Include="Seat.h" />
+    <QtMoc Include="ScheduleTableWidget.h" />
     <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <ItemGroup>
