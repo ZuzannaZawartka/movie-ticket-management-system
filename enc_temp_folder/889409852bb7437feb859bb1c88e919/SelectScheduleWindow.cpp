@@ -66,7 +66,7 @@ int SelectScheduleWindow::setSelectedScheduleId()
 void SelectScheduleWindow::onSelectItem() {
     setSelectedScheduleId();
     if (selectedScheduleId == -1) {
-        QMessageBox::information(nullptr, "error", "on select error.");
+        QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
     }
 
 }
@@ -77,9 +77,11 @@ void SelectScheduleWindow::setMovieId(int movieId)
 }
 
 
+
 void SelectScheduleWindow::onAcceptButton2()
 {
 	if (isSelectedSchedule() != -1) {
+		QMessageBox::information(this, "Information", "Schedule selected.");
 		emit scheduleSelected();
 	}
 	else {

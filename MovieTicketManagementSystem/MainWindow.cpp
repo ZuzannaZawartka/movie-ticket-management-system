@@ -20,13 +20,15 @@ MainWindow::MainWindow(QWidget* parent)
     reserveSeatsWindow = new ReserveSeatsWindow(ui.reserveSeatsGrid);
     selectMovieWindow = new SelectMovieWindow(ui.acceptBookTicket1Button, ui.selectMovieTableWidget);
     selectScheduleWindow = new SelectScheduleWindow(ui.acceptBookTicket2Button, ui.selectScheduleTableWidget);
-
     bookTicketWindow = new BookTicketWindow(selectMovieWindow,selectScheduleWindow);
 
+    //connections to refresh lists in windows
     connect(manageMovieWindow, &ManageMovieWindow::movieAdded, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
     connect(manageMovieWindow, &ManageMovieWindow::movieRemoved, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
     
+    //connections from book tickets windows
     connect(selectMovieWindow, &SelectMovieWindow::movieSelected, this, &MainWindow::changeToSelectScheduleWindow);
+    connect(selectScheduleWindow, &SelectScheduleWindow::scheduleSelected, this, &MainWindow::changeToReserveSeatsWindow);
 }
 
 MainWindow::~MainWindow()
@@ -37,12 +39,12 @@ MainWindow::~MainWindow()
     delete manageScheduleWindow;
     delete manageRoomWindow;
     delete reserveSeatsWindow;
-    delete bookTicketWindow;
     delete selectMovieWindow;
-    delete selectScheduleWindow;
+   // delete selectScheduleWindow;
+   // delete bookTicketWindow;
+
 
 }
-
 
 void MainWindow::changeToMainWindow()
 {
@@ -64,11 +66,17 @@ void MainWindow::changeToSelectScheduleWindow()
     if (selectMovieWindow->getSelectedMovieId() != -1)
     {
         selectScheduleWindow->setSchedulesInTableWidget(selectMovieWindow->getSelectedMovieId());
+        selectScheduleWindow->setMovieId(selectMovieWindow->getSelectedMovieId());
         ui.stackedWidget->setCurrentWidget(ui.selectScheduleWindow);
     }
     else {
         QMessageBox::warning(this, "Warning", "Please select a movie first!");
     }
+}
+
+void MainWindow::changeToReserveSeatsWindow()
+{
+    	ui.stackedWidget->setCurrentWidget(ui.reserveSeatsWindow);
 }
 
 void MainWindow::changeToShowScheduleWindow()

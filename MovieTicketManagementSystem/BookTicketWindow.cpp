@@ -14,7 +14,5 @@ BookTicketWindow::BookTicketWindow(SelectMovieWindow* selectMovieWindow, SelectS
 
 BookTicketWindow::~BookTicketWindow()
 {
-	delete selectMovieWindow;
-	delete selectScheduleWindow;
 
 }
