@@ -36,7 +36,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>8</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1480,7 +1480,7 @@ background-color: rgb(57, 79, 107);</string>
       <widget class="QWidget" name="reserveSeatsWindow">
        <layout class="QGridLayout" name="gridLayout_14">
         <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="acceptBookTicket3Button">
           <property name="text">
            <string>Accept</string>
           </property>
@@ -1493,6 +1493,88 @@ background-color: rgb(57, 79, 107);</string>
          <widget class="QPushButton" name="pushButton_2">
           <property name="text">
            <string>GOBACK</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="inputPersonalDataWindow">
+       <layout class="QGridLayout" name="gridLayout_13">
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="nameLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Surname</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="surnameLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Email</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="emailLineEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Movie : </string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="movieLineEdit"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Date</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Amount of tickets</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QSpinBox" name="amountTicketComboBox"/>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>Go back</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Accept</string>
           </property>
          </widget>
         </item>
@@ -1896,8 +1978,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToManageMovieWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>104</y>
+     <x>167</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>589</x>
@@ -1912,8 +1994,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToBookTicketWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>105</y>
+     <x>167</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>292</x>
@@ -1944,8 +2026,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>559</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -1960,8 +2042,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToShowMovieListWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>107</y>
+     <x>167</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>266</x>
@@ -1976,8 +2058,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>85</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
@@ -1992,8 +2074,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToViewBookingsWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>106</y>
+     <x>167</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>165</x>
@@ -2008,8 +2090,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>476</x>
-     <y>568</y>
+     <x>108</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>411</x>
@@ -2024,8 +2106,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToManageRoomWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>105</y>
+     <x>167</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>613</x>
@@ -2040,7 +2122,7 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>482</x>
+     <x>473</x>
      <y>555</y>
     </hint>
     <hint type="destinationlabel">
@@ -2056,8 +2138,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToManageScheduleWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>137</x>
-     <y>106</y>
+     <x>167</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>105</x>
@@ -2072,8 +2154,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>86</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>115</x>
@@ -2088,8 +2170,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToShowScheduleWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>106</x>
-     <y>107</y>
+     <x>144</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>152</x>
@@ -2104,8 +2186,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>98</x>
-     <y>46</y>
+     <x>118</x>
+     <y>569</y>
     </hint>
     <hint type="destinationlabel">
      <x>432</x>
@@ -2120,8 +2202,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToSelectMovieWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>457</x>
-     <y>549</y>
+     <x>108</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>589</x>
@@ -2136,12 +2218,76 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToSelectScheduleWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>561</x>
-     <y>545</y>
+     <x>580</x>
+     <y>559</y>
     </hint>
     <hint type="destinationlabel">
      <x>582</x>
      <y>736</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToSelectScheduleWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>439</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>473</x>
+     <y>748</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToReserveSeatsWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>604</x>
+     <y>564</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>718</x>
+     <y>709</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToMainWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>695</x>
+     <y>565</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>669</x>
+     <y>698</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>acceptBookTicket3Button</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToInputPersonalDataWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>591</x>
+     <y>528</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>679</x>
+     <y>652</y>
     </hint>
    </hints>
   </connection>
@@ -2161,5 +2307,6 @@ background-color: rgb(36, 46, 61);</string>
   <slot>changeToReserveSeatsWindow()</slot>
   <slot>changeToSelectMovieWindow()</slot>
   <slot>changeToSelectScheduleWindow()</slot>
+  <slot>changeToInputPersonalDataWindow()</slot>
  </slots>
 </ui>

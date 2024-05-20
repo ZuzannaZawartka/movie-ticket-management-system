@@ -45,4 +45,5 @@ private slots:
     void changeToSelectMovieWindow();
     void changeToSelectScheduleWindow();
     void changeToReserveSeatsWindow();
+    void changeToInputPersonalDataWindow();
 };

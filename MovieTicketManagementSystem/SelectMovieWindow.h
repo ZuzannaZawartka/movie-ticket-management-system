@@ -12,6 +12,7 @@ public:
 	bool isMovieSelected();
 	int setSelectedMovieId();
 	int getSelectedMovieId();
+	void resetSelectedMovieId();
 
 signals:
 	void movieSelected(int movieId);

@@ -2,19 +2,18 @@
 #include "Seat.h"
 #include "SelectMovieWindow.h"
 #include "SelectScheduleWindow.h"
+#include "ReserveSeatsWindow.h"
 
 class BookTicketWindow
 {
 public:
-	BookTicketWindow(SelectMovieWindow* selectMovieWindow,SelectScheduleWindow* selectScheduleWindow);
+	BookTicketWindow(SelectMovieWindow* selectMovieWindow,SelectScheduleWindow* selectScheduleWindow, ReserveSeatsWindow* reserveSeatsWindow);
 	~BookTicketWindow();
 
 private:
 	SelectMovieWindow* selectMovieWindow;
 	SelectScheduleWindow* selectScheduleWindow;
-	//QWidget* selectScheduleWindow;
-	//QWidget* selectSeatWindow;
-	//QWidget* InputPersonalDataWindow;
+	ReserveSeatsWindow* reserveSeatsWindow;
 
 	// Variables to hold the ID of the selected movie, schedule and seat
 	int movieID;

@@ -60,6 +60,11 @@ int SelectMovieWindow::getSelectedMovieId()
     return this->selectedMovieId;
 }
 
+void SelectMovieWindow::resetSelectedMovieId()
+{
+    	this->selectedMovieId = -1;
+}
+
 void SelectMovieWindow::onSelectItem() {
     setSelectedMovieId();
     if (selectedMovieId == -1) {

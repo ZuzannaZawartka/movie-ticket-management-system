@@ -11,9 +11,10 @@ class SelectScheduleWindow :
 public:
 	SelectScheduleWindow(QPushButton* acceptButton, QTableWidget* tableWidget);
 	~SelectScheduleWindow();
-	bool isSelectedSchedule();
+	int getSelectedScheduleId();
 	int setSelectedScheduleId();
 	void setMovieId(int movieId);
+	void resetSelectedScheduleId();
 
 	signals:
 		void scheduleSelected();
@@ -23,6 +24,7 @@ private:
 	QTableWidget* tableWidget;
 	ScheduleDatabase scheduleDatabase;
 	int selectedScheduleId;
+	bool isSelected;
 	int movieId;
 
 	private slots:

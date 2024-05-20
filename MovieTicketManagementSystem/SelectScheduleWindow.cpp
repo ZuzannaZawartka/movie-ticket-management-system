@@ -21,14 +21,12 @@ SelectScheduleWindow::~SelectScheduleWindow()
 	delete tableWidget;
 }
 
-bool SelectScheduleWindow::isSelectedSchedule()
+int SelectScheduleWindow::getSelectedScheduleId()
 {
-    if (selectedScheduleId == -1)
-    {
-		return false;
-	}
-    	return true;
+    return this->selectedScheduleId;
 }
+
+
 
 int SelectScheduleWindow::setSelectedScheduleId()
 {
@@ -76,10 +74,15 @@ void SelectScheduleWindow::setMovieId(int movieId)
     	this->movieId = movieId;
 }
 
+void SelectScheduleWindow::resetSelectedScheduleId()
+{
+    this->selectedScheduleId = -1;
+}
+
 
 void SelectScheduleWindow::onAcceptButton2()
 {
-	if (isSelectedSchedule() != -1) {
+	if (getSelectedScheduleId() != -1) {
 		emit scheduleSelected();
 	}
 	else {
