@@ -34,14 +34,14 @@ void ReserveSeatsWindow::generateSeats()
 
         for (int col = 0; col < line.size(); ++col) {
 
-            QChar number = line[col]; // Aktualna liczba okreœla typ miejsca (0 - zajête, 1 - normalne, 2 - VIP)
-            Seat* seat = new Seat(row, col, number); // Tworzymy nowe miejsce na podstawie odczytanej liczby
+            QChar number = line[col]; // type of seat (0 - free, 1 - special, 2 - vip )
+            Seat* seat = new Seat(row, col, number); // create seat object
 
             connect(seat, &Seat::clicked, this, &ReserveSeatsWindow::onButtonClicked);
-            layout->addWidget(seat->getButton(), row + 1, col + 1); // Dodajemy etykietê miejsca do layoutu
+            layout->addWidget(seat->getButton(), row + 1, col + 1); // add button to layout
         }
 
-        // Dodajemy etykietê z numerem rzêdu
+        // add label with row letter
         QLabel* rowLabel = new QLabel(QString(QChar('A' + row)));
         layout->addWidget(rowLabel, row + 1, 0);
 

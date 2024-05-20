@@ -2,10 +2,10 @@
 #include <QPushButton>
 #include <QString>
 
-Seat::Seat(int row, int col, QChar type, QWidget* parent) : QObject(parent), seatRow(row), seatCol(col), seatType(type)
+Seat::Seat(int row, int col, QChar type) : seatRow(row), seatCol(col), seatType(type)
 {
     seatNumber = QString(QChar('A' + seatRow)) + QString::number(seatCol + 1);
-    button = new QPushButton(seatNumber, parent);
+    button = new QPushButton(seatNumber);
     button->setCheckable(true);
     button->setStyleSheet("background-color: lightgray;");
     updateColor();
@@ -39,7 +39,7 @@ QChar Seat::type() const
     return seatType;
 }
 
-bool Seat::takeSeat()
+bool Seat::chooseSeat()
 {
     isSelected = !isSelected;
 
@@ -79,6 +79,6 @@ void Seat::updateColor()
 
 void Seat::onButtonClicked()
 {
-    takeSeat();
+    chooseSeat();
     emit clicked(seatRow, seatCol);
 }

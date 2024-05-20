@@ -15,9 +15,11 @@ public:
     void setMoviesInTableWidget();
     QTableWidget* getTableWidget() const;
 
+protected:
+    MovieDatabase movieDatabase;
 
 private:
     QTableWidget* tableWidget;
-    MovieDatabase movieDatabase;
+    
 
 };

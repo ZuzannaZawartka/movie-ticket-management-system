@@ -73,6 +73,18 @@
     <ClCompile Include="ManageScheduleWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BookTicketWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReserveSeatsWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Seat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMovieWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseManager.h">
@@ -96,6 +108,9 @@
     <ClInclude Include="ScheduleDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BookTicketWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MovieTableWidget.h">
@@ -114,6 +129,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ManageScheduleWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ReserveSeatsWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Seat.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SelectMovieWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

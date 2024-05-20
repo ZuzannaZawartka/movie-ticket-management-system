@@ -10,6 +10,9 @@
 #include "ManageScheduleWindow.h"
 #include "ManageRoomWindow.h"
 #include "ReserveSeatsWindow.h"
+#include "BookTicketWindow.h"
+#include "SelectMovieWindow.h"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT;
@@ -22,11 +25,12 @@ private:
     Ui::MainWindowClass ui;
     ManageMovieWindow* manageMovieWindow;
     MovieTableWidget* movieTableWidget;
-    MovieTableWidget* bookTicketListView;
     ScheduleTableWidget* showScheduleTable;
     ManageScheduleWindow* manageScheduleWindow;
     ManageRoomWindow* manageRoomWindow;
     ReserveSeatsWindow* reserveSeatsWindow;
+    BookTicketWindow* bookTicketWindow;
+    SelectMovieWindow* selectMovieWindow;
 
 private slots:
     void changeToMainWindow();
@@ -37,5 +41,4 @@ private slots:
     void changeToViewBookingsWindow();
     void changeToManageRoomWindow();
     void changeToManageScheduleWindow();
-    void changeToReserveSeatsWindow();
 };
