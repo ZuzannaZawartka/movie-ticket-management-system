@@ -23,5 +23,6 @@ private:
 
 private slots:
 	void onSelectItem();
+	void onAcceptButton();
 };
 

@@ -10,6 +10,10 @@ SelectMovieWindow::SelectMovieWindow(QPushButton* acceptButton, QTableWidget* ta
 
     // Connect the signal emitted when the user selects a movie to the onSelectItem slot
     connect(tableWidget->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(onSelectItem()));
+
+    // Connect the signal emitted when the user clicks the accept button to the onAcceptButton slot
+    connect(acceptButton, SIGNAL(clicked()), this, SLOT(onAcceptButton()));
+
     
 }
 
@@ -58,10 +62,17 @@ int SelectMovieWindow::getSelectedMovieId()
 
 void SelectMovieWindow::onSelectItem() {
     setSelectedMovieId();
-    if (selectedMovieId != -1) {
-        emit movieSelected(selectedMovieId);
-    }
-    else {
+    if (selectedMovieId == -1) {
         QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
     }
+
+}
+
+void SelectMovieWindow::onAcceptButton() {
+    if (selectedMovieId != -1) {
+		emit movieSelected(selectedMovieId);
+	}
+    else {
+		QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
+	}
 }
