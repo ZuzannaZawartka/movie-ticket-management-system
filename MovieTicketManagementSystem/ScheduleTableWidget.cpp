@@ -15,15 +15,23 @@ ScheduleTableWidget::ScheduleTableWidget(QTableWidget* tableWidget)
 
 ScheduleTableWidget::~ScheduleTableWidget()
 {
+    	//delete tableWidget;
+
 }
-void ScheduleTableWidget::setSchedulesInTableWidget()
+void ScheduleTableWidget::setSchedulesInTableWidget(int movieId)
 {
     tableWidget->clearContents();
 
     QList<Schedule> schedules;
-    
-    schedules = scheduleDatabase.getAllSchedules();
-   
+
+    // if default value -1 is passed, get all schedules , else get schedules by movie id
+    if (movieId == -1) {
+        schedules = scheduleDatabase.getAllSchedules();
+    }
+    else {
+        schedules = scheduleDatabase.getSchedulesByMovieIdSortedByDate(movieId);
+    }
+
     tableWidget->setRowCount(schedules.size());
 
     for (int row = 0; row < schedules.size(); ++row) {

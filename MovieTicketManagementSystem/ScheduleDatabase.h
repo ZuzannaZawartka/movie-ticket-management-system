@@ -22,6 +22,8 @@ public:
     bool isScheduleExists(const Schedule& schedule);
     bool updateSchedule(const Schedule& oldSchedule, const Schedule& newSchedule);
     Schedule getScheduleById(int id);
+    QList<Schedule> getSchedulesByMovieIdSortedByDate(int movieId);
+
 private:
     MovieDatabase movieDatabase;
 };
