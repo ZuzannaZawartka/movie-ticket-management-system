@@ -6,12 +6,14 @@
 #include "Seat.h"
 
 
-ReserveSeatsWindow::ReserveSeatsWindow(QGridLayout* layout) :layout(layout)
+ReserveSeatsWindow::ReserveSeatsWindow(QGridLayout* layout, QPushButton* acceptButton) : layout(layout), acceptButton(acceptButton)
 {
     fileName = "numbers.txt";
     generateSeats();
-}
 
+    connect(acceptButton, SIGNAL(clicked()), this, SLOT(onAcceptButtonClicked()));
+
+}
 
 ReserveSeatsWindow::~ReserveSeatsWindow()
 {
@@ -60,17 +62,35 @@ void ReserveSeatsWindow::onButtonClicked(int row, int col)
         //remove seat from reservedSeats
         reservedSeats.erase(std::remove(reservedSeats.begin(), reservedSeats.end(), seatNumber), reservedSeats.end());
 
-        QMessageBox::information(nullptr, "Seat Clicked", QString("Seat %1 unclicked").arg(seatNumber));
+       //QMessageBox::information(nullptr, "Seat Clicked", QString("Seat %1 unclicked").arg(seatNumber));
     }
     else {
         //add seat to reservedSeats
         reservedSeats.push_back(seatNumber);
 
-        QMessageBox::information(nullptr, "Seat Clicked", QString("Seat %1 clicked").arg(seatNumber));
+        //QMessageBox::information(nullptr, "Seat Clicked", QString("Seat %1 clicked").arg(seatNumber));
+
     }
 }
 
 std::vector<QString> ReserveSeatsWindow::getReservedSeats() const
 {
     return reservedSeats;
+}
+
+bool ReserveSeatsWindow::isSeatReserved()
+{
+    if (reservedSeats.size() > 0) return true;
+    return false;
+}
+
+
+void ReserveSeatsWindow::onAcceptButtonClicked()
+{
+    if (reservedSeats.size() == 0) {
+		QMessageBox::information(nullptr, "Error", "You need to reserve at least one seat.");
+	}
+    else {
+		QMessageBox::information(nullptr, "Success", "Seats reserved successfully.");
+	}
 }

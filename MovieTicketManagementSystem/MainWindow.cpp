@@ -19,9 +19,10 @@ MainWindow::MainWindow(QWidget* parent)
     manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit, ui.saveMovieButton, ui.addMovieToDatabase, ui.removeMovieButon, ui.manageMovieTableWidget);
     selectMovieWindow = new SelectMovieWindow(ui.acceptBookTicket1Button, ui.selectMovieTableWidget);
     selectScheduleWindow = new SelectScheduleWindow(ui.acceptBookTicket2Button, ui.selectScheduleTableWidget);
-    reserveSeatsWindow = new ReserveSeatsWindow(ui.reserveSeatsGrid);
-
+    reserveSeatsWindow = new ReserveSeatsWindow(ui.reserveSeatsGrid,ui.acceptBookTicket3Button);
+    inputPersonalDataWindow = new InputPersonalDataWindow(ui.nameLineEdit, ui.surnameLineEdit, ui.emailLineEdit,ui.movieLineEdit,ui.dateTimeEdit,ui.amountTicketSpinBox,ui.acceptBookTicket4Button);
     bookTicketWindow = new BookTicketWindow(selectMovieWindow,selectScheduleWindow,reserveSeatsWindow);
+
 
     //connections to refresh lists in windows
     connect(manageMovieWindow, &ManageMovieWindow::movieAdded, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
@@ -73,26 +74,21 @@ void MainWindow::changeToSelectScheduleWindow()
         selectScheduleWindow->setMovieId(selectMovieWindow->getSelectedMovieId());
         ui.stackedWidget->setCurrentWidget(ui.selectScheduleWindow);
     }
-    else {
-        QMessageBox::warning(this, "Warning", "Please select a movie first!");
-    }
 }
 
 void MainWindow::changeToReserveSeatsWindow()
 {
-    //QMessageBox::information(this, "Info", "Selected schedule id: " + QString::number(selectScheduleWindow->getSelectedScheduleId()));
     if (selectScheduleWindow->getSelectedScheduleId() != -1) {
         ui.stackedWidget->setCurrentWidget(ui.reserveSeatsWindow);
-    }
-    else {
-        QMessageBox::warning(this, "Warning", "Please select a schedule first!");
-    }
-    	
+    }   	
 }
 
 void MainWindow::changeToInputPersonalDataWindow()
 {
-    ui.stackedWidget->setCurrentWidget(ui.inputPersonalDataWindow);
+    if (reserveSeatsWindow->isSeatReserved())
+    {
+		ui.stackedWidget->setCurrentWidget(ui.inputPersonalDataWindow);
+	}   
 }
 
 void MainWindow::changeToShowScheduleWindow()

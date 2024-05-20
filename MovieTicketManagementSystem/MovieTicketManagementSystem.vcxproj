@@ -93,6 +93,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BookTicketWindow.cpp" />
+    <ClCompile Include="InputPersonalDataWindow.cpp" />
     <ClCompile Include="ManageMovieWindow.cpp" />
     <ClCompile Include="ManageRoomWindow.cpp" />
     <ClCompile Include="ManageScheduleWindow.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="DatabaseManager.h" />
     <QtMoc Include="ManageRoomWindow.h" />
     <QtMoc Include="ManageScheduleWindow.h" />
+    <QtMoc Include="InputPersonalDataWindow.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
     <ClInclude Include="Person.h" />

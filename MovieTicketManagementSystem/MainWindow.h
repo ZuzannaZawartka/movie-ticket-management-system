@@ -12,7 +12,7 @@
 #include "ReserveSeatsWindow.h"
 #include "BookTicketWindow.h"
 #include "SelectMovieWindow.h"
-
+#include "InputPersonalDataWindow.h"
 class MainWindow : public QMainWindow
 {
     Q_OBJECT;
@@ -32,6 +32,7 @@ private:
     BookTicketWindow* bookTicketWindow;
     SelectMovieWindow* selectMovieWindow;
     SelectScheduleWindow* selectScheduleWindow;
+    InputPersonalDataWindow* inputPersonalDataWindow;
 
 private slots:
     void changeToMainWindow();

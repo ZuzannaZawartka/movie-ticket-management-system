@@ -88,6 +88,9 @@
     <ClCompile Include="SelectScheduleWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InputPersonalDataWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseManager.h">
@@ -144,6 +147,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SelectScheduleWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="InputPersonalDataWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
