@@ -19,7 +19,7 @@ MovieTableWidget::MovieTableWidget(QTableWidget* tableWidget)
 
 MovieTableWidget::~MovieTableWidget()
 {
-    delete tableWidget;
+   // delete tableWidget;
 }
 
 void MovieTableWidget::setMoviesInTableWidget()

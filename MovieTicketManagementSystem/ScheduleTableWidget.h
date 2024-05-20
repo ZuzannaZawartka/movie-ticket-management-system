@@ -12,7 +12,7 @@ class ScheduleTableWidget : public QWidget
 public:
     ScheduleTableWidget(QTableWidget* tableWidget);
     ~ScheduleTableWidget();
-    void setSchedulesInTableWidget();
+    void setSchedulesInTableWidget(int movieId = -1);
     QTableWidget* getTableWidget() const;
 
 

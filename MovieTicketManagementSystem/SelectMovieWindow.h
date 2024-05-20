@@ -10,8 +10,11 @@ public:
 	SelectMovieWindow(QPushButton* acceptButton, QTableWidget* tableWidget);
 	~SelectMovieWindow();
 	bool isMovieSelected();
+	int setSelectedMovieId();
+	int getSelectedMovieId();
 
-	void setSelectedMovieId();
+signals:
+	void movieSelected(int movieId);
 
 private:
 	QPushButton* acceptButton;

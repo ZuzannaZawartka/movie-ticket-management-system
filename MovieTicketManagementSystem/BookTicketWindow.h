@@ -1,15 +1,17 @@
 #pragma once
 #include "Seat.h"
 #include "SelectMovieWindow.h"
+#include "SelectScheduleWindow.h"
 
 class BookTicketWindow
 {
 public:
-	BookTicketWindow(SelectMovieWindow* selectMovieWindow);
+	BookTicketWindow(SelectMovieWindow* selectMovieWindow,SelectScheduleWindow* selectScheduleWindow);
 	~BookTicketWindow();
 
 private:
 	SelectMovieWindow* selectMovieWindow;
+	SelectScheduleWindow* selectScheduleWindow;
 	//QWidget* selectScheduleWindow;
 	//QWidget* selectSeatWindow;
 	//QWidget* InputPersonalDataWindow;

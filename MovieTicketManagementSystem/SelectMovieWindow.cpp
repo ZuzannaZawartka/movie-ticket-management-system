@@ -27,7 +27,7 @@ bool SelectMovieWindow::isMovieSelected()
     return true;
 }
 
-void SelectMovieWindow::setSelectedMovieId() 
+int SelectMovieWindow::setSelectedMovieId()
 {
     int currentRow = tableWidget->currentRow();
     if (currentRow != -1) {
@@ -43,24 +43,25 @@ void SelectMovieWindow::setSelectedMovieId()
             int duration = durationItem->text().toInt();
 
             Movie movie(title, director, type, duration);
-            this->selectedMovieId = movieDatabase.getMovieId(movie);
-
-            if (this->selectedMovieId == -1) {
-				QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie ID!");
-            }
-            return;
-        }
-        else {
-            QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie ID!");
-            return;
+            selectedMovieId = movieDatabase.getMovieId(movie);
+            return selectedMovieId;
         }
     }
-    QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie");
-    return;
+    return -1;
+}
+
+
+int SelectMovieWindow::getSelectedMovieId()
+{
+    return this->selectedMovieId;
 }
 
 void SelectMovieWindow::onSelectItem() {
     setSelectedMovieId();
-    QMessageBox::information(nullptr, "Movie Selected", "Movie selected successfully!");
-
+    if (selectedMovieId != -1) {
+        emit movieSelected(selectedMovieId);
+    }
+    else {
+        QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
+    }
 }

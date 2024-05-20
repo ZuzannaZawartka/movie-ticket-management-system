@@ -31,6 +31,7 @@ private:
     ReserveSeatsWindow* reserveSeatsWindow;
     BookTicketWindow* bookTicketWindow;
     SelectMovieWindow* selectMovieWindow;
+    SelectScheduleWindow* selectScheduleWindow;
 
 private slots:
     void changeToMainWindow();

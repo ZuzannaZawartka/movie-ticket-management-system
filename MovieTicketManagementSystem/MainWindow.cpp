@@ -4,6 +4,7 @@
 #include "ManageMovieWindow.h"
 #include "ManageScheduleWindow.h"
 #include "SelectMovieWindow.h"
+#include "SelectScheduleWindow.h"
 #include <QMessageBox>
 #include <QStringListModel>
 
@@ -18,16 +19,29 @@ MainWindow::MainWindow(QWidget* parent)
     manageMovieWindow = new ManageMovieWindow(ui.textTitleEdit, ui.textDirectorEdit, ui.chooseMovieTypeBox, ui.timeDurationLineEdit, ui.saveMovieButton, ui.addMovieToDatabase, ui.removeMovieButon, ui.manageMovieTableWidget);
     reserveSeatsWindow = new ReserveSeatsWindow(ui.reserveSeatsGrid);
     selectMovieWindow = new SelectMovieWindow(ui.acceptBookTicket1Button, ui.selectMovieTableWidget);
+    selectScheduleWindow = new SelectScheduleWindow(ui.acceptBookTicket2Button, ui.selectScheduleTableWidget);
 
-    bookTicketWindow = new BookTicketWindow(selectMovieWindow);
+    bookTicketWindow = new BookTicketWindow(selectMovieWindow,selectScheduleWindow);
 
     connect(manageMovieWindow, &ManageMovieWindow::movieAdded, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
     connect(manageMovieWindow, &ManageMovieWindow::movieRemoved, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
     
+    connect(selectMovieWindow, &SelectMovieWindow::movieSelected, this, &MainWindow::changeToSelectScheduleWindow);
 }
 
 MainWindow::~MainWindow()
-{}
+{
+    delete movieTableWidget;
+    delete manageMovieWindow;
+    delete showScheduleTable;
+    delete manageScheduleWindow;
+    delete manageRoomWindow;
+    delete reserveSeatsWindow;
+    delete bookTicketWindow;
+    delete selectMovieWindow;
+    delete selectScheduleWindow;
+
+}
 
 
 void MainWindow::changeToMainWindow()
@@ -47,12 +61,14 @@ void MainWindow::changeToSelectMovieWindow()
 
 void MainWindow::changeToSelectScheduleWindow()
 {
-    if (!selectMovieWindow->isMovieSelected())
+    if (selectMovieWindow->getSelectedMovieId() != -1)
     {
-        QMessageBox::warning(this, "Warning", "Please select a movie first");
-        return;
+        selectScheduleWindow->setSchedulesInTableWidget(selectMovieWindow->getSelectedMovieId());
+        ui.stackedWidget->setCurrentWidget(ui.selectScheduleWindow);
     }
-    ui.stackedWidget->setCurrentWidget(ui.selectScheduleWindow);
+    else {
+        QMessageBox::warning(this, "Warning", "Please select a movie first!");
+    }
 }
 
 void MainWindow::changeToShowScheduleWindow()
