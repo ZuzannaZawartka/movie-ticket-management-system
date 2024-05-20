@@ -99,9 +99,11 @@
     <ClCompile Include="MovieDatabase.cpp" />
     <ClCompile Include="MovieTableWidget.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="ReserveSeatsWindow.cpp" />
     <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="ScheduleDatabase.cpp" />
     <ClCompile Include="ScheduleTableWidget.cpp" />
+    <ClCompile Include="Seat.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
@@ -118,10 +120,12 @@
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
     <ClInclude Include="Person.h" />
+    <QtMoc Include="ReserveSeatsWindow.h" />
     <ClInclude Include="Schedule.h" />
     <QtMoc Include="MovieTableWidget.h" />
     <ClInclude Include="ScheduleDatabase.h" />
     <QtMoc Include="ScheduleTableWidget.h" />
+    <QtMoc Include="Seat.h" />
     <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <ItemGroup>

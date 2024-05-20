@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>735</width>
+    <width>636</width>
     <height>611</height>
    </rect>
   </property>
@@ -36,7 +36,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1470,6 +1470,27 @@ background-color: rgb(57, 79, 107);</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="reserveSeatsWindow">
+       <layout class="QGridLayout" name="gridLayout_14">
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Accept</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="reserveSeatsGrid"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>GOBACK</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="viewBookingsWindow">
        <layout class="QVBoxLayout" name="verticalLayout_16">
         <item>
@@ -1865,8 +1886,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>301</x>
-     <y>560</y>
+     <x>268</x>
+     <y>559</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1881,8 +1902,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>540</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -1913,8 +1934,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>540</y>
+     <x>158</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
@@ -1945,8 +1966,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>714</x>
-     <y>569</y>
+     <x>108</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>411</x>
@@ -1977,8 +1998,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>713</x>
-     <y>562</y>
+     <x>108</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>412</x>
@@ -2009,8 +2030,8 @@ background-color: rgb(57, 79, 107);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>125</x>
-     <y>551</y>
+     <x>134</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>115</x>
@@ -2034,6 +2055,22 @@ background-color: rgb(57, 79, 107);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>bookTicketButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToReserveSeatsWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>136</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>267</x>
+     <y>682</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>changeToManageMovieWindow()</slot>
@@ -2047,5 +2084,6 @@ background-color: rgb(57, 79, 107);</string>
   <slot>changeToManageRoomWindow()</slot>
   <slot>changeToManageScheduleWindow()</slot>
   <slot>changeToShowScheduleWindow()</slot>
+  <slot>changeToReserveSeatsWindow()</slot>
  </slots>
 </ui>
