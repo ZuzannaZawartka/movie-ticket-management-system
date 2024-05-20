@@ -187,35 +187,6 @@ Schedule ScheduleDatabase::getScheduleById(int id)
 
     }
 }
-
-QList<Schedule> ScheduleDatabase::getSchedulesByMovieIdSortedByDate(int movieId)
-{
-    QList<Schedule> schedules;
-    QString queryStr = "SELECT * FROM schedule WHERE movieId = :movieId ORDER BY date ASC;";
-    QVariantList values;
-    values << movieId;
-
-    QSqlQuery query = prepareQueryWithBindings(queryStr, values);
-
-    if (!query.exec()) {
-        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve schedules for movie ID " + QString::number(movieId));
-        return schedules;
-    }
-
-    while (query.next()) {
-        QDate date = query.value("date").toDate();
-        QTime time = query.value("time").toTime();
-        int durationMinutes = query.value("duration").toInt();
-
-        Schedule schedule(movieId, date, time, durationMinutes);
-        schedules.append(schedule);
-    }
-
-    return schedules;
-}
-
-
-
 bool ScheduleDatabase::updateSchedule(const Schedule& oldSchedule, const Schedule& newSchedule)
 {
     // SprawdŸ, czy stary harmonogram istnieje

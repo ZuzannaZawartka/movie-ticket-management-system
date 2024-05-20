@@ -131,7 +131,7 @@
     <QtMoc Include="ScheduleTableWidget.h" />
     <QtMoc Include="Seat.h" />
     <QtMoc Include="SelectMovieWindow.h" />
-    <ClInclude Include="SelectScheduleWindow.h" />
+    <QtMoc Include="SelectScheduleWindow.h" />
     <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <ItemGroup>
