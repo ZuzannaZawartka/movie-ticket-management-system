@@ -40,6 +40,21 @@ void MainWindow::changeToManageScheduleWindow()
     ui.stackedWidget->setCurrentWidget(ui.manageScheduleWindow);
 }
 
+void MainWindow::changeToSelectMovieWindow()
+{
+    ui.stackedWidget->setCurrentWidget(ui.selectMovieWindow);
+}
+
+void MainWindow::changeToSelectScheduleWindow()
+{
+    if (!selectMovieWindow->isMovieSelected())
+    {
+        QMessageBox::warning(this, "Warning", "Please select a movie first");
+        return;
+    }
+    ui.stackedWidget->setCurrentWidget(ui.selectScheduleWindow);
+}
+
 void MainWindow::changeToShowScheduleWindow()
 {
     showScheduleTable->setSchedulesInTableWidget();

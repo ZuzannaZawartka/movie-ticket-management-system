@@ -17,6 +17,14 @@ SelectMovieWindow::~SelectMovieWindow()
 	delete tableWidget;
 }
 
+bool SelectMovieWindow::isMovieSelected()
+{
+    if (this->selectedMovieId == -1) {
+		return false;
+	}
+    return true;
+}
+
 void SelectMovieWindow::setSelectedMovieId() 
 {
     int currentRow = tableWidget->currentRow();

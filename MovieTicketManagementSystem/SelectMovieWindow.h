@@ -9,6 +9,7 @@ class SelectMovieWindow :
 public:
 	SelectMovieWindow(QPushButton* acceptButton, QTableWidget* tableWidget);
 	~SelectMovieWindow();
+	bool isMovieSelected();
 
 	void setSelectedMovieId();
 

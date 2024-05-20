@@ -41,4 +41,6 @@ private slots:
     void changeToViewBookingsWindow();
     void changeToManageRoomWindow();
     void changeToManageScheduleWindow();
+    void changeToSelectMovieWindow();
+    void changeToSelectScheduleWindow();
 };
