@@ -106,6 +106,7 @@
     <ClCompile Include="ScheduleTableWidget.cpp" />
     <ClCompile Include="Seat.cpp" />
     <ClCompile Include="SelectMovieWindow.cpp" />
+    <ClCompile Include="SelectScheduleWindow.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
@@ -130,6 +131,7 @@
     <QtMoc Include="ScheduleTableWidget.h" />
     <QtMoc Include="Seat.h" />
     <QtMoc Include="SelectMovieWindow.h" />
+    <ClInclude Include="SelectScheduleWindow.h" />
     <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <ItemGroup>

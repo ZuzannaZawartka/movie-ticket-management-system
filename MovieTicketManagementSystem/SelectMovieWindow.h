@@ -19,6 +19,6 @@ private:
 	int selectedMovieId;
 
 private slots:
-	void onAcceptButtonClicked();
+	void onSelectItem();
 };
 

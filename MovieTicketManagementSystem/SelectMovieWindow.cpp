@@ -8,7 +8,9 @@ SelectMovieWindow::SelectMovieWindow(QPushButton* acceptButton, QTableWidget* ta
 	this->acceptButton = acceptButton;
 	this->tableWidget = tableWidget;
 
-    connect(acceptButton, SIGNAL(clicked()), this, SLOT(onAcceptButtonClicked()));
+    // Connect the signal emitted when the user selects a movie to the onSelectItem slot
+    connect(tableWidget->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(onSelectItem()));
+    
 }
 
 SelectMovieWindow::~SelectMovieWindow()
@@ -57,7 +59,7 @@ void SelectMovieWindow::setSelectedMovieId()
     return;
 }
 
-void SelectMovieWindow::onAcceptButtonClicked() {
+void SelectMovieWindow::onSelectItem() {
     setSelectedMovieId();
     QMessageBox::information(nullptr, "Movie Selected", "Movie selected successfully!");
 
