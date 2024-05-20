@@ -9,6 +9,8 @@
 #include "ScheduleDatabase.h"
 #include "ManageScheduleWindow.h"
 #include "ManageRoomWindow.h"
+#include "ReserveSeatsWindow.h"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT;
@@ -25,6 +27,7 @@ private:
     ScheduleTableWidget* showScheduleTable;
     ManageScheduleWindow* manageScheduleWindow;
     ManageRoomWindow* manageRoomWindow;
+    ReserveSeatsWindow* reserveSeatsWindow;
 
 private slots:
     void changeToMainWindow();
@@ -35,4 +38,6 @@ private slots:
     void changeToViewBookingsWindow();
     void changeToManageRoomWindow();
     void changeToManageScheduleWindow();
+    void changeToReserveSeatsWindow();
 };
+
