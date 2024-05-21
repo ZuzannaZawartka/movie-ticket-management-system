@@ -126,6 +126,5 @@ void ReserveSeatsWindow::onAcceptButtonClicked()
     }
     else {
         QMessageBox::information(nullptr, "Success", "Seats reserved successfully.");
-        resetReservedSeats(); // reset the reserved seats after confirming
     }
 }

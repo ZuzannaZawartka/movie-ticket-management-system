@@ -1,0 +1,34 @@
+#include "Booking.h"
+
+Booking::Booking(int movieId, int scheduleId, QString seat, QString name, QString surname, QString email)
+{
+}
+
+Booking::~Booking()
+{
+}
+
+int Booking::getMovieId() const
+{
+	return movieId;
+}
+
+int Booking::getScheduleId() const
+{
+	return scheduleId;
+}
+
+QString Booking::getSeat() const
+{
+	return seat;
+}
+
+QString Booking::getName() const
+{
+	return name;
+}
+
+QString Booking::getSurname() const
+{
+	return surname;
+}

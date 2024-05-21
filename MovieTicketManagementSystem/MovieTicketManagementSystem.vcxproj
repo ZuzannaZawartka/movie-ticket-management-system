@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Booking.cpp" />
     <ClCompile Include="BookTicketWindow.cpp" />
     <ClCompile Include="InputPersonalDataWindow.cpp" />
     <ClCompile Include="ManageMovieWindow.cpp" />
@@ -118,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ManageMovieWindow.h" />
+    <ClInclude Include="Booking.h" />
     <ClInclude Include="BookTicketWindow.h" />
     <ClInclude Include="DatabaseManager.h" />
     <QtMoc Include="ManageRoomWindow.h" />
