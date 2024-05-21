@@ -4,25 +4,35 @@
 #include <QObject>
 #include <QString>
 #include <QPushButton>
+#include "Seat.h"
 
 class ReserveSeatsWindow : public QObject
 {
-    Q_OBJECT 
+    Q_OBJECT
 
 public:
-    ReserveSeatsWindow(QGridLayout* layout,QPushButton* acceptButton);
+    ReserveSeatsWindow(QGridLayout* layout, QPushButton* acceptButton);
     ~ReserveSeatsWindow();
     std::vector<QString> getReservedSeats() const;
     bool isSeatReserved();
+    void selectAllSeats();
+
 
 private:
     void generateSeats();
+    void loadSeatData();
+    void resetReservedSeats();
     void onButtonClicked(int row, int col);
+    void clearSeats();
+    void refreshSeats();
 
     QPushButton* acceptButton;
     QGridLayout* layout;
     QString fileName;
     std::vector<QString> reservedSeats;
+    std::vector<QString> seatData; // To store seat data from the file
+    std::vector<Seat*> seats;      // To store seat pointers
+
 private slots:
-    void onAcceptButtonClicked();
+    void onAcceptButtonClicked();  // Slot to handle accept button click
 };

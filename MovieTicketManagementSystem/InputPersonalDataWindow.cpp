@@ -16,8 +16,6 @@ InputPersonalDataWindow::InputPersonalDataWindow(QLineEdit* nameInput, QLineEdit
 	connect(emailInput, &QLineEdit::textChanged, this, &InputPersonalDataWindow::checkInputs);
 
 
-	connect(acceptButton, &QPushButton::clicked, this, &InputPersonalDataWindow::onAcceptButtonClicked);
-
 	checkInputs();
 }
 
@@ -61,17 +59,6 @@ void InputPersonalDataWindow::checkInputs()
 {
 	//bool allFieldsFilled = !nameInput->text().isEmpty() && !surnameInput->text().isEmpty() && !emailInput->text().isEmpty();
 	acceptButton->setEnabled(validateInputs());
-}
-
-void InputPersonalDataWindow::onAcceptButtonClicked()
-{
-
-	if (!validateInputs()) {
-		QMessageBox::warning(nullptr, "Input Error", "All fields must be filled out.");
-		return;
-	}
-
-	// Dalsze dzia³ania po klikniêciu przycisku acceptButton
 }
 
 bool InputPersonalDataWindow::validateInputs()

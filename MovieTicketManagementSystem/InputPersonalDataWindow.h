@@ -32,9 +32,5 @@ private:
 	void checkInputs();
 	bool validateInputs();
 
-
-
-private slots:
-	void onAcceptButtonClicked();
 };
 
