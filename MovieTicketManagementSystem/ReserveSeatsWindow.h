@@ -17,6 +17,8 @@ public:
     bool isSeatReserved();
     void selectAllSeats();
 
+signals:
+    void seatsAccepted(std::vector<Seat*> seats);
 
 private:
     void generateSeats();

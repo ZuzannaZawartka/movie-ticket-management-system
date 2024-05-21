@@ -32,3 +32,8 @@ QString Booking::getSurname() const
 {
 	return surname;
 }
+
+QString Booking::getEmail() const
+{
+	return email;
+}

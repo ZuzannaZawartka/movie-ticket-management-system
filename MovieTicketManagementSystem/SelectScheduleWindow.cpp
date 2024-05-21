@@ -83,7 +83,7 @@ void SelectScheduleWindow::resetSelectedScheduleId()
 void SelectScheduleWindow::onAcceptButton2()
 {
 	if (getSelectedScheduleId() != -1) {
-		emit scheduleSelected();
+		emit scheduleSelected(this->selectedScheduleId);
 	}
 	else {
 		QMessageBox::warning(this, "Warning", "Please select a schedule.");

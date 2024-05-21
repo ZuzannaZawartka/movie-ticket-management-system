@@ -125,6 +125,8 @@ void ReserveSeatsWindow::onAcceptButtonClicked()
         QMessageBox::information(nullptr, "Error", "You need to reserve at least one seat.");
     }
     else {
+        emit seatsAccepted(seats);
+
         QMessageBox::information(nullptr, "Success", "Seats reserved successfully.");
     }
 }

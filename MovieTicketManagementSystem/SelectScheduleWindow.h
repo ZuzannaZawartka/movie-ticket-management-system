@@ -16,8 +16,8 @@ public:
 	void setMovieId(int movieId);
 	void resetSelectedScheduleId();
 
-	signals:
-		void scheduleSelected();
+signals:
+	void scheduleSelected(int scheduleID);
 
 private:
 	QPushButton* acceptButton;

@@ -13,6 +13,7 @@ public:
 	QString getSeat() const;
 	QString getName() const;
 	QString getSurname() const;
+	QString getEmail() const;
 
 
 private:

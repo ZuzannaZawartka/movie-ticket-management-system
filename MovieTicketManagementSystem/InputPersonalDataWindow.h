@@ -21,6 +21,10 @@ public:
 	void setMovie(Movie& movie);
 	void setDateTime(QDateTime dateTime);
 	void setSeat(int seat);
+
+signals:
+	void personalDataAccepted(QString name, QString surname, QString email);
+
 private:
 	QLineEdit* nameInput;
 	QLineEdit* surnameInput;
@@ -30,6 +34,7 @@ private:
 	QSpinBox* seatInput;
 	QPushButton* acceptButton;
 	void checkInputs();
+	void onAcceptButton();
 	bool validateInputs();
 
 };
