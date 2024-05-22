@@ -35,6 +35,12 @@ private:
 	QDateTimeEdit* dateTimeInput;
 	QSpinBox* seatInput;
 	QPushButton* acceptButton;
+
+	// regex validators for name, surname and email
+	QRegularExpressionValidator* nameValidator;  
+	QRegularExpressionValidator* surnameValidator;  
+	QRegularExpressionValidator* emailValidator;  
+
 	void checkInputs();
 	void onAcceptButton();
 	bool validateInputs();

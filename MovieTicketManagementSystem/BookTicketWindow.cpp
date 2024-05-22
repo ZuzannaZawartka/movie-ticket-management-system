@@ -15,13 +15,11 @@ BookTicketWindow::BookTicketWindow(SelectMovieWindow* selectMovieWindow, SelectS
     inputPersonalDataWindow(inputPersonalDataWindow)
 
 {
-    
     movieID = -1;
 	scheduleID = -1;
     name = "";
     surname = "";
     email = "";
-
 
     // Connect signals to slots
     connect(selectMovieWindow, &SelectMovieWindow::movieSelected, this, &BookTicketWindow::onMovieAccepted);
@@ -30,10 +28,6 @@ BookTicketWindow::BookTicketWindow(SelectMovieWindow* selectMovieWindow, SelectS
     connect(inputPersonalDataWindow, &InputPersonalDataWindow::personalDataAccepted, this, &BookTicketWindow::onPersonalDataAccepted);
  
     connect(selectScheduleWindow, &SelectScheduleWindow::scheduleSelected, reserveSeatsWindow, &ReserveSeatsWindow::initializeSeatsAfterSchedule);
-
-
-
-
 }
 
 BookTicketWindow::~BookTicketWindow()
