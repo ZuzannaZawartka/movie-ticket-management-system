@@ -110,11 +110,11 @@ Movie MovieDatabase::getMovieById(int id)
     }
 }
 
-
 int MovieDatabase::getMovieId(const Movie& movie)
 {
     QString queryStr = "SELECT id FROM movies WHERE title = :title AND director = :director AND type = :type AND duration = :duration;";
     QVariantList values;
+
     values << movie.getTitle() << movie.getDirector() << movie.getType() << movie.getDuration();
 
     QSqlQuery query = prepareQueryWithBindings(queryStr, values);
@@ -132,6 +132,7 @@ int MovieDatabase::getMovieId(const Movie& movie)
         return -1;
     }
 }
+
 
 QList<Movie> MovieDatabase::getAllMovies()
 {

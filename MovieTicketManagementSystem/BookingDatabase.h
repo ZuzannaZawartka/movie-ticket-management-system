@@ -5,7 +5,7 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include "Booking.h"
-#include "DatabaseManager.h"
+
 
 class BookingDatabase : public DatabaseManager
 {
@@ -16,8 +16,8 @@ public:
     bool addBooking(const Booking& booking);
     bool deleteBooking(const Booking& booking);
     bool bookingExists(const Booking& booking);
+    bool deleteAllBookings();
     QList<Booking> getAllBookings();
+    QList<QString> getOccupiedSeats();
 
-
-private:
 };

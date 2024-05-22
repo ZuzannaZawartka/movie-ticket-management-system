@@ -60,6 +60,7 @@ void MainWindow::changeToManageScheduleWindow()
 
 void MainWindow::changeToSelectMovieWindow()
 {
+   // selectMovieWindow->resetSelectedMovieId();
     ui.stackedWidget->setCurrentWidget(ui.selectMovieWindow);
 }
 

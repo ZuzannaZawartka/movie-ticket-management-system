@@ -24,7 +24,5 @@ private:
 	QString surname;
 	QString email;
 
-	MovieDatabase movieDatabase;
-	ScheduleDatabase scheduleDatabase;
 };
 

@@ -70,7 +70,7 @@ void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QSt
 
     
     //for each seat in seats
-   for (Seat* seat : seats) {
+    for (Seat* seat : seats) {
         Booking booking(movieID, scheduleID, seat->getSeatNumber(), name, surname, email); 
         if (!bookingDatabase.addBooking(booking)) {
             QMessageBox::critical(nullptr, "Booking Error", "Failed to add booking to database!");
@@ -79,4 +79,10 @@ void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QSt
     }
 
     QMessageBox::information(nullptr, "Booking Success", "Booking added to database successfully!");
+
+    // clear all data
+    ///selectMovieWindow->resetSelectedMovieId();
+    //selectScheduleWindow->resetSelectedScheduleId();
+    //reserveSeatsWindow->resetReservedSeatsWindow();
+   // inputPersonalDataWindow->resetReservedSeatsWindow();
 }

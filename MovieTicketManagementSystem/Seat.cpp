@@ -66,6 +66,13 @@ bool Seat::isSelectedSeat() const
     return isSelected;
 }
 
+bool Seat::setEnabled(bool variable)
+{
+    this->button->setEnabled(variable);
+
+    return variable;
+}
+
 
 void Seat::updateColor()
 {

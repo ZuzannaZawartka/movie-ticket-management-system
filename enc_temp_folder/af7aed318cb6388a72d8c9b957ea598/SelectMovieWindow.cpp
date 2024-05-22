@@ -48,6 +48,12 @@ int SelectMovieWindow::setSelectedMovieId()
 
         
             Movie movie(title, director, type, duration);
+            //QMessageBox::information(nullptr, "Movie Data",
+            //    QString("Title: %1\nDirector: %2\nType: %3\nDuration: %4")
+            //    .arg(movie.getTitle()).arg(movie.getDirector()).arg(movie.getType()).arg(movie.getDuration()));
+           // movieDatabase =  MovieDatabase();
+
+       
 
             this->selectedMovieId = movieDatabase.getMovieId(movie);
 
@@ -67,16 +73,16 @@ int SelectMovieWindow::getSelectedMovieId()
 
 void SelectMovieWindow::resetSelectedMovieId()
 {
-   this->selectedMovieId = -1;
-   this->tableWidget->clearSelection();
+   // this->selectedMovieId = -1;
+   // this->tableWidget->clearSelection();
    
 }
 
 void SelectMovieWindow::onSelectItem() {
     setSelectedMovieId();
-    if (setSelectedMovieId() == -1) {
-        QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
-    }
+   // if (setSelectedMovieId() == -1) {
+    //    QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
+   // }
 
 }
 

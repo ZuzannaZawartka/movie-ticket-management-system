@@ -24,7 +24,6 @@ private:
 	QTableWidget* tableWidget;
 	ScheduleDatabase scheduleDatabase;
 	int selectedScheduleId;
-	bool isSelected;
 	int movieId;
 
 	private slots:

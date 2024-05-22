@@ -18,6 +18,7 @@ public:
     int getMovieId(const Movie& movie);
     QList<Movie> getAllMovies();
     bool isTableExists();
+    
     Movie getMovieById(int id);
     Movie getMovieByTitle(const QString& title);
 

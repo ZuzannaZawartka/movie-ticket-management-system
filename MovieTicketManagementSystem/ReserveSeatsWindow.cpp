@@ -42,8 +42,19 @@ void ReserveSeatsWindow::loadSeatData()
     file.close();
 }
 
+Seat* ReserveSeatsWindow::findSeatByNumber(const QString& seatNumber)
+{
+    for (Seat* seat : seats) {
+        if (seat->getSeatNumber() == seatNumber) {
+            return seat;
+        }
+    }
+    return nullptr; // return nullptr if seat not found
+}
+
 void ReserveSeatsWindow::generateSeats()
 {
+
     for (int row = 0; row < seatData.size(); ++row) {
         QString line = seatData[row];
         for (int col = 0; col < line.size(); ++col) {
@@ -60,6 +71,8 @@ void ReserveSeatsWindow::generateSeats()
         QLabel* rowLabel = new QLabel(QString(QChar('A' + row)));
         layout->addWidget(rowLabel, row + 1, 0);
     }
+
+    setOccupiedSeats();
 }
 
 void ReserveSeatsWindow::clearSeats()
@@ -80,12 +93,10 @@ void ReserveSeatsWindow::refreshSeats()
 
 void ReserveSeatsWindow::onButtonClicked(QString seatNumber)
 {
-    for (Seat* seat : seats) {
-        if (seatNumber == seat->getSeatNumber()) {
-            seat->chooseSeat(); 
-            return;
-        }
-    }
+    Seat* seat = findSeatByNumber(seatNumber);
+    if (seat) {
+		seat->chooseSeat();
+	}
 }
 
 
@@ -110,6 +121,11 @@ bool ReserveSeatsWindow::isSeatReserved()
     return false;
 }
 
+void ReserveSeatsWindow::resetReservedSeatsWindow()
+{
+    
+}
+
 void ReserveSeatsWindow::resetReservedSeats()
 {
     for (Seat* seat : seats) {
@@ -118,12 +134,16 @@ void ReserveSeatsWindow::resetReservedSeats()
 
 }
 
-void ReserveSeatsWindow::selectAllSeats()
+void ReserveSeatsWindow::setOccupiedSeats()
 {
-    for (Seat* seat : seats) {
-        seat->setSeat(true);
-    }
+    QList<QString> occupiedSeatNumbers = bookingDatabase.getOccupiedSeats();
 
+    for (const QString& seatNumber : occupiedSeatNumbers) {
+        Seat* seat = findSeatByNumber(seatNumber);
+        if (seat) {
+            seat->setEnabled(false);
+        }
+    }
 }
 
 void ReserveSeatsWindow::onAcceptButtonClicked()

@@ -77,6 +77,7 @@ void SelectScheduleWindow::setMovieId(int movieId)
 void SelectScheduleWindow::resetSelectedScheduleId()
 {
     this->selectedScheduleId = -1;
+    this->movieId = -1;
 }
 
 
@@ -88,4 +89,6 @@ void SelectScheduleWindow::onAcceptButton2()
 	else {
 		QMessageBox::warning(this, "Warning", "Please select a schedule.");
 	}
+
+
 }

@@ -23,7 +23,6 @@ bool BookingDatabase::createTable() {
     return executeQuery(query, QVariantList());
 }
 
-
 bool BookingDatabase::addBooking(const Booking& booking) {
     if (bookingExists(booking)) {
         QMessageBox::critical(nullptr, "Database Error", "Booking already exists!");
@@ -45,8 +44,6 @@ bool BookingDatabase::addBooking(const Booking& booking) {
     QMessageBox::information(nullptr, "Success", "Booking added successfully!");
     return true;
 }
-
-
 
 bool BookingDatabase::deleteBooking(const Booking& booking) {
     QString query = "DELETE FROM Booking WHERE "
@@ -108,4 +105,28 @@ bool BookingDatabase::bookingExists(const Booking& booking) {
     query.next();
     int count = query.value(0).toInt();
     return count != 0;
+}
+
+
+QList<QString> BookingDatabase::getOccupiedSeats() {
+    QList<QString> occupiedSeats;
+    QString query = "SELECT DISTINCT seat FROM Booking;";
+    QSqlQuery sqlQuery = prepareQueryWithBindings(query);
+
+    if (!sqlQuery.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve occupied seats!");
+        return occupiedSeats;
+    }
+
+    while (sqlQuery.next()) {
+        QString seat = sqlQuery.value("seat").toString();
+        occupiedSeats.append(seat);
+    }
+
+    return occupiedSeats;
+}
+
+bool BookingDatabase::deleteAllBookings() {
+    QString query = "DELETE FROM Booking;";
+    return executeQuery(query, QVariantList());
 }
