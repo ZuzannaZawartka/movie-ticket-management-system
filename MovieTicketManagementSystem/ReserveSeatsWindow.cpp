@@ -124,7 +124,7 @@ bool ReserveSeatsWindow::isSeatReserved()
 void ReserveSeatsWindow::resetReservedSeats()
 {
     for (Seat* seat : seats) {
-        seat->setSeat(false);
+        seat->resetSeat();
     }
 
 }
@@ -132,6 +132,8 @@ void ReserveSeatsWindow::resetReservedSeats()
 void ReserveSeatsWindow::setOccupiedSeats(int scheduleID)
 {
     QList<QString> occupiedSeatNumbers = bookingDatabase.getOccupiedSeats(scheduleID);
+
+    QMessageBox::information(nullptr, "Occupied Seats", "Occupied seats: " + occupiedSeatNumbers.join(", "));
 
     for (const QString& seatNumber : occupiedSeatNumbers) {
         Seat* seat = findSeatByNumber(seatNumber);
@@ -143,8 +145,8 @@ void ReserveSeatsWindow::setOccupiedSeats(int scheduleID)
 
 void ReserveSeatsWindow::initializeSeatsAfterSchedule(int scheduleID)
 {
-    QMessageBox::information(nullptr, "Info", "Schedule selected: " + QString::number(scheduleID));
     //generateSeats();
+    resetReservedSeats();
     setOccupiedSeats(scheduleID);
 
 }

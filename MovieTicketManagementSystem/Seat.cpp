@@ -66,13 +66,18 @@ bool Seat::isSelectedSeat() const
     return isSelected;
 }
 
+void Seat::resetSeat()
+{
+    setEnabled(true);
+    setSeat(false);
+    button->setChecked(false);
+}
+
 bool Seat::setEnabled(bool variable)
 {
     this->button->setEnabled(variable);
-
-    return variable;
+    return true;
 }
-
 
 void Seat::updateColor()
 {
@@ -96,6 +101,7 @@ void Seat::updateColor()
         button->setStyleSheet("");
         break;
     }
+
 }
 
 void Seat::onButtonClicked()
