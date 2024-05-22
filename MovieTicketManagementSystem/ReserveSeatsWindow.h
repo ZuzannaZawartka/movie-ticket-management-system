@@ -14,6 +14,8 @@ public:
     ~ReserveSeatsWindow();
     bool isSeatReserved();
     void resetReservedSeats();
+    void reloadSeatData();
+
 
     std::vector<Seat*> getReservedSeats() const;
 

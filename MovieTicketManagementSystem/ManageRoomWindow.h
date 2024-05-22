@@ -12,6 +12,9 @@ public:
     ManageRoomWindow(QPlainTextEdit* plainTextEdit, QPushButton* acceptButton);
     ~ManageRoomWindow();
 
+signals:
+    void fileSaved();
+
 private:
     QPlainTextEdit* plainTextEdit;
     QPushButton* acceptButton;

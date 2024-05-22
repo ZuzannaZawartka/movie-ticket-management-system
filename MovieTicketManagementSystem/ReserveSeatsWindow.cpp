@@ -113,6 +113,22 @@ void ReserveSeatsWindow::resetReservedSeats()
 
 }
 
+void ReserveSeatsWindow::reloadSeatData()
+{
+    // delete all seats
+    for (Seat* seat : seats) {
+        delete seat;
+    }
+    seats.clear();
+    seatData.clear();
+
+    // load new data
+    loadSeatData();
+    generateSeats();
+
+    bookingDatabase.deleteAllBookings(); // delete all bookings from database
+}
+
 void ReserveSeatsWindow::setOccupiedSeats(int scheduleID)
 {
     QList<QString> occupiedSeatNumbers = bookingDatabase.getOccupiedSeats(scheduleID);

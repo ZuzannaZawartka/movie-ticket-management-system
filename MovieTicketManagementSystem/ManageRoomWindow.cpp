@@ -53,7 +53,11 @@ void ManageRoomWindow::saveToFile()
         file.close();
 
         QMessageBox::information(nullptr, "Success", "File saved successfully.");
+
+        emit fileSaved();
     }
+
+
 
 }
 
@@ -101,42 +105,3 @@ bool ManageRoomWindow::validateFile()
 
     return true;
 }
-/*
-void ManageRoomWindow::loadGridFromFile(const QString& fileName) {
-    QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QMessageBox::critical(nullptr, "Error", "Could not open file");
-        return;
-    }
-
-    QTextStream in(&file);
-    int row = 0;
-
-    while (!in.atEnd()) {
-        QString line = in.readLine();
-        QStringList numbers = line.split(' ', Qt::SkipEmptyParts);
-
-        for (int col = 0; col < numbers.size(); ++col) {
-            QString number = numbers[col];
-
-            QLabel* label = new QLabel(number);
-            label->setAlignment(Qt::AlignCenter);
-            label->setFrameStyle(QFrame::Box | QFrame::Plain);
-
-            if (number == "0") {
-                label->setStyleSheet("background-color: red;");
-            }
-            else if (number == "1") {
-                label->setStyleSheet("background-color: green;");
-            }
-            else if (number == "2") {
-                label->setStyleSheet("background-color: blue;");
-            }
-
-            layout->addWidget(label, row, col);
-        }
-
-        ++row;
-    }
-}
-*/
