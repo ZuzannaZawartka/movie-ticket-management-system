@@ -36,7 +36,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>7</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -2010,8 +2010,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>55</y>
+     <x>301</x>
+     <y>559</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -2058,8 +2058,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>55</y>
+     <x>178</x>
+     <y>559</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
@@ -2154,8 +2154,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>55</y>
+     <x>187</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>115</x>
@@ -2218,8 +2218,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToSelectScheduleWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>55</y>
+     <x>580</x>
+     <y>559</y>
     </hint>
     <hint type="destinationlabel">
      <x>582</x>
@@ -2234,8 +2234,8 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToSelectScheduleWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>108</x>
-     <y>55</y>
+     <x>126</x>
+     <y>570</y>
     </hint>
     <hint type="destinationlabel">
      <x>473</x>
@@ -2266,12 +2266,28 @@ background-color: rgb(36, 46, 61);</string>
    <slot>changeToInputPersonalDataWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>108</x>
-     <y>55</y>
+     <x>126</x>
+     <y>540</y>
     </hint>
     <hint type="destinationlabel">
      <x>679</x>
      <y>652</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>acceptBookTicket4Button</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>changeToMainWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>694</x>
+     <y>560</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>660</x>
+     <y>704</y>
     </hint>
    </hints>
   </connection>

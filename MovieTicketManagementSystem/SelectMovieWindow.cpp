@@ -4,9 +4,9 @@
 
 SelectMovieWindow::SelectMovieWindow(QPushButton* acceptButton, QTableWidget* tableWidget) : MovieTableWidget(tableWidget)
 {
-	this->selectedMovieId = -1;
-	this->acceptButton = acceptButton;
-	this->tableWidget = tableWidget;
+    this->selectedMovieId = -1;
+    this->acceptButton = acceptButton;
+    this->tableWidget = tableWidget;
 
     // Connect the signal emitted when the user selects a movie to the onSelectItem slot
     connect(tableWidget->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(onSelectItem()));
@@ -14,20 +14,20 @@ SelectMovieWindow::SelectMovieWindow(QPushButton* acceptButton, QTableWidget* ta
     // Connect the signal emitted when the user clicks the accept button to the onAcceptButton slot
     connect(acceptButton, SIGNAL(clicked()), this, SLOT(onAcceptButton()));
 
-    
+
 }
 
 SelectMovieWindow::~SelectMovieWindow()
 {
-	delete acceptButton;
-	delete tableWidget;
+    delete acceptButton;
+    delete tableWidget;
 }
 
 bool SelectMovieWindow::isMovieSelected()
 {
     if (this->selectedMovieId == -1) {
-		return false;
-	}
+        return false;
+    }
     return true;
 }
 
@@ -46,10 +46,14 @@ int SelectMovieWindow::setSelectedMovieId()
             QString type = typeItem->text();
             int duration = durationItem->text().toInt();
 
+        
             Movie movie(title, director, type, duration);
-            selectedMovieId = movieDatabase.getMovieId(movie);
-            return selectedMovieId;
+
+            this->selectedMovieId = movieDatabase.getMovieId(movie);
+
+            return this->selectedMovieId;
         }
+        return -1;
     }
     return -1;
 }
@@ -62,12 +66,14 @@ int SelectMovieWindow::getSelectedMovieId()
 
 void SelectMovieWindow::resetSelectedMovieId()
 {
-    	this->selectedMovieId = -1;
+   this->selectedMovieId = -1;
+   this->tableWidget->clearSelection();
+   
 }
 
 void SelectMovieWindow::onSelectItem() {
     setSelectedMovieId();
-    if (selectedMovieId == -1) {
+    if (setSelectedMovieId() == -1) {
         QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
     }
 
@@ -75,9 +81,11 @@ void SelectMovieWindow::onSelectItem() {
 
 void SelectMovieWindow::onAcceptButton() {
     if (selectedMovieId != -1) {
-		emit movieSelected(selectedMovieId);
-	}
+        emit movieSelected(selectedMovieId);
+    }
     else {
-		QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
-	}
+        QMessageBox::information(nullptr, "Movie Not Selected", "You need to select one movie.");
+    }
+
+    resetSelectedMovieId();
 }

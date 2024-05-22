@@ -152,7 +152,7 @@ void ManageMovieWindow::addMovie()
     movieTableWidget->setMoviesInTableWidget();
 
     updateFields(); 
-    emit movieAdded();
+    emit moviesChanged();
 }
 
 void ManageMovieWindow::removeMovie()
@@ -185,7 +185,7 @@ void ManageMovieWindow::removeMovie()
 
     // clear the input fields
     updateFields();
-    emit movieRemoved();
+    emit moviesChanged();
 }
 
 void ManageMovieWindow::updateMovie()

@@ -15,7 +15,7 @@ public:
 	void resetSelectedMovieId();
 
 signals:
-	void movieSelected(int movieId);
+	void movieSelected(int movieID);
 
 private:
 	QPushButton* acceptButton;

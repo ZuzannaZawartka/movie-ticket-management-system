@@ -2,6 +2,8 @@
 #include "Movie.h"
 #include <QDate>
 #include <QTime>
+#include <QDateTime>
+
 
 class Schedule
 {
@@ -11,6 +13,7 @@ public:
     int getMovieId() const;
     QDate getDate() const;
     QTime getTime() const;
+    QDateTime getDateTime() const;
     int getDurationMinutes() const;
 
 private:

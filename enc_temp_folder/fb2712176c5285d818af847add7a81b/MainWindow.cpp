@@ -30,7 +30,6 @@ MainWindow::MainWindow(QWidget* parent)
     //refresh movie list in select movie window after changes
     connect(manageMovieWindow, &ManageMovieWindow::moviesChanged, selectMovieWindow, &SelectMovieWindow::setMoviesInTableWidget);
     
-    //after changes in file for room , refresh room in reserve seats window
     connect(manageRoomWindow, &ManageRoomWindow::fileSaved, reserveSeatsWindow, &ReserveSeatsWindow::reloadSeatData);
 
     //connections from book tickets windows
