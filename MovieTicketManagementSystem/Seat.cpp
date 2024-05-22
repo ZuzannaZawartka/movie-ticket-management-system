@@ -34,23 +34,48 @@ int Seat::col() const
     return seatCol;
 }
 
-QChar Seat::type() const
-{
-    return seatType;
-}
-
 bool Seat::chooseSeat()
 {
     isSelected = !isSelected;
-
     updateColor();
 
     return isSelected;
 }
 
+void Seat::setSeat(bool variable)
+{
+    isSelected = variable;
+
+    updateColor();
+
+}
+
+QChar Seat::type() const
+{
+    return seatType;
+}
+
+
 QString Seat::getSeatNumber() const
 {
     return seatNumber;
+}
+
+bool Seat::isSelectedSeat() const
+{
+    return isSelected;
+}
+
+void Seat::resetSeat()
+{
+    setEnabled(true);
+    setSeat(false);
+    button->setChecked(false);
+}
+
+void Seat::setEnabled(bool variable)
+{
+    this->button->setEnabled(variable);
 }
 
 void Seat::updateColor()
@@ -75,10 +100,10 @@ void Seat::updateColor()
         button->setStyleSheet("");
         break;
     }
+
 }
 
 void Seat::onButtonClicked()
 {
-    chooseSeat();
-    emit clicked(seatRow, seatCol);
+    emit clicked(getSeatNumber());
 }

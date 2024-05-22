@@ -21,6 +21,12 @@ public:
 	void setMovie(Movie& movie);
 	void setDateTime(QDateTime dateTime);
 	void setSeat(int seat);
+	void resetInputs();
+
+
+signals:
+	void personalDataAccepted(QString name, QString surname, QString email);
+
 private:
 	QLineEdit* nameInput;
 	QLineEdit* surnameInput;
@@ -29,12 +35,15 @@ private:
 	QDateTimeEdit* dateTimeInput;
 	QSpinBox* seatInput;
 	QPushButton* acceptButton;
+
+	// regex validators for name, surname and email
+	QRegularExpressionValidator* nameValidator;  
+	QRegularExpressionValidator* surnameValidator;  
+	QRegularExpressionValidator* emailValidator;  
+
 	void checkInputs();
+	void onAcceptButton();
 	bool validateInputs();
 
-
-
-private slots:
-	void onAcceptButtonClicked();
 };
 
