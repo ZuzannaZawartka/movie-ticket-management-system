@@ -13,7 +13,7 @@ class ReserveSeatsWindow : public QObject
 public:
     ReserveSeatsWindow(QGridLayout* layout, QPushButton* acceptButton);
     ~ReserveSeatsWindow();
-    std::vector<QString> getReservedSeats() const;
+    std::vector<Seat*> getReservedSeats() const;
     bool isSeatReserved();
     void selectAllSeats();
 
@@ -24,16 +24,16 @@ private:
     void generateSeats();
     void loadSeatData();
     void resetReservedSeats();
-    void onButtonClicked(int row, int col);
+    void onButtonClicked(QString seatNumber);
     void clearSeats();
     void refreshSeats();
 
     QPushButton* acceptButton;
     QGridLayout* layout;
     QString fileName;
-    std::vector<QString> reservedSeats;
-    std::vector<QString> seatData; // To store seat data from the file
+    std::vector<Seat*> reservedSeats;
     std::vector<Seat*> seats;      // To store seat pointers
+    std::vector<QString> seatData; // To store seat data from the file
 
 private slots:
     void onAcceptButtonClicked();  // Slot to handle accept button click

@@ -12,15 +12,14 @@ BookingDatabase::BookingDatabase()
 bool BookingDatabase::createTable() {
     QString query = "CREATE TABLE IF NOT EXISTS Booking ("
         "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-        "movieId INTEGER NOT NULL,"
-        "scheduleId INTEGER NOT NULL,"
-        "seat TEXT NOT NULL,"
-        "name TEXT NOT NULL,"
-        "surname TEXT NOT NULL,"
-        "email TEXT NOT NULL,"
-        "FOREIGN KEY (movieId) REFERENCES Movie(id),"
-        "FOREIGN KEY (scheduleId) REFERENCES Schedule(id)"
+        "movieId INTEGER,"
+        "scheduleId INTEGER,"
+        "seat TEXT,"
+        "name TEXT,"
+        "surname TEXT,"
+        "email TEXT"
         ");";
+
     return executeQuery(query, QVariantList());
 }
 
@@ -30,6 +29,7 @@ bool BookingDatabase::addBooking(const Booking& booking) {
         QMessageBox::critical(nullptr, "Database Error", "Booking already exists!");
         return false;
     }
+
 
     QString query = "INSERT INTO Booking (movieId, scheduleId, seat, name, surname, email) "
         "VALUES (?, ?, ?, ?, ?, ?);";

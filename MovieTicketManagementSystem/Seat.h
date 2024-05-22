@@ -14,11 +14,14 @@ public:
     int row() const;
     int col() const;
     bool chooseSeat(); // returns true if seat was taken
+    bool isSelectedSeat() const;
+    void setSeat(bool variable); // returns true if seat was taken
     QChar type() const; // 0,1,2
     QString getSeatNumber() const; // A1, B2, C3, etc.
 
+
 signals:
-    void clicked(int row, int col);
+    void clicked(QString seatNumber);
 
 private:
     int seatRow;

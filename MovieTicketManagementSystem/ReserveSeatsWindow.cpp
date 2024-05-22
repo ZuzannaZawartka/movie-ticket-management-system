@@ -78,55 +78,63 @@ void ReserveSeatsWindow::refreshSeats()
     generateSeats();
 }
 
-void ReserveSeatsWindow::onButtonClicked(int row, int col)
+void ReserveSeatsWindow::onButtonClicked(QString seatNumber)
 {
-    QString seatNumber = QString(QChar('A' + row)) + QString::number(col + 1);
-
-    // check if seat is reserved
-    if (std::find(reservedSeats.begin(), reservedSeats.end(), seatNumber) != reservedSeats.end()) {
-        // remove seat from reservedSeats
-        reservedSeats.erase(std::remove(reservedSeats.begin(), reservedSeats.end(), seatNumber), reservedSeats.end());
-
-        // QMessageBox::information(nullptr, "Seat Clicked", QString("Seat %1 unclicked").arg(seatNumber));
-    }
-    else {
-        // add seat to reservedSeats
-        reservedSeats.push_back(seatNumber);
-
-        // QMessageBox::information(nullptr, "Seat Clicked", QString("Seat %1 clicked").arg(seatNumber));
+    for (Seat* seat : seats) {
+        if (seatNumber == seat->getSeatNumber()) {
+            seat->chooseSeat(); 
+            return;
+        }
     }
 }
 
-std::vector<QString> ReserveSeatsWindow::getReservedSeats() const
+
+std::vector<Seat*> ReserveSeatsWindow::getReservedSeats() const
 {
-    return reservedSeats;
+    std::vector<Seat*> selectedSeats;
+    for (Seat* seat : seats) {
+        if (seat->isSelectedSeat()) {
+            selectedSeats.push_back(seat);
+        }
+    }
+    return selectedSeats;
 }
 
 bool ReserveSeatsWindow::isSeatReserved()
 {
-    return !reservedSeats.empty();
+    for (Seat* seat : seats) {
+        if (seat->isSelectedSeat()) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void ReserveSeatsWindow::resetReservedSeats()
 {
-    reservedSeats.clear();
+    for (Seat* seat : seats) {
+        seat->setSeat(false);
+    }
+
 }
 
 void ReserveSeatsWindow::selectAllSeats()
 {
     for (Seat* seat : seats) {
-        seat->chooseSeat();
+        seat->setSeat(true);
     }
+
 }
 
 void ReserveSeatsWindow::onAcceptButtonClicked()
 {
-    if (reservedSeats.empty()) {
-        QMessageBox::information(nullptr, "Error", "You need to reserve at least one seat.");
+    if (!isSeatReserved()) {
+        QMessageBox::information(nullptr, "Error", "You need to select at least one seat.");
     }
     else {
-        emit seatsAccepted(seats);
+        // emit signal with selected seats
+        emit seatsAccepted(getReservedSeats());
 
-        QMessageBox::information(nullptr, "Success", "Seats reserved successfully.");
+        QMessageBox::information(nullptr, "Success", "Seats selected successfully.");
     }
 }

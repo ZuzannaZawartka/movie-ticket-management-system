@@ -2,6 +2,12 @@
 
 Booking::Booking(int movieId, int scheduleId, QString seat, QString name, QString surname, QString email)
 {
+	this->movieId = movieId;
+	this->scheduleId = scheduleId;
+	this->seat = seat;
+	this->name = name;
+	this->surname = surname;
+	this->email = email;
 }
 
 Booking::~Booking()

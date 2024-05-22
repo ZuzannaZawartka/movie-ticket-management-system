@@ -13,13 +13,21 @@ BookTicketWindow::BookTicketWindow(SelectMovieWindow* selectMovieWindow, SelectS
     selectScheduleWindow(selectScheduleWindow),
     reserveSeatsWindow(reserveSeatsWindow),
     inputPersonalDataWindow(inputPersonalDataWindow)
+
 {
+    
+    movieID = -1;
+	scheduleID = -1;
+    name = "";
+    surname = "";
+    email = "";
+
+
     // Connect signals to slots
     connect(selectMovieWindow, &SelectMovieWindow::movieSelected, this, &BookTicketWindow::onMovieAccepted);
     connect(selectScheduleWindow, &SelectScheduleWindow::scheduleSelected, this, &BookTicketWindow::onScheduleAccepted);
     connect(reserveSeatsWindow, &ReserveSeatsWindow::seatsAccepted, this, &BookTicketWindow::onSeatsAccepted);
     connect(inputPersonalDataWindow, &InputPersonalDataWindow::personalDataAccepted, this, &BookTicketWindow::onPersonalDataAccepted);
-
 
 
 }
@@ -48,7 +56,6 @@ void BookTicketWindow::onScheduleAccepted(int scheduleID)
 void BookTicketWindow::onSeatsAccepted(std::vector<Seat*> seats)
 {
 
-
     this->seats = seats;
 
     QMessageBox::information(nullptr, "Seats Selected", QString("Number of seats: %1").arg(seats.size()));
@@ -63,7 +70,7 @@ void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QSt
 
     
     //for each seat in seats
-    for (Seat* seat : seats) {
+   for (Seat* seat : seats) {
         Booking booking(movieID, scheduleID, seat->getSeatNumber(), name, surname, email); 
         if (!bookingDatabase.addBooking(booking)) {
             QMessageBox::critical(nullptr, "Booking Error", "Failed to add booking to database!");
