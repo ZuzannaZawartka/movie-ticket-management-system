@@ -1,9 +1,7 @@
 #pragma once
-
 #include <QGridLayout>
-#include <QObject>
-#include <QString>
 #include <QPushButton>
+#include <QString>
 #include "Seat.h"
 #include "BookingDatabase.h"
 
@@ -14,22 +12,22 @@ class ReserveSeatsWindow : public QObject
 public:
     ReserveSeatsWindow(QGridLayout* layout, QPushButton* acceptButton);
     ~ReserveSeatsWindow();
-    std::vector<Seat*> getReservedSeats() const;
     bool isSeatReserved();
     void resetReservedSeats();
+
+    std::vector<Seat*> getReservedSeats() const;
+
 
 public slots:
     void initializeSeatsAfterSchedule(int ScheduleId);// Slot to initialize seats
 
 signals:
-    void seatsAccepted(std::vector<Seat*> seats);
+    void seatsAccepted(std::vector<Seat*> seats);// Signal to send reserved seats
 
 private:
     void generateSeats();
     void loadSeatData();
     void onButtonClicked(QString seatNumber);
-    void clearSeats();
-    void refreshSeats();
     Seat* findSeatByNumber(const QString& seatNumber);
     void setOccupiedSeats(int scheduleID);
 

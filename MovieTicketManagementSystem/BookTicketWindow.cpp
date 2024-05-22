@@ -41,20 +41,29 @@ BookTicketWindow::~BookTicketWindow()
     // Destructor implementation (if needed)
 }
 
+
 void BookTicketWindow::onMovieAccepted(int movieID)
 {
     this->movieID = movieID;
+    Movie movie = movieDatabase.getMovieById(movieID);
+    inputPersonalDataWindow->setMovie(movie);
+
   
 }
 
 void BookTicketWindow::onScheduleAccepted(int scheduleID)
 {
     this->scheduleID = scheduleID;
+    Schedule schedule = scheduleDatabase.getScheduleById(scheduleID);
+    inputPersonalDataWindow->setDateTime(schedule.getDateTime());
+
 }
 
 void BookTicketWindow::onSeatsAccepted(std::vector<Seat*> seats)
 {
     this->seats = seats;
+    inputPersonalDataWindow->setSeat(seats.size());
+
 }
 
 void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QString email)

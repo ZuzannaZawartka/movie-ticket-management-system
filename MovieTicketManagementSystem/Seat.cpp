@@ -73,10 +73,9 @@ void Seat::resetSeat()
     button->setChecked(false);
 }
 
-bool Seat::setEnabled(bool variable)
+void Seat::setEnabled(bool variable)
 {
     this->button->setEnabled(variable);
-    return true;
 }
 
 void Seat::updateColor()

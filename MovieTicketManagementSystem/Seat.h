@@ -16,7 +16,7 @@ public:
     bool chooseSeat(); // returns true if seat was taken
     bool isSelectedSeat() const;
     void resetSeat();
-    bool setEnabled(bool variable);
+    void setEnabled(bool variable);
     void setSeat(bool variable); // returns true if seat was taken
     QChar type() const; // 0,1,2
     QString getSeatNumber() const; // A1, B2, C3, etc.

@@ -15,11 +15,14 @@ public:
 	~BookTicketWindow();
 
 private:
+
 	SelectMovieWindow* selectMovieWindow;
 	SelectScheduleWindow* selectScheduleWindow;
 	ReserveSeatsWindow* reserveSeatsWindow;
 	InputPersonalDataWindow* inputPersonalDataWindow;
 	BookingDatabase bookingDatabase;
+	MovieDatabase movieDatabase;
+	ScheduleDatabase scheduleDatabase;
 	// Variables to hold the ID of the selected movie, schedule and seat
 	int movieID;
 	int scheduleID;

@@ -74,22 +74,6 @@ void ReserveSeatsWindow::generateSeats()
 
 }
 
-void ReserveSeatsWindow::clearSeats()
-{
-    for (Seat* seat : seats) {
-        layout->removeWidget(seat->getButton());
-        delete seat;
-    }
-    seats.clear();
-}
-
-void ReserveSeatsWindow::refreshSeats()
-{
-    clearSeats();
-    loadSeatData();
-    generateSeats();
-}
-
 void ReserveSeatsWindow::onButtonClicked(QString seatNumber)
 {
     Seat* seat = findSeatByNumber(seatNumber);
@@ -145,10 +129,10 @@ void ReserveSeatsWindow::setOccupiedSeats(int scheduleID)
 
 void ReserveSeatsWindow::initializeSeatsAfterSchedule(int scheduleID)
 {
-    //generateSeats();
     resetReservedSeats();
-    setOccupiedSeats(scheduleID);
 
+    // set occupied seats by scheduleId
+    setOccupiedSeats(scheduleID);
 }
 
 void ReserveSeatsWindow::onAcceptButtonClicked()

@@ -21,6 +21,12 @@ QTime Schedule::getTime() const
     return time;
 }
 
+QDateTime Schedule::getDateTime() const
+{
+    return QDateTime(date, time);
+}
+
+
 int Schedule::getDurationMinutes() const
 {
     return durationMinutes;

@@ -42,10 +42,6 @@ MainWindow::~MainWindow()
     delete manageRoomWindow;
     delete reserveSeatsWindow;
     delete selectMovieWindow;
-   // delete selectScheduleWindow;
-   // delete bookTicketWindow;
-
-
 }
 
 void MainWindow::changeToMainWindow()
