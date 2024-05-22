@@ -25,8 +25,8 @@ MainWindow::MainWindow(QWidget* parent)
 
 
     //connections to refresh lists in windows
-    connect(manageMovieWindow, &ManageMovieWindow::movieAdded, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
-    connect(manageMovieWindow, &ManageMovieWindow::movieRemoved, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
+    connect(manageMovieWindow, &ManageMovieWindow::moviesChanged, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
+    connect(manageMovieWindow, &ManageMovieWindow::moviesChanged, selectMovieWindow, &SelectMovieWindow::setMoviesInTableWidget);
     
     //connections from book tickets windows
     connect(selectMovieWindow, &SelectMovieWindow::movieSelected, this, &MainWindow::changeToSelectScheduleWindow);
