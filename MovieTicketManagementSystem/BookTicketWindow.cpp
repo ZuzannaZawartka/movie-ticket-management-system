@@ -28,6 +28,10 @@ BookTicketWindow::BookTicketWindow(SelectMovieWindow* selectMovieWindow, SelectS
     connect(selectScheduleWindow, &SelectScheduleWindow::scheduleSelected, this, &BookTicketWindow::onScheduleAccepted);
     connect(reserveSeatsWindow, &ReserveSeatsWindow::seatsAccepted, this, &BookTicketWindow::onSeatsAccepted);
     connect(inputPersonalDataWindow, &InputPersonalDataWindow::personalDataAccepted, this, &BookTicketWindow::onPersonalDataAccepted);
+ 
+    connect(selectScheduleWindow, &SelectScheduleWindow::scheduleSelected, reserveSeatsWindow, &ReserveSeatsWindow::initializeSeatsAfterSchedule);
+
+
 
 
 }
@@ -40,26 +44,17 @@ BookTicketWindow::~BookTicketWindow()
 void BookTicketWindow::onMovieAccepted(int movieID)
 {
     this->movieID = movieID;
-    QMessageBox::information(nullptr, "Movie Selected", QString("Movie ID: %1").arg(movieID));
-
-    // Additional logic for handling accepted movie (if needed)
+  
 }
 
 void BookTicketWindow::onScheduleAccepted(int scheduleID)
 {
     this->scheduleID = scheduleID;
-
-    QMessageBox::information(nullptr, "Schedule Selected", QString("Schedule ID: %1").arg(scheduleID));
-    // Additional logic for handling accepted schedule (if needed)
 }
 
 void BookTicketWindow::onSeatsAccepted(std::vector<Seat*> seats)
 {
-
     this->seats = seats;
-
-    QMessageBox::information(nullptr, "Seats Selected", QString("Number of seats: %1").arg(seats.size()));
-    // Additional logic for handling accepted seats (if needed)
 }
 
 void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QString email)
@@ -78,11 +73,8 @@ void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QSt
         }
     }
 
-    QMessageBox::information(nullptr, "Booking Success", "Booking added to database successfully!");
-
     // clear all data
-    ///selectMovieWindow->resetSelectedMovieId();
-    //selectScheduleWindow->resetSelectedScheduleId();
-    //reserveSeatsWindow->resetReservedSeatsWindow();
-   // inputPersonalDataWindow->resetReservedSeatsWindow();
+    selectMovieWindow->resetSelectedMovieId();
+    reserveSeatsWindow->resetReservedSeats();
+    inputPersonalDataWindow->resetInputs();
 }

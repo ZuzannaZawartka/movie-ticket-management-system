@@ -72,7 +72,6 @@ void ReserveSeatsWindow::generateSeats()
         layout->addWidget(rowLabel, row + 1, 0);
     }
 
-    setOccupiedSeats();
 }
 
 void ReserveSeatsWindow::clearSeats()
@@ -121,10 +120,6 @@ bool ReserveSeatsWindow::isSeatReserved()
     return false;
 }
 
-void ReserveSeatsWindow::resetReservedSeatsWindow()
-{
-    
-}
 
 void ReserveSeatsWindow::resetReservedSeats()
 {
@@ -134,9 +129,9 @@ void ReserveSeatsWindow::resetReservedSeats()
 
 }
 
-void ReserveSeatsWindow::setOccupiedSeats()
+void ReserveSeatsWindow::setOccupiedSeats(int scheduleID)
 {
-    QList<QString> occupiedSeatNumbers = bookingDatabase.getOccupiedSeats();
+    QList<QString> occupiedSeatNumbers = bookingDatabase.getOccupiedSeats(scheduleID);
 
     for (const QString& seatNumber : occupiedSeatNumbers) {
         Seat* seat = findSeatByNumber(seatNumber);
@@ -144,6 +139,14 @@ void ReserveSeatsWindow::setOccupiedSeats()
             seat->setEnabled(false);
         }
     }
+}
+
+void ReserveSeatsWindow::initializeSeatsAfterSchedule(int scheduleID)
+{
+    QMessageBox::information(nullptr, "Info", "Schedule selected: " + QString::number(scheduleID));
+    //generateSeats();
+    setOccupiedSeats(scheduleID);
+
 }
 
 void ReserveSeatsWindow::onAcceptButtonClicked()
@@ -154,7 +157,5 @@ void ReserveSeatsWindow::onAcceptButtonClicked()
     else {
         // emit signal with selected seats
         emit seatsAccepted(getReservedSeats());
-
-        QMessageBox::information(nullptr, "Success", "Seats selected successfully.");
     }
 }

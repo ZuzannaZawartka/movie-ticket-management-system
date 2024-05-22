@@ -16,8 +16,10 @@ public:
     ~ReserveSeatsWindow();
     std::vector<Seat*> getReservedSeats() const;
     bool isSeatReserved();
-    void resetReservedSeatsWindow();
-    
+    void resetReservedSeats();
+
+public slots:
+    void initializeSeatsAfterSchedule(int ScheduleId);// Slot to initialize seats
 
 signals:
     void seatsAccepted(std::vector<Seat*> seats);
@@ -25,12 +27,11 @@ signals:
 private:
     void generateSeats();
     void loadSeatData();
-    void resetReservedSeats();
     void onButtonClicked(QString seatNumber);
     void clearSeats();
     void refreshSeats();
     Seat* findSeatByNumber(const QString& seatNumber);
-    void setOccupiedSeats();
+    void setOccupiedSeats(int scheduleID);
 
     QPushButton* acceptButton;
     QGridLayout* layout;

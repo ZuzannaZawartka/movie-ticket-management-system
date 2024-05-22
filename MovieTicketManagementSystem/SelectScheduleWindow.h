@@ -14,7 +14,6 @@ public:
 	int getSelectedScheduleId();
 	int setSelectedScheduleId();
 	void setMovieId(int movieId);
-	void resetSelectedScheduleId();
 
 signals:
 	void scheduleSelected(int scheduleID);

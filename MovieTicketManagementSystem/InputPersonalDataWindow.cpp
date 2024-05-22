@@ -74,6 +74,16 @@ void InputPersonalDataWindow::onAcceptButton()
 		QMessageBox::warning(nullptr, "Error", "Please fill all fields");
 	}
 
+	resetInputs();
+
+}
+
+void InputPersonalDataWindow::resetInputs()
+{
+	nameInput->clear();
+	surnameInput->clear();
+	emailInput->clear();
+	validateInputs();
 }
 
 bool InputPersonalDataWindow::validateInputs()

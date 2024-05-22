@@ -51,7 +51,6 @@ int SelectMovieWindow::setSelectedMovieId()
 
             this->selectedMovieId = movieDatabase.getMovieId(movie);
 
-            QMessageBox::information(nullptr, "Movie Selected", QString("Movie ID: %1").arg(selectedMovieId));
             return this->selectedMovieId;
         }
         return -1;

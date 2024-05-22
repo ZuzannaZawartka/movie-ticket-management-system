@@ -74,12 +74,6 @@ void SelectScheduleWindow::setMovieId(int movieId)
     	this->movieId = movieId;
 }
 
-void SelectScheduleWindow::resetSelectedScheduleId()
-{
-    this->selectedScheduleId = -1;
-    this->movieId = -1;
-}
-
 
 void SelectScheduleWindow::onAcceptButton2()
 {

@@ -18,6 +18,6 @@ public:
     bool bookingExists(const Booking& booking);
     bool deleteAllBookings();
     QList<Booking> getAllBookings();
-    QList<QString> getOccupiedSeats();
+    QList<QString> getOccupiedSeats(int scheduleID);
 
 };

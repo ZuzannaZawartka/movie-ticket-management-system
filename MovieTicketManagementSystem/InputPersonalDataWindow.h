@@ -21,6 +21,8 @@ public:
 	void setMovie(Movie& movie);
 	void setDateTime(QDateTime dateTime);
 	void setSeat(int seat);
+	void resetInputs();
+
 
 signals:
 	void personalDataAccepted(QString name, QString surname, QString email);

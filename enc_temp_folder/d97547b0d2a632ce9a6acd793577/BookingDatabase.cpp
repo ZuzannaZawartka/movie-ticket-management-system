@@ -114,6 +114,8 @@ QList<QString> BookingDatabase::getOccupiedSeats(int scheduleID) {
     QVariantList values;
     values << scheduleID;
 
+
+
     QSqlQuery sqlQuery = prepareQueryWithBindings(query, values);
 
     if (!sqlQuery.exec()) {
