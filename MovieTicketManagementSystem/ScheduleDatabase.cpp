@@ -34,7 +34,7 @@ bool ScheduleDatabase::addSchedule(const Schedule& schedule)
             QMessageBox::critical(nullptr, "Database Error", "Movie does not exist!");
             return false;
         }
-
+        int duration = movieDatabase.getMovieById(movieId).getDuration();
         // Check if schedule already exists in scheduleDatabase
 
         if (isScheduleExists(schedule)) {
@@ -47,7 +47,7 @@ bool ScheduleDatabase::addSchedule(const Schedule& schedule)
 
         QVariantList values;
         values << movieId << schedule.getDate().toString("yyyy-MM-dd")
-            << schedule.getTime().toString("hh:mm:ss") << schedule.getDurationMinutes();
+            << schedule.getTime().toString("hh:mm:ss") << duration;
 
         return executeQuery(query, values);
     }
@@ -82,9 +82,9 @@ bool ScheduleDatabase::isTableExists()
 
 int ScheduleDatabase::getScheduleId(const Schedule& schedule)
 {
-    QString queryStr = "SELECT id FROM schedule WHERE movieId = :movieId AND date = :date AND time = :time AND duration = :duration;";
+    QString queryStr = "SELECT id FROM schedule WHERE movieId = :movieId AND date = :date AND time = :time;";
     QVariantList values;
-    values << schedule.getMovieId() << schedule.getDate().toString("yyyy-MM-dd") << schedule.getTime().toString("hh:mm:ss") << schedule.getDurationMinutes();
+    values << schedule.getMovieId() << schedule.getDate().toString("yyyy-MM-dd") << schedule.getTime().toString("hh:mm:ss");
 
     QSqlQuery query = prepareQueryWithBindings(queryStr, values);
 
@@ -175,7 +175,6 @@ Schedule ScheduleDatabase::getScheduleById(int id)
 
     if (query.next()) {
         int movieId = query.value("movieId").toInt();
-        
         QDate date = query.value("date").toDate();
         QTime time = query.value("time").toTime();
         int durationMinutes = query.value("duration").toInt();

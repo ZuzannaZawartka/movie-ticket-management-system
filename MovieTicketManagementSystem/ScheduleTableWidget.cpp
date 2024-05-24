@@ -43,7 +43,7 @@ void ScheduleTableWidget::setSchedulesInTableWidget(int movieId)
      
         QTableWidgetItem* dateItem = new QTableWidgetItem(schedule.getDate().toString("yyyy-MM-dd"));
         QTableWidgetItem* timeItem = new QTableWidgetItem(schedule.getTime().toString("HH:mm:ss"));
-        QTableWidgetItem* durationItem = new QTableWidgetItem(QString::number(schedule.getDurationMinutes()));
+        QTableWidgetItem* durationItem = new QTableWidgetItem(QString::number(movie.getDuration()));
 
         
         tableWidget->setItem(row, 1, dateItem);
