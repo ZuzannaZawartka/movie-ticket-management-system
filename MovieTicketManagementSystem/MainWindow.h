@@ -13,6 +13,8 @@
 #include "BookTicketWindow.h"
 #include "SelectMovieWindow.h"
 #include "InputPersonalDataWindow.h"
+#include "BookingTableWidget.h"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT;
@@ -33,6 +35,7 @@ private:
     SelectMovieWindow* selectMovieWindow;
     SelectScheduleWindow* selectScheduleWindow;
     InputPersonalDataWindow* inputPersonalDataWindow;
+    BookingTableWidget* bookingTableWidget;
 
 private slots:
     void changeToMainWindow();

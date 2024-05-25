@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="Booking.cpp" />
     <ClCompile Include="BookingDatabase.cpp" />
+    <ClCompile Include="BookingTableWidget.cpp" />
     <ClCompile Include="BookTicketWindow.cpp" />
     <ClCompile Include="InputPersonalDataWindow.cpp" />
     <ClCompile Include="ManageMovieWindow.cpp" />
@@ -123,10 +124,12 @@
     <ClInclude Include="Booking.h" />
     <ClInclude Include="BookingDatabase.h" />
     <QtMoc Include="BookTicketWindow.h" />
+    <QtMoc Include="BookingTableWidget.h" />
     <ClInclude Include="DatabaseManager.h" />
     <QtMoc Include="ManageRoomWindow.h" />
     <QtMoc Include="ManageScheduleWindow.h" />
     <QtMoc Include="InputPersonalDataWindow.h" />
+    <ClInclude Include="ManageBookingWindow.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
     <ClInclude Include="Person.h" />

@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget* parent)
     reserveSeatsWindow = new ReserveSeatsWindow(ui.reserveSeatsGrid,ui.acceptBookTicket3Button);
     inputPersonalDataWindow = new InputPersonalDataWindow(ui.nameLineEdit, ui.surnameLineEdit, ui.emailLineEdit,ui.movieLineEdit,ui.dateTimeEdit,ui.amountTicketSpinBox,ui.acceptBookTicket4Button);
     bookTicketWindow = new BookTicketWindow(selectMovieWindow,selectScheduleWindow,reserveSeatsWindow,inputPersonalDataWindow);
+    bookingTableWidget = new BookingTableWidget(ui.manageBookingTableWidget);
 
 
     //connections to refresh lists in windows
@@ -114,6 +115,7 @@ void MainWindow::changeToShowMovieListWindow()
 
 void MainWindow::changeToViewBookingsWindow()
 {
+    bookingTableWidget->setBookingsInTableWidget();
     ui.stackedWidget->setCurrentWidget(ui.viewBookingsWindow);
 }
 

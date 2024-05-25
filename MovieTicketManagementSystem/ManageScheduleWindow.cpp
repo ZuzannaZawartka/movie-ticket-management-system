@@ -117,6 +117,7 @@ bool ManageScheduleWindow::checkInputFields()
         if (!time.isValid()) {
             throw std::invalid_argument("Invalid time.");
         }
+        
 
         return true; 
     }
@@ -184,11 +185,11 @@ void ManageScheduleWindow::updateDuration()
 
 void ManageScheduleWindow::setLimitationsOnFields() 
 {
-    //TO DO - if not working, probably has to be called in different moment
-    /*if (dateEdit->date() == QDate::currentDate()) {
-        
-        timeEdit->setMinimumTime(QTime::currentTime());
-    }*/ 
+    //if (dateEdit->date() == QDate::currentDate()) {
+
+        //timeEdit->setMinimumTime(QTime::currentTime());
+    //}
+    //else timeEdit->setMinimumTime(QTime(0, 0));
 
     dateEdit->setMinimumDate(QDate::currentDate());
     durationTime->setReadOnly(true);
