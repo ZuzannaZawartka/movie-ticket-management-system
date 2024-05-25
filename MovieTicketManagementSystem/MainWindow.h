@@ -14,6 +14,7 @@
 #include "SelectMovieWindow.h"
 #include "InputPersonalDataWindow.h"
 #include "BookingTableWidget.h"
+#include "ManageBookingWindow.h"
 
 class MainWindow : public QMainWindow
 {
@@ -36,6 +37,7 @@ private:
     SelectScheduleWindow* selectScheduleWindow;
     InputPersonalDataWindow* inputPersonalDataWindow;
     BookingTableWidget* bookingTableWidget;
+    ManageBookingWindow* manageBookingWindow;
 
 private slots:
     void changeToMainWindow();

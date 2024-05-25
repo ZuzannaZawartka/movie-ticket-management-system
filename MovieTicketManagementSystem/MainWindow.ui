@@ -2142,59 +2142,115 @@ background-color: rgb(36, 46, 61);</string>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QGridLayout" name="gridLayout_21">
-              <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
                <widget class="QTableWidget" name="manageBookingTableWidget">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
 color: rgb(36, 46, 61);</string>
                 </property>
                </widget>
               </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QFrame" name="menuViewBookingsFrame">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(36, 46, 61);</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_18">
-              <item alignment="Qt::AlignmentFlag::AlignLeft">
-               <widget class="QPushButton" name="goBackViewBookingsButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>150</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>150</width>
-                  <height>30</height>
-                 </size>
-                </property>
+              <item>
+               <widget class="QFrame" name="frame_18">
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
+                 <string notr="true">background-color: rgb(36, 46, 61);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_18">
+                 <item>
+                  <widget class="QComboBox" name="titleBookingComboBox"/>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="scheduleBookingComboBox"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="seatManageLineEdit"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="nameManageLineEdit"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="surnameManageLineEdit"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="emailManageLineEdit"/>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="saveBookingButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(243, 250, 250);
 font: 10pt &quot;Franklin Gothic Demi&quot;;
 border-radius: 1px;
 background-color: rgb(57, 79, 107);</string>
-                </property>
-                <property name="text">
-                 <string>GO BACK</string>
-                </property>
+                   </property>
+                   <property name="text">
+                    <string>REMOVE</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="removeBookingButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+border-radius: 1px;
+background-color: rgb(57, 79, 107);</string>
+                   </property>
+                   <property name="text">
+                    <string>SAVE</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="goBackViewBookingsButton">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(243, 250, 250);
+font: 10pt &quot;Franklin Gothic Demi&quot;;
+border-radius: 1px;
+background-color: rgb(57, 79, 107);</string>
+                   </property>
+                   <property name="text">
+                    <string>GO BACK</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>

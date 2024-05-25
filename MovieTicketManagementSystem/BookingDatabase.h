@@ -17,7 +17,13 @@ public:
     bool deleteBooking(const Booking& booking);
     bool bookingExists(const Booking& booking);
     bool deleteAllBookings();
+    int getBookingId(const Booking& booking);
+    Booking getBookingById(int id);
+    bool updateBooking(const Booking& oldBooking, const Booking& newBooking);
+    void removeInvalidBookings();
     QList<Booking> getAllBookings();
     QList<QString> getOccupiedSeats(int scheduleID);
+private:
+    ScheduleDatabase scheduleDatabase;
 
 };

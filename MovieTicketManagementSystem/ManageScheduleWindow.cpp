@@ -220,6 +220,7 @@ void ManageScheduleWindow::editCurrentSchedule()
 
     // clear the input fields
     updateFields();
+    emit schedulesChanged();
 }
 
 void ManageScheduleWindow::addNewSchedule()
@@ -237,6 +238,7 @@ void ManageScheduleWindow::addNewSchedule()
     scheduleTableWidget->setSchedulesInTableWidget();
 
     updateFields();
+    emit schedulesChanged();
 }
 void ManageScheduleWindow::removeCurrentSchedule()
 {
@@ -273,4 +275,5 @@ void ManageScheduleWindow::removeCurrentSchedule()
     
     
     updateFields();
+    emit schedulesChanged();
 }

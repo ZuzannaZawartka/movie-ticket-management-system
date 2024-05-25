@@ -39,6 +39,9 @@ private:
 public slots:
     void refreshSchedules();
 
+signals:
+    void schedulesChanged();
+
 private slots:
     void addNewSchedule();
     void removeCurrentSchedule();

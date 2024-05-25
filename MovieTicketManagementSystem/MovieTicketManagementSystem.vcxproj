@@ -97,6 +97,7 @@
     <ClCompile Include="BookingTableWidget.cpp" />
     <ClCompile Include="BookTicketWindow.cpp" />
     <ClCompile Include="InputPersonalDataWindow.cpp" />
+    <ClCompile Include="ManageBookingWindow.cpp" />
     <ClCompile Include="ManageMovieWindow.cpp" />
     <ClCompile Include="ManageRoomWindow.cpp" />
     <ClCompile Include="ManageScheduleWindow.cpp" />
@@ -129,7 +130,7 @@
     <QtMoc Include="ManageRoomWindow.h" />
     <QtMoc Include="ManageScheduleWindow.h" />
     <QtMoc Include="InputPersonalDataWindow.h" />
-    <ClInclude Include="ManageBookingWindow.h" />
+    <QtMoc Include="ManageBookingWindow.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
     <ClInclude Include="Person.h" />
