@@ -105,7 +105,7 @@ QList<Schedule> ScheduleDatabase::getAllSchedules()
     QList<Schedule> schedules;
 
     try {
-        QString queryStr = "SELECT * FROM schedule ORDER BY date ASC;";  // Dodano sortowanie po dacie
+        QString queryStr = "SELECT * FROM schedule ORDER BY date ASC, time ASC;";  
         QSqlQuery query = prepareQueryWithBindings(queryStr);
 
         if (!query.exec()) {
@@ -123,11 +123,11 @@ QList<Schedule> ScheduleDatabase::getAllSchedules()
                 schedules.append(schedule);
             }
             catch (const std::exception& e) {
-                // Handle the case where the movie does not exist
+                // Obs³uga przypadku, gdy film nie istnieje
                 QString errorMessage = QString("Error retrieving movie with ID %1: %2").arg(movieId).arg(e.what());
                 QMessageBox::critical(nullptr, "Database Error", errorMessage);
 
-                continue; // Skip this schedule if the movie does not exist
+                continue; // Pomiñ ten harmonogram, jeœli film nie istnieje
             }
         }
     }
@@ -185,7 +185,7 @@ Schedule ScheduleDatabase::getScheduleById(int id)
 QList<Schedule> ScheduleDatabase::getSchedulesByMovieIdSortedByDate(int movieId)
 {
     QList<Schedule> schedules;
-    QString queryStr = "SELECT * FROM schedule WHERE movieId = :movieId ORDER BY date ASC;";
+    QString queryStr = "SELECT * FROM schedule WHERE movieId = :movieId ORDER BY date ASC, time ASC;";
     QVariantList values;
     values << movieId;
 
@@ -207,8 +207,6 @@ QList<Schedule> ScheduleDatabase::getSchedulesByMovieIdSortedByDate(int movieId)
 
     return schedules;
 }
-
-
 
 bool ScheduleDatabase::updateSchedule(const Schedule& oldSchedule, const Schedule& newSchedule)
 {
