@@ -94,15 +94,16 @@
   <ItemGroup>
     <ClCompile Include="Booking.cpp" />
     <ClCompile Include="BookingDatabase.cpp" />
+    <ClCompile Include="BookingTableWidget.cpp" />
     <ClCompile Include="BookTicketWindow.cpp" />
     <ClCompile Include="InputPersonalDataWindow.cpp" />
+    <ClCompile Include="ManageBookingWindow.cpp" />
     <ClCompile Include="ManageMovieWindow.cpp" />
     <ClCompile Include="ManageRoomWindow.cpp" />
     <ClCompile Include="ManageScheduleWindow.cpp" />
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieDatabase.cpp" />
     <ClCompile Include="MovieTableWidget.cpp" />
-    <ClCompile Include="Person.cpp" />
     <ClCompile Include="ReserveSeatsWindow.cpp" />
     <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="ScheduleDatabase.cpp" />
@@ -110,7 +111,6 @@
     <ClCompile Include="Seat.cpp" />
     <ClCompile Include="SelectMovieWindow.cpp" />
     <ClCompile Include="SelectScheduleWindow.cpp" />
-    <ClCompile Include="Ticket.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
@@ -123,13 +123,14 @@
     <ClInclude Include="Booking.h" />
     <ClInclude Include="BookingDatabase.h" />
     <QtMoc Include="BookTicketWindow.h" />
+    <QtMoc Include="BookingTableWidget.h" />
     <ClInclude Include="DatabaseManager.h" />
     <QtMoc Include="ManageRoomWindow.h" />
     <QtMoc Include="ManageScheduleWindow.h" />
     <QtMoc Include="InputPersonalDataWindow.h" />
+    <QtMoc Include="ManageBookingWindow.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieDatabase.h" />
-    <ClInclude Include="Person.h" />
     <QtMoc Include="ReserveSeatsWindow.h" />
     <ClInclude Include="Schedule.h" />
     <QtMoc Include="MovieTableWidget.h" />
@@ -138,7 +139,6 @@
     <QtMoc Include="Seat.h" />
     <QtMoc Include="SelectMovieWindow.h" />
     <QtMoc Include="SelectScheduleWindow.h" />
-    <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="numbers.txt" />

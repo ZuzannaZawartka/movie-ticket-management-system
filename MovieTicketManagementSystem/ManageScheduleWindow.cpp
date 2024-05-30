@@ -17,8 +17,8 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
     selectedScheduleId = -1; //initialize the selected movie id to -1
 
     setLimitationsOnFields();
-
     refreshSchedules();
+    updateDuration();
 
     //connect the add button to the addSchedule slot
     connect(addButton, SIGNAL(clicked()), this, SLOT(addNewSchedule()));
@@ -29,6 +29,7 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
 
     //connection to the selection
     connect(scheduleTableWidget->getTableWidget(), &QTableWidget::clicked, this, &ManageScheduleWindow::onScheduleSelected);
+    connect(titleEdit, &QComboBox::currentIndexChanged, this, &ManageScheduleWindow::updateDuration);
 
     
     
@@ -98,7 +99,7 @@ bool ManageScheduleWindow::checkInputFields()
     try {
         
        
-        if (titleEdit->currentText().isEmpty() || dateEdit->text().isEmpty() || timeEdit->text().isEmpty() || durationTime->text().isEmpty()) {
+        if (titleEdit->currentText().isEmpty() || dateEdit->text().isEmpty() || timeEdit->text().isEmpty()) {
             throw std::invalid_argument("All fields must be filled out.");
         }
 
@@ -107,14 +108,6 @@ bool ManageScheduleWindow::checkInputFields()
             throw std::invalid_argument("Wrong date input.");
         }
 
-        // Check duration time
-        bool ok;
-        int duration = durationTime->text().toInt(&ok);
-        if (!ok || duration <= 0 || duration > 500) {
-            throw std::invalid_argument("Wrong duration time input.");
-        }
-
-        
         QDate date = dateEdit->date();
         if (!date.isValid()) {
             throw std::invalid_argument("Invalid date.");
@@ -124,6 +117,7 @@ bool ManageScheduleWindow::checkInputFields()
         if (!time.isValid()) {
             throw std::invalid_argument("Invalid time.");
         }
+        
 
         return true; 
     }
@@ -141,7 +135,8 @@ void ManageScheduleWindow::updateFields(const Schedule& schedule)
     titleEdit->setCurrentText(movie.getTitle());
     dateEdit->setDate(schedule.getDate());
     timeEdit->setTime(schedule.getTime());
-    durationTime->setText(QString::number(schedule.getDurationMinutes()));
+    int duration = movie.getDuration(); 
+    durationTime->setText(QString::number(duration)); 
 
 }
 
@@ -156,21 +151,19 @@ Schedule ManageScheduleWindow::getScheduleFromFields()
     int movieId = movieDatabase.getMovieId(movie);
     QDate date = dateEdit->date();
     QTime time = timeEdit->time();
-    int durationInt = durationTime->text().toInt();
+    int durationInt = movie.getDuration();
 
     Schedule schedule(movieId, date, time, durationInt);
 
     return schedule;
 }
 
-
-
 void ManageScheduleWindow::updateFields()
 {
     titleEdit->setCurrentIndex(0);
     dateEdit->setDate(QDate::currentDate());
     timeEdit->setTime(QTime(0,0));
-    durationTime->clear();
+    updateDuration();
 
     // set the selected movie id to -1
     selectedScheduleId = -1;
@@ -179,15 +172,27 @@ void ManageScheduleWindow::updateFields()
     scheduleTableWidget->getTableWidget()->clearSelection();
 }
 
+void ManageScheduleWindow::updateDuration()
+{
+    QString movieTitle = titleEdit->currentText();
+    if (!movieTitle.isEmpty()) {
+        Movie movie = movieDatabase.getMovieByTitle(movieTitle);
+        int duration = movie.getDuration();
+        durationTime->setText(QString::number(duration));
+    }
+    
+}
+
 void ManageScheduleWindow::setLimitationsOnFields() 
 {
-    //TO DO - if not working, probably has to be called in different moment
-    /*if (dateEdit->date() == QDate::currentDate()) {
-        
-        timeEdit->setMinimumTime(QTime::currentTime());
-    }*/ 
+    //if (dateEdit->date() == QDate::currentDate()) {
+
+        //timeEdit->setMinimumTime(QTime::currentTime());
+    //}
+    //else timeEdit->setMinimumTime(QTime(0, 0));
+
     dateEdit->setMinimumDate(QDate::currentDate());
-    durationTime->setValidator(new QIntValidator(0, 500, this));
+    durationTime->setReadOnly(true);
     
 }
 void ManageScheduleWindow::editCurrentSchedule()
@@ -215,6 +220,7 @@ void ManageScheduleWindow::editCurrentSchedule()
 
     // clear the input fields
     updateFields();
+    emit schedulesChanged();
 }
 
 void ManageScheduleWindow::addNewSchedule()
@@ -232,6 +238,7 @@ void ManageScheduleWindow::addNewSchedule()
     scheduleTableWidget->setSchedulesInTableWidget();
 
     updateFields();
+    emit schedulesChanged();
 }
 void ManageScheduleWindow::removeCurrentSchedule()
 {
@@ -251,14 +258,13 @@ void ManageScheduleWindow::removeCurrentSchedule()
     QString title = scheduleTableWidget->getTableWidget()->item(rowIndex, 0)->text();
     QString dateString = scheduleTableWidget->getTableWidget()->item(rowIndex, 1)->text();
     QString timeString = scheduleTableWidget->getTableWidget()->item(rowIndex, 2)->text();
-    int duration = scheduleTableWidget->getTableWidget()->item(rowIndex, 3)->text().toInt();
 
     QDate date = QDate::fromString(dateString, "yyyy-MM-dd");
     QTime time = QTime::fromString(timeString, "HH:mm:ss");
 
     Movie movie = movieDatabase.getMovieByTitle(title);
     int movieId = movieDatabase.getMovieId(movie);
-    
+    int duration = movie.getDuration();
     Schedule schedule(movieId, date, time, duration);
 
     // remove the schedule from the database
@@ -269,4 +275,5 @@ void ManageScheduleWindow::removeCurrentSchedule()
     
     
     updateFields();
+    emit schedulesChanged();
 }

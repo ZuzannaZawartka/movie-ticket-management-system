@@ -21,6 +21,7 @@ public:
     void removeInvalidSchedules();
     bool isScheduleExists(const Schedule& schedule);
     bool updateSchedule(const Schedule& oldSchedule, const Schedule& newSchedule);
+    Schedule getScheduleByMovieAndDateTime(int movieId, const QDateTime& dateTime);
     Schedule getScheduleById(int id);
     QList<Schedule> getSchedulesByMovieIdSortedByDate(int movieId);
 

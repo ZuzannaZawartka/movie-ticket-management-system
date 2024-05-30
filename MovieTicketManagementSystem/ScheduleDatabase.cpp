@@ -34,7 +34,7 @@ bool ScheduleDatabase::addSchedule(const Schedule& schedule)
             QMessageBox::critical(nullptr, "Database Error", "Movie does not exist!");
             return false;
         }
-
+        int duration = movieDatabase.getMovieById(movieId).getDuration();
         // Check if schedule already exists in scheduleDatabase
 
         if (isScheduleExists(schedule)) {
@@ -47,7 +47,7 @@ bool ScheduleDatabase::addSchedule(const Schedule& schedule)
 
         QVariantList values;
         values << movieId << schedule.getDate().toString("yyyy-MM-dd")
-            << schedule.getTime().toString("hh:mm:ss") << schedule.getDurationMinutes();
+            << schedule.getTime().toString("hh:mm:ss") << duration;
 
         return executeQuery(query, values);
     }
@@ -82,9 +82,9 @@ bool ScheduleDatabase::isTableExists()
 
 int ScheduleDatabase::getScheduleId(const Schedule& schedule)
 {
-    QString queryStr = "SELECT id FROM schedule WHERE movieId = :movieId AND date = :date AND time = :time AND duration = :duration;";
+    QString queryStr = "SELECT id FROM schedule WHERE movieId = :movieId AND date = :date AND time = :time;";
     QVariantList values;
-    values << schedule.getMovieId() << schedule.getDate().toString("yyyy-MM-dd") << schedule.getTime().toString("hh:mm:ss") << schedule.getDurationMinutes();
+    values << schedule.getMovieId() << schedule.getDate().toString("yyyy-MM-dd") << schedule.getTime().toString("hh:mm:ss");
 
     QSqlQuery query = prepareQueryWithBindings(queryStr, values);
 
@@ -100,13 +100,12 @@ int ScheduleDatabase::getScheduleId(const Schedule& schedule)
         return -1;
     }
 }
-
 QList<Schedule> ScheduleDatabase::getAllSchedules()
 {
     QList<Schedule> schedules;
 
     try {
-        QString queryStr = "SELECT * FROM schedule;";
+        QString queryStr = "SELECT * FROM schedule ORDER BY date ASC, time ASC;";  
         QSqlQuery query = prepareQueryWithBindings(queryStr);
 
         if (!query.exec()) {
@@ -116,7 +115,6 @@ QList<Schedule> ScheduleDatabase::getAllSchedules()
         while (query.next()) {
             int movieId = query.value("movieId").toInt();
             try {
-                
                 QDate date = query.value("date").toDate();
                 QTime time = query.value("time").toTime();
                 int durationMinutes = query.value("duration").toInt();
@@ -125,11 +123,11 @@ QList<Schedule> ScheduleDatabase::getAllSchedules()
                 schedules.append(schedule);
             }
             catch (const std::exception& e) {
-                // Handle the case where the movie does not exist
+                // Obs³uga przypadku, gdy film nie istnieje
                 QString errorMessage = QString("Error retrieving movie with ID %1: %2").arg(movieId).arg(e.what());
                 QMessageBox::critical(nullptr, "Database Error", errorMessage);
-                
-                continue; // Skip this schedule if the movie does not exist
+
+                continue; // Pomiñ ten harmonogram, jeœli film nie istnieje
             }
         }
     }
@@ -175,23 +173,19 @@ Schedule ScheduleDatabase::getScheduleById(int id)
 
     if (query.next()) {
         int movieId = query.value("movieId").toInt();
-        
         QDate date = query.value("date").toDate();
         QTime time = query.value("time").toTime();
         int durationMinutes = query.value("duration").toInt();
 
         return Schedule(movieId, date, time, durationMinutes);
     }
-    else {
-        QMessageBox::critical(nullptr, "Database Error", "Schedule with ID " + QString::number(id) + " not found!");
-
-    }
+    
 }
 
 QList<Schedule> ScheduleDatabase::getSchedulesByMovieIdSortedByDate(int movieId)
 {
     QList<Schedule> schedules;
-    QString queryStr = "SELECT * FROM schedule WHERE movieId = :movieId ORDER BY date ASC;";
+    QString queryStr = "SELECT * FROM schedule WHERE movieId = :movieId ORDER BY date ASC, time ASC;";
     QVariantList values;
     values << movieId;
 
@@ -213,8 +207,6 @@ QList<Schedule> ScheduleDatabase::getSchedulesByMovieIdSortedByDate(int movieId)
 
     return schedules;
 }
-
-
 
 bool ScheduleDatabase::updateSchedule(const Schedule& oldSchedule, const Schedule& newSchedule)
 {
@@ -263,4 +255,28 @@ void ScheduleDatabase::removeInvalidSchedules()
             
         }
     }
+}
+Schedule ScheduleDatabase::getScheduleByMovieAndDateTime(int movieId, const QDateTime& dateTime)
+{
+    QString queryStr = "SELECT * FROM Schedule WHERE movieId = ? AND date = ? AND time = ?";
+
+    QSqlQuery query;
+    query.prepare(queryStr);
+    query.addBindValue(movieId);
+    query.addBindValue(dateTime.date().toString("yyyy-MM-dd"));
+    query.addBindValue(dateTime.time().toString("hh:mm:ss")); 
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve schedule by movie and date time!");
+        return Schedule(-1, QDate(), QTime(), -1);
+    }
+
+    if (query.next()) {
+        int movieId = query.value("movieId").toInt();
+        QDate date = query.value("date").toDate();
+        QTime time = query.value("time").toTime();
+        int durationMinutes = query.value("durationMinutes").toInt();
+
+        return Schedule(movieId, date, time, durationMinutes);
+    }
+    
 }

@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget* parent)
     reserveSeatsWindow = new ReserveSeatsWindow(ui.reserveSeatsGrid,ui.acceptBookTicket3Button);
     inputPersonalDataWindow = new InputPersonalDataWindow(ui.nameLineEdit, ui.surnameLineEdit, ui.emailLineEdit,ui.movieLineEdit,ui.dateTimeEdit,ui.amountTicketSpinBox,ui.acceptBookTicket4Button);
     bookTicketWindow = new BookTicketWindow(selectMovieWindow,selectScheduleWindow,reserveSeatsWindow,inputPersonalDataWindow);
+    bookingTableWidget = new BookingTableWidget(ui.manageBookingTableWidget);
+    manageBookingWindow = new ManageBookingWindow(ui.titleBookingComboBox, ui.scheduleBookingComboBox, ui.seatManageLineEdit, ui.nameManageLineEdit, ui.surnameManageLineEdit, ui.emailManageLineEdit,ui.saveBookingButton, ui.removeBookingButton, ui.manageBookingTableWidget);
 
 
     //connections to refresh lists in windows
@@ -30,6 +32,9 @@ MainWindow::MainWindow(QWidget* parent)
     //refresh movie list in select movie window after changes
     connect(manageMovieWindow, &ManageMovieWindow::moviesChanged, selectMovieWindow, &SelectMovieWindow::setMoviesInTableWidget);
     
+    //refresh booking list after changes
+    connect(manageScheduleWindow, &ManageScheduleWindow::schedulesChanged, manageBookingWindow, &ManageBookingWindow::refreshBookings);
+
     //after changes in file for room , refresh room in reserve seats window
     connect(manageRoomWindow, &ManageRoomWindow::fileSaved, reserveSeatsWindow, &ReserveSeatsWindow::reloadSeatData);
 
@@ -114,6 +119,7 @@ void MainWindow::changeToShowMovieListWindow()
 
 void MainWindow::changeToViewBookingsWindow()
 {
+    bookingTableWidget->setBookingsInTableWidget();
     ui.stackedWidget->setCurrentWidget(ui.viewBookingsWindow);
 }
 

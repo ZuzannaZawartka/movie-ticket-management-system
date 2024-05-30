@@ -142,6 +142,9 @@ void ManageMovieWindow::setLimitationsOnFields()
 
 void ManageMovieWindow::addMovie()
 {
+    if (!checkInputFields()) {
+        return;
+    }
     // Get the movie from the input fields
     Movie movie = getMovieFromFields();
 

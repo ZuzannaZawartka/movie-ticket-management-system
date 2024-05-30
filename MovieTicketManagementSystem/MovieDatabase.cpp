@@ -103,12 +103,11 @@ Movie MovieDatabase::getMovieById(int id)
 
         return Movie(title, director, type, duration);
     }
-    else {
-        // Commented because it shows up when function in ScheduleDatabase - removeInvalidSchedules() is working
-        //QMessageBox::critical(nullptr, "Database Error", "Movie not found!"); 
+    else { 
         return Movie("", "", "", -1); //return empty movie object
     }
 }
+
 
 int MovieDatabase::getMovieId(const Movie& movie)
 {

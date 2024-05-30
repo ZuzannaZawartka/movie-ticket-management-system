@@ -32,11 +32,15 @@ private:
     MovieDatabase movieDatabase;
     bool checkInputFields();
     void updateFields();
+    void updateDuration();
     void updateFields(const Schedule& schedule);
     Schedule getScheduleFromFields();
 
 public slots:
     void refreshSchedules();
+
+signals:
+    void schedulesChanged();
 
 private slots:
     void addNewSchedule();
