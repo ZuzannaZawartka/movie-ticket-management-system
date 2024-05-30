@@ -100,13 +100,12 @@ int ScheduleDatabase::getScheduleId(const Schedule& schedule)
         return -1;
     }
 }
-
 QList<Schedule> ScheduleDatabase::getAllSchedules()
 {
     QList<Schedule> schedules;
 
     try {
-        QString queryStr = "SELECT * FROM schedule;";
+        QString queryStr = "SELECT * FROM schedule ORDER BY date ASC;";  // Dodano sortowanie po dacie
         QSqlQuery query = prepareQueryWithBindings(queryStr);
 
         if (!query.exec()) {
@@ -116,7 +115,6 @@ QList<Schedule> ScheduleDatabase::getAllSchedules()
         while (query.next()) {
             int movieId = query.value("movieId").toInt();
             try {
-                
                 QDate date = query.value("date").toDate();
                 QTime time = query.value("time").toTime();
                 int durationMinutes = query.value("duration").toInt();
@@ -128,7 +126,7 @@ QList<Schedule> ScheduleDatabase::getAllSchedules()
                 // Handle the case where the movie does not exist
                 QString errorMessage = QString("Error retrieving movie with ID %1: %2").arg(movieId).arg(e.what());
                 QMessageBox::critical(nullptr, "Database Error", errorMessage);
-                
+
                 continue; // Skip this schedule if the movie does not exist
             }
         }
