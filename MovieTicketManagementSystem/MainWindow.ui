@@ -36,7 +36,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>8</number>
+       <number>10</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -191,10 +191,20 @@ color: rgb(243, 250, 250);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>MANAGE MOVIE</string>
@@ -210,10 +220,20 @@ background-color: rgb(57, 79, 107);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>MANAGE ROOM</string>
@@ -229,10 +249,20 @@ border-radius: 1px;</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>BOOK TICKETS</string>
@@ -248,10 +278,20 @@ border-radius: 1px;</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>MANAGE SCHEDULE</string>
@@ -267,10 +307,20 @@ border-radius: 1px;</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>MANAGE BOOKINGS</string>
@@ -286,10 +336,20 @@ border-radius: 1px;</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>SHOW MOVIE LIST</string>
@@ -305,10 +365,20 @@ border-radius: 1px;</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>SHOW SCHEDULE</string>
@@ -482,10 +552,20 @@ color: rgb(36, 46, 61);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                 </property>
                 <property name="text">
                  <string>GO BACK</string>
@@ -613,7 +693,10 @@ background-color: rgb(36, 46, 61);</string>
               </sizepolicy>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(234, 238, 244);</string>
+              <string notr="true">background-color: rgb(234, 238, 244);
+font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+ color: rgb(36, 46, 61); 
+</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
@@ -648,8 +731,22 @@ background-color: rgb(36, 46, 61);</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
-color: rgb(36, 46, 61);
+                   <string notr="true">QTableWidget {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(36, 46, 61); 
+}
+
+QTableWidget::item:selected {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(255, 255, 255); 
+    background-color: rgb(52, 152, 219); 
+}
+
+
+
+
+
+
 </string>
                   </property>
                   <property name="textElideMode">
@@ -778,7 +875,17 @@ border-radius: 1px;</string>
                </item>
                <item>
                 <property name="text">
-                 <string>Acrion</string>
+                 <string>Action</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Horror</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Comedy</string>
                 </property>
                </item>
               </widget>
@@ -826,10 +933,20 @@ background-color: rgb(36, 46, 61);</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                </property>
                <property name="text">
                 <string>SAVE</string>
@@ -845,10 +962,20 @@ border-radius: 1px;</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                </property>
                <property name="text">
                 <string>ADD NEW</string>
@@ -864,10 +991,20 @@ border-radius: 1px;</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                </property>
                <property name="text">
                 <string>REMOVE</string>
@@ -883,10 +1020,20 @@ border-radius: 1px;</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-background-color: rgb(57, 79, 107);
-border-radius: 1px;</string>
+                <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                </property>
                <property name="text">
                 <string>GO BACK</string>
@@ -997,6 +1144,11 @@ background-color: rgb(36, 46, 61);</string>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(234, 238, 244);
+font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+ color: rgb(36, 46, 61); </string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::Shape::StyledPanel</enum>
                 </property>
@@ -1004,6 +1156,21 @@ background-color: rgb(36, 46, 61);</string>
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_7">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
                  <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
                   <widget class="QTableWidget" name="tableScheduleWidget">
                    <property name="minimumSize">
@@ -1013,8 +1180,17 @@ background-color: rgb(36, 46, 61);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
-color: rgb(36, 46, 61);</string>
+                    <string notr="true">QTableWidget {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(36, 46, 61); 
+}
+
+QTableWidget::item:selected {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(255, 255, 255); 
+    background-color: rgb(52, 152, 219); 
+}
+</string>
                    </property>
                    <property name="textElideMode">
                     <enum>Qt::TextElideMode::ElideMiddle</enum>
@@ -1209,10 +1385,20 @@ background-color: rgb(36, 46, 61);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>SAVE</string>
@@ -1234,10 +1420,20 @@ background-color: rgb(57, 79, 107);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>ADD NEW</string>
@@ -1259,10 +1455,20 @@ background-color: rgb(57, 79, 107);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>REMOVE</string>
@@ -1284,10 +1490,20 @@ background-color: rgb(57, 79, 107);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                    </property>
                    <property name="text">
                     <string>GO BACK</string>
@@ -1453,10 +1669,20 @@ color: rgb(36, 46, 61);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                 </property>
                 <property name="text">
                  <string>GO BACK</string>
@@ -1615,10 +1841,20 @@ background-color: rgb(36, 46, 61);</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                </property>
                <property name="text">
                 <string>GO BACK</string>
@@ -1640,10 +1876,20 @@ background-color: rgb(57, 79, 107);</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                </property>
                <property name="text">
                 <string>ACCEPT</string>
@@ -1738,10 +1984,20 @@ background-color: rgb(36, 46, 61);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}</string>
                 </property>
                 <property name="text">
                  <string> GO BACK</string>
@@ -1763,10 +2019,25 @@ background-color: rgb(57, 79, 107);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+
+QPushButton:disabled {
+    background-color: rgb(180, 180, 180); /* Kolor dla wyłączonego przycisku */
+    color: rgb(150, 150, 150); /* Kolor tekstu dla wyłączonego przycisku */
+}</string>
                 </property>
                 <property name="text">
                  <string>ACCEPT</string>
@@ -2023,10 +2294,22 @@ background-color: rgb(36, 46, 61);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+
+</string>
                 </property>
                 <property name="text">
                  <string>GO BACK</string>
@@ -2048,10 +2331,25 @@ background-color: rgb(57, 79, 107);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+
+QPushButton:disabled {
+    background-color: rgb(180, 180, 180); /* Kolor dla wyłączonego przycisku */
+    color: rgb(150, 150, 150); /* Kolor tekstu dla wyłączonego przycisku */
+}</string>
                 </property>
                 <property name="text">
                  <string>ACCEPT</string>
@@ -2078,7 +2376,7 @@ background-color: rgb(57, 79, 107);</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_17">
            <property name="spacing">
-            <number>3</number>
+            <number>0</number>
            </property>
            <property name="leftMargin">
             <number>0</number>
@@ -2143,18 +2441,86 @@ background-color: rgb(36, 46, 61);</string>
               <enum>QFrame::Shadow::Raised</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item>
-               <widget class="QTableWidget" name="manageBookingTableWidget">
+               <widget class="QFrame" name="frame_19">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
-color: rgb(36, 46, 61);</string>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(234, 238, 244);
+font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+ color: rgb(36, 46, 61); </string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_21">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QTableWidget" name="manageBookingTableWidget">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QTableWidget {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(36, 46, 61); 
+}
+
+QTableWidget::item:selected {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(255, 255, 255); 
+    background-color: rgb(52, 152, 219); 
+}
+</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
               <item>
@@ -2170,19 +2536,61 @@ color: rgb(36, 46, 61);</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_18">
                  <item>
+                  <widget class="QLabel" name="label_15">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <widget class="QComboBox" name="titleBookingComboBox"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_16">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QComboBox" name="scheduleBookingComboBox"/>
                  </item>
                  <item>
+                  <widget class="QLabel" name="label_17">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <widget class="QLineEdit" name="seatManageLineEdit"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_18">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLineEdit" name="nameManageLineEdit"/>
                  </item>
                  <item>
+                  <widget class="QLabel" name="label_19">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <widget class="QLineEdit" name="surnameManageLineEdit"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_20">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLineEdit" name="emailManageLineEdit"/>
@@ -2196,10 +2604,21 @@ color: rgb(36, 46, 61);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+</string>
                    </property>
                    <property name="text">
                     <string>REMOVE</string>
@@ -2215,10 +2634,21 @@ background-color: rgb(57, 79, 107);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+</string>
                    </property>
                    <property name="text">
                     <string>SAVE</string>
@@ -2240,10 +2670,21 @@ background-color: rgb(57, 79, 107);</string>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                    <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+</string>
                    </property>
                    <property name="text">
                     <string>GO BACK</string>
@@ -2352,6 +2793,10 @@ background-color: rgb(36, 46, 61);</string>
            </item>
            <item>
             <widget class="QFrame" name="mainBodyBookTicketFrame">
+             <property name="styleSheet">
+              <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
+color: rgb(36, 46, 61);</string>
+             </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -2377,8 +2822,17 @@ background-color: rgb(36, 46, 61);</string>
               <item row="0" column="0">
                <widget class="QTableWidget" name="selectMovieTableWidget">
                 <property name="styleSheet">
-                 <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
-color: rgb(36, 46, 61);</string>
+                 <string notr="true">QTableWidget {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(36, 46, 61); 
+}
+
+QTableWidget::item:selected {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(255, 255, 255); 
+    background-color: rgb(52, 152, 219); 
+}
+</string>
                 </property>
                </widget>
               </item>
@@ -2424,10 +2878,21 @@ color: rgb(36, 46, 61);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+</string>
                 </property>
                 <property name="text">
                  <string>GO BACK</string>
@@ -2449,10 +2914,31 @@ background-color: rgb(57, 79, 107);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+QPushButton:disabled {
+    background-color: rgb(180, 180, 180); /* Kolor dla wyłączonego przycisku */
+    color: rgb(150, 150, 150); /* Kolor tekstu dla wyłączonego przycisku */
+}
+
+
+
+
+
+
+</string>
                 </property>
                 <property name="text">
                  <string>ACCEPT</string>
@@ -2521,11 +3007,56 @@ background-color: rgb(36, 46, 61);</string>
             </widget>
            </item>
            <item>
-            <widget class="QTableWidget" name="selectScheduleTableWidget">
+            <widget class="QFrame" name="frame_20">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="styleSheet">
               <string notr="true">font: 900 12pt &quot;Source Sans Pro Black&quot;;
 color: rgb(36, 46, 61);</string>
              </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_22">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QTableWidget" name="selectScheduleTableWidget">
+                <property name="styleSheet">
+                 <string notr="true">QTableWidget {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(36, 46, 61); 
+}
+
+QTableWidget::item:selected {
+    font: 900 12pt &quot;Source Sans Pro Black&quot;; 
+    color: rgb(255, 255, 255); 
+    background-color: rgb(52, 152, 219); 
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
            <item>
@@ -2537,7 +3068,8 @@ color: rgb(36, 46, 61);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(36, 46, 61);</string>
+              <string notr="true">background-color: rgb(36, 46, 61);
+</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
@@ -2561,10 +3093,21 @@ color: rgb(36, 46, 61);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+</string>
                 </property>
                 <property name="text">
                  <string>GO BACK</string>
@@ -2586,10 +3129,25 @@ background-color: rgb(57, 79, 107);</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(243, 250, 250);
-font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;
-background-color: rgb(57, 79, 107);</string>
+                 <string notr="true">QPushButton {
+    color: rgb(243, 250, 250);
+    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    border-radius: 1px;
+    background-color: rgb(57, 79, 107);
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 120, 150); /* Kolor po najechaniu */
+}
+
+QPushButton:pressed {
+    background-color: rgb(40, 60, 90); /* Kolor po kliknięciu */
+}
+QPushButton:disabled {
+    background-color: rgb(180, 180, 180); /* Kolor dla wyłączonego przycisku */
+    color: rgb(150, 150, 150); /* Kolor tekstu dla wyłączonego przycisku */
+}
+</string>
                 </property>
                 <property name="text">
                  <string>ACCEPT</string>
