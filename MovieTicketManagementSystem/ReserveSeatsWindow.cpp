@@ -133,7 +133,6 @@ void ReserveSeatsWindow::setOccupiedSeats(int scheduleID)
 {
     QList<QString> occupiedSeatNumbers = bookingDatabase.getOccupiedSeats(scheduleID);
 
-    QMessageBox::information(nullptr, "Occupied Seats", "Occupied seats: " + occupiedSeatNumbers.join(", "));
 
     for (const QString& seatNumber : occupiedSeatNumbers) {
         Seat* seat = findSeatByNumber(seatNumber);

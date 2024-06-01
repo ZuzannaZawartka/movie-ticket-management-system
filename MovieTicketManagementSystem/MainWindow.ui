@@ -36,7 +36,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>10</number>
+       <number>8</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -2535,10 +2535,30 @@ QTableWidget::item:selected {
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_18">
+                 <property name="spacing">
+                  <number>3</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <widget class="QLabel" name="label_15">
+                   <property name="styleSheet">
+                    <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+                   </property>
                    <property name="text">
-                    <string>TextLabel</string>
+                    <string>Title:</string>
                    </property>
                   </widget>
                  </item>
@@ -2547,8 +2567,13 @@ QTableWidget::item:selected {
                  </item>
                  <item>
                   <widget class="QLabel" name="label_16">
+                   <property name="styleSheet">
+                    <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+                   </property>
                    <property name="text">
-                    <string>TextLabel</string>
+                    <string>Date/Time:</string>
                    </property>
                   </widget>
                  </item>
@@ -2557,8 +2582,13 @@ QTableWidget::item:selected {
                  </item>
                  <item>
                   <widget class="QLabel" name="label_17">
+                   <property name="styleSheet">
+                    <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+                   </property>
                    <property name="text">
-                    <string>TextLabel</string>
+                    <string>Name:</string>
                    </property>
                   </widget>
                  </item>
@@ -2567,8 +2597,13 @@ QTableWidget::item:selected {
                  </item>
                  <item>
                   <widget class="QLabel" name="label_18">
+                   <property name="styleSheet">
+                    <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+                   </property>
                    <property name="text">
-                    <string>TextLabel</string>
+                    <string>Surname:</string>
                    </property>
                   </widget>
                  </item>
@@ -2577,8 +2612,13 @@ QTableWidget::item:selected {
                  </item>
                  <item>
                   <widget class="QLabel" name="label_19">
+                   <property name="styleSheet">
+                    <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+                   </property>
                    <property name="text">
-                    <string>TextLabel</string>
+                    <string>E-mail:</string>
                    </property>
                   </widget>
                  </item>
@@ -2587,8 +2627,13 @@ QTableWidget::item:selected {
                  </item>
                  <item>
                   <widget class="QLabel" name="label_20">
+                   <property name="styleSheet">
+                    <string notr="true">font: 900 10pt &quot;Source Sans Pro Black&quot;;
+color: rgb(243, 250, 250);
+background-color: rgb(36, 46, 61);</string>
+                   </property>
                    <property name="text">
-                    <string>TextLabel</string>
+                    <string>Seat:</string>
                    </property>
                   </widget>
                  </item>

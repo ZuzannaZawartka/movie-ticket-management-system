@@ -107,7 +107,6 @@ bool BookingDatabase::bookingExists(const Booking& booking) {
     return count != 0;
 }
 
-
 QList<QString> BookingDatabase::getOccupiedSeats(int scheduleID) {
     QList<QString> occupiedSeats;
     QString query = "SELECT DISTINCT seat FROM Booking WHERE scheduleId = :scheduleID;";

@@ -75,6 +75,9 @@ void ManageBookingWindow::onBookingSelected(const QModelIndex& index)
         QString title = titleItem->text();
         QString dateTimeStr = dateItem->text();
         QDateTime dateTime = QDateTime::fromString(dateTimeStr, "ddd MMM dd HH:mm:ss yyyy");
+        if (!dateTime.isValid()) {
+            dateTime = QDateTime::fromString(dateTimeStr, "ddd MMM d HH:mm:ss yyyy");
+        }
         QString nameText = nameItem->text();
         QString surnameText = surnameItem->text();
         QString emailText = emailItem->text();
@@ -88,6 +91,7 @@ void ManageBookingWindow::onBookingSelected(const QModelIndex& index)
         updateFields(booking);
     }
 }
+
 
 bool ManageBookingWindow::checkInputFields()
 {
