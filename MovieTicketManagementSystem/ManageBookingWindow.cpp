@@ -22,6 +22,7 @@ ManageBookingWindow::ManageBookingWindow(QComboBox* titleEditElement, QComboBox*
     connect(removeButton, SIGNAL(clicked()), this, SLOT(removeCurrentBooking()));
     connect(editButton, SIGNAL(clicked()), this, SLOT(editCurrentBooking()));
     connect(bookingTableWidget->getTableWidget(), &QTableWidget::clicked, this, &ManageBookingWindow::onBookingSelected);
+   
 }
 
 ManageBookingWindow::~ManageBookingWindow()
@@ -169,6 +170,12 @@ void ManageBookingWindow::editCurrentBooking()
         return;
     }
 
+    Schedule newSchedule = scheduleDatabase.getScheduleById(newBooking.getScheduleId());
+
+    if (scheduleDatabase.getScheduleId(newSchedule) == -1) {
+        QMessageBox::warning(this, "Warning", "Selected date/time is not available for the chosen movie.");
+        return;
+    }
     bookingTableWidget->setBookingsInTableWidget();
     updateFields();
 }

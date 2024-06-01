@@ -220,12 +220,26 @@ bool BookingDatabase::updateBooking(const Booking& oldBooking, const Booking& ne
     return executeQuery(queryStr, values);
 }
 void BookingDatabase::removeInvalidBookings() {
-    QList<Booking> allBookings = getAllBookings();
+    QString queryStr = "SELECT * FROM Booking;";
+    QSqlQuery query = prepareQueryWithBindings(queryStr);
 
-    for (const Booking& booking : allBookings) {
-        Schedule schedule = scheduleDatabase.getScheduleById(booking.getScheduleId());
-        if (scheduleDatabase.getScheduleId(schedule) == -1) { 
-            deleteBooking(booking);
+    if (!query.exec()) {
+        throw std::runtime_error("Failed to execute query to retrieve bookings.");
+    }
+
+    while (query.next()) {
+        int scheduleId = query.value("scheduleId").toInt();
+        Schedule schedule = scheduleDatabase.getScheduleById(scheduleId);
+        if (!scheduleDatabase.isScheduleExists(schedule) || scheduleId == -1) {
+            QString deleteQueryStr = "DELETE FROM Booking WHERE scheduleId = ?;";
+            QSqlQuery deleteQuery;
+            deleteQuery.prepare(deleteQueryStr);
+            deleteQuery.addBindValue(scheduleId);
+
+            if (!deleteQuery.exec()) {
+                QString errorMessage = QString("Failed to delete invalid booking for schedule ID %1").arg(scheduleId);
+                QMessageBox::critical(nullptr, "Database Error", errorMessage);
+            }
         }
     }
 }

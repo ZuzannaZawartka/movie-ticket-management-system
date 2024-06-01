@@ -63,6 +63,7 @@ void ManageScheduleWindow::refreshSchedules()
     }
 
     scheduleTableWidget->setSchedulesInTableWidget();
+    emit schedulesChanged();
 }
 
 void ManageScheduleWindow::onScheduleSelected(const QModelIndex& index)
