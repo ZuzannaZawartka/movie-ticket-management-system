@@ -43,5 +43,6 @@ public slots:
 private slots:
     void removeCurrentBooking();
     void editCurrentBooking();
+    void onTitleChanged();
     void onBookingSelected(const QModelIndex& index);
 };

@@ -15,7 +15,7 @@ ScheduleTableWidget::ScheduleTableWidget(QTableWidget* tableWidget)
 
 ScheduleTableWidget::~ScheduleTableWidget()
 {
-    	//delete tableWidget;
+  
 
 }
 void ScheduleTableWidget::setSchedulesInTableWidget(int movieId)
