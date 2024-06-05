@@ -24,6 +24,7 @@ public:
     Schedule getScheduleByMovieAndDateTime(int movieId, const QDateTime& dateTime);
     Schedule getScheduleById(int id);
     QList<Schedule> getSchedulesByMovieIdSortedByDate(int movieId);
+    QList<Schedule> getSchedulesByMovieId(int movieId);
 
 private:
     MovieDatabase movieDatabase;

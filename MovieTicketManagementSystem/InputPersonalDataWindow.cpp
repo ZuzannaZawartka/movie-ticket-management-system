@@ -21,7 +21,7 @@ InputPersonalDataWindow::InputPersonalDataWindow(QLineEdit* nameInput, QLineEdit
 
 InputPersonalDataWindow::~InputPersonalDataWindow()
 {
-
+    
 }
 
 QString InputPersonalDataWindow::getName() const

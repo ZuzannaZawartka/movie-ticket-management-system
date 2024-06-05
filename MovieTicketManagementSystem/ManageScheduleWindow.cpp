@@ -31,6 +31,12 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
     connect(scheduleTableWidget->getTableWidget(), &QTableWidget::clicked, this, &ManageScheduleWindow::onScheduleSelected);
     connect(titleEdit, &QComboBox::currentIndexChanged, this, &ManageScheduleWindow::updateDuration);
 
+    // Connect dateEdit to a function that sets the minimum time for timeEdit
+    connect(dateEdit, &QDateEdit::dateChanged, this, &ManageScheduleWindow::updateMinimumTime);
+
+    // Initial setup of the minimum time
+    updateMinimumTime(dateEdit->date());
+
     
     
 }
@@ -63,6 +69,7 @@ void ManageScheduleWindow::refreshSchedules()
     }
 
     scheduleTableWidget->setSchedulesInTableWidget();
+    emit schedulesChanged();
 }
 
 void ManageScheduleWindow::onScheduleSelected(const QModelIndex& index)
@@ -92,7 +99,16 @@ void ManageScheduleWindow::onScheduleSelected(const QModelIndex& index)
         updateFields(schedule);
     }
 }
-
+void ManageScheduleWindow::updateMinimumTime(const QDate& date)
+{
+    if (date == QDate::currentDate()) {
+        QTime minimumTime = QTime::currentTime().addSecs(-QTime::currentTime().second());
+        timeEdit->setMinimumTime(minimumTime);
+    }
+    else {
+        timeEdit->setMinimumTime(QTime(0, 0));
+    }
+}
 
 bool ManageScheduleWindow::checkInputFields()
 {
@@ -185,11 +201,6 @@ void ManageScheduleWindow::updateDuration()
 
 void ManageScheduleWindow::setLimitationsOnFields() 
 {
-    //if (dateEdit->date() == QDate::currentDate()) {
-
-        //timeEdit->setMinimumTime(QTime::currentTime());
-    //}
-    //else timeEdit->setMinimumTime(QTime(0, 0));
 
     dateEdit->setMinimumDate(QDate::currentDate());
     durationTime->setReadOnly(true);

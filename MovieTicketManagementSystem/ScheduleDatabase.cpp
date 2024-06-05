@@ -280,3 +280,39 @@ Schedule ScheduleDatabase::getScheduleByMovieAndDateTime(int movieId, const QDat
     }
     
 }
+
+QList<Schedule> ScheduleDatabase::getSchedulesByMovieId(int movieId)
+{
+    QList<Schedule> schedules;
+    QString queryStr = "SELECT * FROM Schedule WHERE movieId = ?";
+    QSqlQuery query;
+
+    query.prepare(queryStr);
+    query.addBindValue(movieId);
+
+    if (!query.exec()) {
+        QMessageBox::warning(nullptr, "B³¹d SQL", "Wyst¹pi³ b³¹d: nieprawid³owe zapytanie SQL.");
+        return schedules;
+    }
+
+    while (query.next()) {
+        int movieId = query.value("movieId").toInt();
+        try {
+            QDate date = query.value("date").toDate();
+            QTime time = query.value("time").toTime();
+            int durationMinutes = query.value("duration").toInt();
+
+            Schedule schedule(movieId, date, time, durationMinutes);
+            schedules.append(schedule);
+        }
+        catch (const std::exception& e) {
+            // Obs³uga przypadku, gdy film nie istnieje
+            QString errorMessage = QString("Error retrieving movie with ID %1: %2").arg(movieId).arg(e.what());
+            QMessageBox::critical(nullptr, "Database Error", errorMessage);
+
+            continue; // Pomiñ ten harmonogram, jeœli film nie istnieje
+        }
+    }
+    return schedules;
+}
+    

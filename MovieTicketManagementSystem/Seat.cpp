@@ -76,25 +76,30 @@ void Seat::resetSeat()
 void Seat::setEnabled(bool variable)
 {
     this->button->setEnabled(variable);
+    updateColor();
 }
 
 void Seat::updateColor()
 {
+    if (!button->isEnabled())
+    {
+        button->setStyleSheet("background-color: #DCDCDC;");
+        return;
+    }
     if (isSelected)
     {
         button->setStyleSheet("background-color: grey;");
         return;
     }
-
     switch (seatType.unicode()) {
     case '0':
-        button->setStyleSheet("background-color: red;");
+        button->setStyleSheet("background-color: #5F9EA0;");
         break;
     case '1':
-        button->setStyleSheet("background-color: green;");
+        button->setStyleSheet("background-color: #E9967A;");
         break;
     case '2':
-        button->setStyleSheet("background-color: gold;");
+        button->setStyleSheet("background-color: #DC143C;");
         break;
     default:
         button->setStyleSheet("");

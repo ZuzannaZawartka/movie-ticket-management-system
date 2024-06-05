@@ -47,5 +47,6 @@ private slots:
     void removeCurrentSchedule();
     void editCurrentSchedule();
     void setLimitationsOnFields();
+    void updateMinimumTime(const QDate& date);
     void onScheduleSelected(const QModelIndex& index); 
 };

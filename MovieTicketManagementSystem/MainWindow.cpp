@@ -46,12 +46,17 @@ MainWindow::MainWindow(QWidget* parent)
 MainWindow::~MainWindow()
 {
     delete movieTableWidget;
-    delete manageMovieWindow;
     delete showScheduleTable;
     delete manageScheduleWindow;
     delete manageRoomWindow;
-    delete reserveSeatsWindow;
+    delete manageMovieWindow;
     delete selectMovieWindow;
+    delete selectScheduleWindow;
+    delete reserveSeatsWindow;
+    delete inputPersonalDataWindow;
+    delete bookTicketWindow;
+    delete bookingTableWidget;
+    delete manageBookingWindow;
 }
 
 void MainWindow::changeToMainWindow()

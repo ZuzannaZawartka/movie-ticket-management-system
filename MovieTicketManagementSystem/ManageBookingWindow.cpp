@@ -22,6 +22,8 @@ ManageBookingWindow::ManageBookingWindow(QComboBox* titleEditElement, QComboBox*
     connect(removeButton, SIGNAL(clicked()), this, SLOT(removeCurrentBooking()));
     connect(editButton, SIGNAL(clicked()), this, SLOT(editCurrentBooking()));
     connect(bookingTableWidget->getTableWidget(), &QTableWidget::clicked, this, &ManageBookingWindow::onBookingSelected);
+    connect(titleEdit, &QComboBox::currentIndexChanged, this, &ManageBookingWindow::onTitleChanged);
+   
 }
 
 ManageBookingWindow::~ManageBookingWindow()
@@ -33,9 +35,30 @@ ManageBookingWindow::~ManageBookingWindow()
     delete Email;
     delete bookingTableWidget;
 }
-void ManageBookingWindow::refreshBookings()
+
+void ManageBookingWindow::onTitleChanged()
 {
     
+    QString selectedTitle = titleEdit->currentText();
+
+    dateTimeEdit->clear();
+
+    if (selectedTitle.isEmpty()) {
+        return;
+    }
+
+    Movie movie = movieDatabase.getMovieByTitle(selectedTitle);
+    int movieId = movieDatabase.getMovieId(movie);
+
+    QList<Schedule> movieSchedules = scheduleDatabase.getSchedulesByMovieId(movieId);
+
+    for (const Schedule& schedule : movieSchedules) {
+        dateTimeEdit->addItem(schedule.getDateTime().toString("ddd MMM dd HH:mm:ss yyyy"));
+    }
+}
+
+void ManageBookingWindow::refreshBookings()
+{
     bookingDatabase.removeInvalidBookings();
 
     QList<Schedule> allSchedules = scheduleDatabase.getAllSchedules();
@@ -52,10 +75,11 @@ void ManageBookingWindow::refreshBookings()
     for (const Movie& movie : allMovies) {
         titleEdit->addItem(movie.getTitle());
     }
-
+    onTitleChanged();
     
     bookingTableWidget->setBookingsInTableWidget();
 }
+
 void ManageBookingWindow::onBookingSelected(const QModelIndex& index)
 {
     if (!index.isValid()) {
@@ -74,6 +98,9 @@ void ManageBookingWindow::onBookingSelected(const QModelIndex& index)
         QString title = titleItem->text();
         QString dateTimeStr = dateItem->text();
         QDateTime dateTime = QDateTime::fromString(dateTimeStr, "ddd MMM dd HH:mm:ss yyyy");
+        if (!dateTime.isValid()) {
+            dateTime = QDateTime::fromString(dateTimeStr, "ddd MMM d HH:mm:ss yyyy");
+        }
         QString nameText = nameItem->text();
         QString surnameText = surnameItem->text();
         QString emailText = emailItem->text();
@@ -85,6 +112,7 @@ void ManageBookingWindow::onBookingSelected(const QModelIndex& index)
         Booking booking(movieDatabase.getMovieId(movie), scheduleDatabase.getScheduleId(schedule), seatText, nameText, surnameText, emailText);
         selectedBookingId = bookingDatabase.getBookingId(booking);
         updateFields(booking);
+
     }
 }
 
@@ -110,7 +138,18 @@ void ManageBookingWindow::updateFields(const Booking& booking)
     Movie movie = movieDatabase.getMovieById(schedule.getMovieId());
 
     titleEdit->setCurrentText(movie.getTitle());
-    dateTimeEdit->setCurrentText(schedule.getDateTime().toString(Qt::ISODate));
+
+    QString formattedDateTime = schedule.getDateTime().toString("ddd MMM dd HH:mm:ss yyyy");
+    int index = dateTimeEdit->findText(formattedDateTime);
+    if (index != -1) {
+        dateTimeEdit->setCurrentIndex(index);
+    }
+    else {
+        // Je¿eli nie znaleziono, dodaj nowy element i ustaw go jako aktualny
+        dateTimeEdit->addItem(formattedDateTime);
+        dateTimeEdit->setCurrentText(formattedDateTime);
+    }
+
     name->setText(booking.getName());
     surname->setText(booking.getSurname());
     Email->setText(booking.getEmail());
@@ -169,6 +208,12 @@ void ManageBookingWindow::editCurrentBooking()
         return;
     }
 
+    Schedule newSchedule = scheduleDatabase.getScheduleById(newBooking.getScheduleId());
+
+    if (scheduleDatabase.getScheduleId(newSchedule) == -1) {
+        QMessageBox::warning(this, "Warning", "Selected date/time is not available for the chosen movie.");
+        return;
+    }
     bookingTableWidget->setBookingsInTableWidget();
     updateFields();
 }

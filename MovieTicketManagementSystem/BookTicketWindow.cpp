@@ -32,7 +32,7 @@ BookTicketWindow::BookTicketWindow(SelectMovieWindow* selectMovieWindow, SelectS
 
 BookTicketWindow::~BookTicketWindow()
 {
-    // Destructor implementation (if needed)
+
 }
 
 
