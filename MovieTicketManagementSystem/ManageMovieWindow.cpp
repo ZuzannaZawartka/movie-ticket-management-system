@@ -27,6 +27,7 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
 
     //connection that on clicking the save button, the movie is updated in the database
     connect(saveButton, SIGNAL(clicked()), this, SLOT(updateMovie()));
+
 }
 
 ManageMovieWindow::~ManageMovieWindow()
@@ -74,6 +75,14 @@ bool ManageMovieWindow::checkInputFields()
         // Check if the input fields are valid, not empty
         if (titleEdit->toPlainText().isEmpty() || director->toPlainText().isEmpty() || type->currentText().isEmpty() || durationTime->text().isEmpty()) {
             throw std::invalid_argument("All fields must be filled out.");
+        }
+
+        // Check if the director field contains only valid characters
+        QRegularExpression regExp("^[A-Za-z¥¹ÆæÊê£³ÑñÓóŒœŸ¯¿\\s]+$");
+        QString directorStr = director->toPlainText();
+
+        if (!regExp.match(directorStr).hasMatch()) {
+            throw std::invalid_argument("Director name must contain only letters and spaces.");
         }
 
         // check if the duration is a valid number
@@ -136,7 +145,6 @@ void ManageMovieWindow::updateFields()
 
 void ManageMovieWindow::setLimitationsOnFields()
 {
-    //TODO 
     durationTime->setValidator(new QIntValidator(0, 500, this));
 }
 

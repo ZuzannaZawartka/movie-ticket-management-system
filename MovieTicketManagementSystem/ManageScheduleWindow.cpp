@@ -34,6 +34,7 @@ ManageScheduleWindow::ManageScheduleWindow(QComboBox* titleEditElement, QDateEdi
     // Connect dateEdit to a function that sets the minimum time for timeEdit
     connect(dateEdit, &QDateEdit::dateChanged, this, &ManageScheduleWindow::updateMinimumTime);
 
+
     // Initial setup of the minimum time
     updateMinimumTime(dateEdit->date());
 

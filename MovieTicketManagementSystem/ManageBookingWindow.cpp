@@ -165,6 +165,9 @@ Booking ManageBookingWindow::getBookingFromFields()
     int movieId = movieDatabase.getMovieId(movie);
 
     QDateTime dateTime = QDateTime::fromString(dateTimeEdit->currentText(), "ddd MMM dd HH:mm:ss yyyy");
+    if (!dateTime.isValid()) {
+        dateTime = QDateTime::fromString(dateTimeEdit->currentText(), "ddd MMM d HH:mm:ss yyyy");
+    }
     Schedule schedule = scheduleDatabase.getScheduleByMovieAndDateTime(movieId, dateTime);
 
     int scheduleId = scheduleDatabase.getScheduleId(schedule); 
@@ -237,6 +240,9 @@ void ManageBookingWindow::removeCurrentBooking()
 
     Movie movie = movieDatabase.getMovieByTitle(title);
     QDateTime dateTime = QDateTime::fromString(bookingTableWidget->getTableWidget()->item(rowIndex, 1)->text(), "ddd MMM dd HH:mm:ss yyyy");
+    if (!dateTime.isValid()) {
+        dateTime = QDateTime::fromString(bookingTableWidget->getTableWidget()->item(rowIndex, 1)->text(), "ddd MMM d HH:mm:ss yyyy");
+    }
     Schedule schedule = scheduleDatabase.getScheduleByMovieAndDateTime(movieDatabase.getMovieId(movie), dateTime);
 
     Booking booking(movieDatabase.getMovieId(movie), scheduleDatabase.getScheduleId(schedule), seatText, nameText, surnameText, emailText);
