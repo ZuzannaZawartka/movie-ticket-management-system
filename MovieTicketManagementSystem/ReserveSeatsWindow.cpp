@@ -51,28 +51,31 @@ Seat* ReserveSeatsWindow::findSeatByNumber(const QString& seatNumber)
     }
     return nullptr; // return nullptr if seat not found
 }
-
 void ReserveSeatsWindow::generateSeats()
 {
+    int numRows = seatData.size();
 
-    for (int row = 0; row < seatData.size(); ++row) {
+    for (int row = 0; row < numRows; ++row) {
+
         QString line = seatData[row];
-        for (int col = 0; col < line.size(); ++col) {
-            QChar number = line[col]; // type of seat (0 - free, 1 - special, 2 - vip)
-            Seat* seat = new Seat(row, col, number); // create seat object
+        int numCols = line.size();
+        for (int col = numCols - 1; col >= 0; --col) {
+            QChar number = line[col]; // typ siedzenia (0 - wolne, 1 - specjalne, 2 - VIP)
+            Seat* seat = new Seat(row, col, number); // utworzenie obiektu siedzenia
 
-            seats.push_back(seat); // add to vector of seats
+            seats.push_back(seat); // dodanie do wektora siedzeń
 
             connect(seat, &Seat::clicked, this, &ReserveSeatsWindow::onButtonClicked);
-            layout->addWidget(seat->getButton(), row + 1, col + 1); // add button to layout
+            // Dodanie przycisku do układu zgodnie z oryginalnymi pozycjami
+            layout->addWidget(seat->getButton(), row + 1, numCols - col); // dodanie przycisku do układu, kolumna jest odwrocona
         }
-
-        // add label with row letter
+        // Dodanie etykiety z literą wiersza
         QLabel* rowLabel = new QLabel(QString(QChar('A' + row)));
         layout->addWidget(rowLabel, row + 1, 0);
-    }
 
+    }
 }
+
 
 void ReserveSeatsWindow::onButtonClicked(QString seatNumber)
 {
