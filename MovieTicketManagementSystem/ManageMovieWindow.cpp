@@ -113,8 +113,6 @@ void ManageMovieWindow::updateFields(const Movie& movie)
 
 Movie ManageMovieWindow::getMovieFromFields()
 {
-    // Check if the input fields are valid
-    checkInputFields();
 
     // Get the values from the input fields
     QString titleStr = titleEdit->toPlainText();
@@ -203,6 +201,10 @@ void ManageMovieWindow::updateMovie()
 {
     if (selectedMovieId == -1) {
         QMessageBox::information(this, "Information", "Select a movie to update.");
+        return;
+    }
+
+    if (!checkInputFields()) {
         return;
     }
 

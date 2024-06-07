@@ -123,6 +123,18 @@ bool ManageBookingWindow::checkInputFields()
             throw std::invalid_argument("All fields must be filled out.");
         }
 
+        QRegularExpression regExp("^[A-Za-z¥¹ÆæÊê£³ÑñÓóŒœŸ¯¿\\s]+$");
+        QString nameStr = name->text();
+        QString surnameStr = surname->text();
+
+        if (!regExp.match(nameStr).hasMatch()) {
+            throw std::invalid_argument("Name must contain only letters and spaces.");
+        }
+
+        if (!regExp.match(surnameStr).hasMatch()) {
+            throw std::invalid_argument("Surname must contain only letters and spaces.");
+        }
+
 
         return true;
     }
