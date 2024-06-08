@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>718</width>
-    <height>645</height>
+    <width>926</width>
+    <height>704</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -36,7 +36,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -400,7 +400,7 @@ QPushButton:pressed {
               </sizepolicy>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(234, 238, 244);</string>
+              <string notr="true">background-color: rgb(239, 251, 250);</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
@@ -411,11 +411,14 @@ QPushButton:pressed {
              <layout class="QVBoxLayout" name="verticalLayout_11">
               <item>
                <widget class="QLabel" name="label_21">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(239, 251, 250);</string>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap>../../cinema_manager.jpg</pixmap>
+                 <pixmap>../../../Pictures/cinemaJPG.jpg</pixmap>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -506,11 +509,11 @@ color: rgb(243, 250, 250);</string>
               <enum>QFrame::Shadow::Raised</enum>
              </property>
              <layout class="QGridLayout" name="gridLayout_10">
-              <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignHCenter">
                <widget class="QTableWidget" name="showScheduleTable">
                 <property name="minimumSize">
                  <size>
-                  <width>400</width>
+                  <width>350</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -525,6 +528,32 @@ color: rgb(36, 46, 61);</string>
                  <enum>Qt::TextElideMode::ElideMiddle</enum>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="0">
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="2">
+               <spacer name="horizontalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
@@ -736,7 +765,7 @@ font: 900 12pt &quot;Source Sans Pro Black&quot;;
                  <widget class="QTableWidget" name="manageMovieTableWidget">
                   <property name="minimumSize">
                    <size>
-                    <width>330</width>
+                    <width>550</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -1210,7 +1239,7 @@ font: 900 12pt &quot;Source Sans Pro Black&quot;;
                   <widget class="QTableWidget" name="tableScheduleWidget">
                    <property name="minimumSize">
                     <size>
-                     <width>330</width>
+                     <width>550</width>
                      <height>0</height>
                     </size>
                    </property>
@@ -1668,11 +1697,24 @@ background-color: rgb(36, 46, 61);</string>
               <property name="rightMargin">
                <number>0</number>
               </property>
-              <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <item row="0" column="0">
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignHCenter">
                <widget class="QTableWidget" name="movieTableWidget">
                 <property name="minimumSize">
                  <size>
-                  <width>400</width>
+                  <width>350</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -1684,6 +1726,19 @@ color: rgb(36, 46, 61);</string>
                  <enum>Qt::TextElideMode::ElideMiddle</enum>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="2">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
@@ -2563,6 +2618,12 @@ font: 900 12pt &quot;Source Sans Pro Black&quot;;
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>550</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">QTableWidget {
     font: 900 12pt &quot;Source Sans Pro Black&quot;; 
@@ -2952,8 +3013,14 @@ color: rgb(36, 46, 61);</string>
               <property name="spacing">
                <number>0</number>
               </property>
-              <item row="0" column="0">
+              <item row="0" column="1">
                <widget class="QTableWidget" name="selectMovieTableWidget">
+                <property name="minimumSize">
+                 <size>
+                  <width>350</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">QTableWidget {
     font: 900 12pt &quot;Source Sans Pro Black&quot;; 
@@ -2968,6 +3035,32 @@ QTableWidget::item:selected {
 </string>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="0">
+               <spacer name="horizontalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="2">
+               <spacer name="horizontalSpacer_8">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
@@ -3174,7 +3267,26 @@ color: rgb(36, 46, 61);</string>
                <number>0</number>
               </property>
               <item row="0" column="0">
+               <spacer name="horizontalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="1">
                <widget class="QTableWidget" name="selectScheduleTableWidget">
+                <property name="minimumSize">
+                 <size>
+                  <width>350</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">QTableWidget {
     font: 900 12pt &quot;Source Sans Pro Black&quot;; 
@@ -3188,6 +3300,19 @@ QTableWidget::item:selected {
 }</string>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="2">
+               <spacer name="horizontalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
