@@ -38,7 +38,7 @@ To build and run this project, you need the following:
 - **Visual Studio**: Visual Studio 2022 or later
   - Download Visual Studio from [here](https://visualstudio.microsoft.com/).
     
-- **Qt**: Qt 6.5.0 or later
+- **Qt**: Qt 6.7.0 
   - Download Qt from [here](https://www.qt.io/download).
     
 - **Qt Visual Studio Tools**: Extension for integrating Qt with Visual Studio
