@@ -36,7 +36,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="mainWindow">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -193,7 +193,7 @@ color: rgb(243, 250, 250);</string>
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -222,7 +222,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -251,7 +251,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -280,7 +280,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -309,7 +309,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -338,7 +338,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -367,7 +367,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -564,7 +564,7 @@ color: rgb(36, 46, 61);</string>
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+    font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -774,6 +774,15 @@ QTableWidget::item:selected {
            </item>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_23">
+             <property name="leftMargin">
+              <number>8</number>
+             </property>
+             <property name="rightMargin">
+              <number>8</number>
+             </property>
+             <property name="bottomMargin">
+              <number>8</number>
+             </property>
              <item>
               <widget class="QLabel" name="titleLabel_2">
                <property name="styleSheet">
@@ -797,14 +806,19 @@ background-color: rgb(36, 46, 61);</string>
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>50</height>
+                 <height>40</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>50</height>
+                 <height>40</height>
                 </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);
+border-radius: 3px;</string>
                </property>
               </widget>
              </item>
@@ -831,14 +845,19 @@ background-color: rgb(36, 46, 61);</string>
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>50</height>
+                 <height>40</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>50</height>
+                 <height>40</height>
                 </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);
+border-radius: 3px;</string>
                </property>
               </widget>
              </item>
@@ -869,9 +888,10 @@ background-color: rgb(36, 46, 61);</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(243, 250, 250);
+                <string notr="true">border-radius: 3px;
 font: 10pt &quot;Franklin Gothic Demi&quot;;
-border-radius: 1px;</string>
+color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
                </property>
                <item>
                 <property name="text">
@@ -926,6 +946,11 @@ background-color: rgb(36, 46, 61);</string>
                  <height>40</height>
                 </size>
                </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);
+border-radius: 3px;</string>
+               </property>
               </widget>
              </item>
              <item>
@@ -945,7 +970,7 @@ background-color: rgb(36, 46, 61);</string>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -974,7 +999,7 @@ QPushButton:pressed {
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1003,7 +1028,7 @@ QPushButton:pressed {
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1032,7 +1057,7 @@ QPushButton:pressed {
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1227,13 +1252,13 @@ background-color: rgb(36, 46, 61);</string>
                   <number>5</number>
                  </property>
                  <property name="leftMargin">
-                  <number>0</number>
+                  <number>8</number>
                  </property>
                  <property name="topMargin">
                   <number>0</number>
                  </property>
                  <property name="rightMargin">
-                  <number>0</number>
+                  <number>8</number>
                  </property>
                  <property name="bottomMargin">
                   <number>0</number>
@@ -1270,6 +1295,11 @@ background-color: rgb(36, 46, 61);</string>
                      <height>40</height>
                     </size>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);
+border-radius: 3px;</string>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -1304,6 +1334,10 @@ background-color: rgb(36, 46, 61);</string>
                      <height>40</height>
                     </size>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -1337,6 +1371,10 @@ background-color: rgb(36, 46, 61);</string>
                      <width>16777215</width>
                      <height>40</height>
                     </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
                    </property>
                   </widget>
                  </item>
@@ -1378,6 +1416,10 @@ background-color: rgb(36, 46, 61);</string>
                      <height>40</height>
                     </size>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -1397,7 +1439,7 @@ background-color: rgb(36, 46, 61);</string>
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1432,7 +1474,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1467,7 +1509,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1502,7 +1544,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1681,7 +1723,7 @@ color: rgb(36, 46, 61);</string>
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1771,13 +1813,13 @@ background-color: rgb(36, 46, 61);</string>
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>3</number>
+              <number>8</number>
              </property>
              <property name="topMargin">
               <number>0</number>
              </property>
              <property name="rightMargin">
-              <number>3</number>
+              <number>8</number>
              </property>
              <property name="bottomMargin">
               <number>0</number>
@@ -1853,7 +1895,7 @@ background-color: rgb(36, 46, 61);</string>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1888,7 +1930,7 @@ QPushButton:pressed {
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -1996,7 +2038,7 @@ background-color: rgb(36, 46, 61);</string>
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -2031,7 +2073,7 @@ QPushButton:pressed {
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -2114,13 +2156,13 @@ background-color: rgb(36, 46, 61);</string>
             <number>3</number>
            </property>
            <property name="leftMargin">
-            <number>0</number>
+            <number>8</number>
            </property>
            <property name="topMargin">
             <number>3</number>
            </property>
            <property name="rightMargin">
-            <number>0</number>
+            <number>8</number>
            </property>
            <property name="bottomMargin">
             <number>0</number>
@@ -2176,7 +2218,8 @@ background-color: rgb(36, 46, 61);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(57, 79, 107);</string>
+              <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
              </property>
             </widget>
            </item>
@@ -2196,7 +2239,8 @@ background-color: rgb(36, 46, 61);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(57, 79, 107);</string>
+              <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
              </property>
             </widget>
            </item>
@@ -2216,7 +2260,8 @@ background-color: rgb(36, 46, 61);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(57, 79, 107);</string>
+              <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
              </property>
             </widget>
            </item>
@@ -2236,7 +2281,8 @@ background-color: rgb(36, 46, 61);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(57, 79, 107);</string>
+              <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
              </property>
             </widget>
            </item>
@@ -2256,7 +2302,8 @@ background-color: rgb(36, 46, 61);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(57, 79, 107);</string>
+              <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
              </property>
             </widget>
            </item>
@@ -2276,7 +2323,8 @@ background-color: rgb(36, 46, 61);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(57, 79, 107);</string>
+              <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
              </property>
             </widget>
            </item>
@@ -2306,7 +2354,7 @@ background-color: rgb(36, 46, 61);</string>
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -2343,7 +2391,7 @@ QPushButton:pressed {
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -2546,19 +2594,19 @@ QTableWidget::item:selected {
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_18">
                  <property name="spacing">
-                  <number>3</number>
+                  <number>6</number>
                  </property>
                  <property name="leftMargin">
-                  <number>0</number>
+                  <number>8</number>
                  </property>
                  <property name="topMargin">
                   <number>0</number>
                  </property>
                  <property name="rightMargin">
-                  <number>0</number>
+                  <number>8</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>0</number>
+                  <number>6</number>
                  </property>
                  <item>
                   <widget class="QLabel" name="label_15">
@@ -2573,7 +2621,12 @@ background-color: rgb(36, 46, 61);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="titleBookingComboBox"/>
+                  <widget class="QComboBox" name="titleBookingComboBox">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_16">
@@ -2588,7 +2641,12 @@ background-color: rgb(36, 46, 61);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="scheduleBookingComboBox"/>
+                  <widget class="QComboBox" name="scheduleBookingComboBox">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_17">
@@ -2603,7 +2661,12 @@ background-color: rgb(36, 46, 61);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="seatManageLineEdit"/>
+                  <widget class="QLineEdit" name="seatManageLineEdit">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_18">
@@ -2618,7 +2681,12 @@ background-color: rgb(36, 46, 61);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="nameManageLineEdit"/>
+                  <widget class="QLineEdit" name="nameManageLineEdit">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_19">
@@ -2633,7 +2701,12 @@ background-color: rgb(36, 46, 61);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="surnameManageLineEdit"/>
+                  <widget class="QLineEdit" name="surnameManageLineEdit">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_20">
@@ -2648,7 +2721,12 @@ background-color: rgb(36, 46, 61);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="emailManageLineEdit"/>
+                  <widget class="QLineEdit" name="emailManageLineEdit">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(57, 79, 107);
+background-color: rgb(243, 250, 250);</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="saveBookingButton">
@@ -2661,7 +2739,7 @@ background-color: rgb(36, 46, 61);</string>
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -2691,7 +2769,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -2727,7 +2805,7 @@ QPushButton:pressed {
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -2935,7 +3013,7 @@ QTableWidget::item:selected {
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -2971,7 +3049,7 @@ QPushButton:pressed {
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
+	font: 9pt &quot;Segoe UI Variable Small&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -3124,6 +3202,8 @@ QTableWidget::item:selected {
              </property>
              <property name="styleSheet">
               <string notr="true">background-color: rgb(36, 46, 61);
+font: 9pt &quot;Segoe UI Variable Small&quot;;
+
 </string>
              </property>
              <property name="frameShape">
@@ -3150,7 +3230,6 @@ QTableWidget::item:selected {
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }
@@ -3186,7 +3265,6 @@ QPushButton:pressed {
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     color: rgb(243, 250, 250);
-    font: 10pt &quot;Franklin Gothic Demi&quot;;
     border-radius: 1px;
     background-color: rgb(57, 79, 107);
 }

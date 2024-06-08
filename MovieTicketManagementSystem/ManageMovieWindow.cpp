@@ -27,6 +27,7 @@ ManageMovieWindow::ManageMovieWindow(QTextEdit* titleEditElement, QTextEdit* dir
 
     //connection that on clicking the save button, the movie is updated in the database
     connect(saveButton, SIGNAL(clicked()), this, SLOT(updateMovie()));
+
 }
 
 ManageMovieWindow::~ManageMovieWindow()
@@ -76,6 +77,14 @@ bool ManageMovieWindow::checkInputFields()
             throw std::invalid_argument("All fields must be filled out.");
         }
 
+        // Check if the director field contains only valid characters
+        QRegularExpression regExp("^[A-Za-z¥¹ÆæÊê£³ÑñÓóŒœŸ¯¿\\s]+$");
+        QString directorStr = director->toPlainText();
+
+        if (!regExp.match(directorStr).hasMatch()) {
+            throw std::invalid_argument("Director name must contain only letters and spaces.");
+        }
+
         // check if the duration is a valid number
         bool ok;
         durationTime->text().toInt(&ok);
@@ -104,8 +113,6 @@ void ManageMovieWindow::updateFields(const Movie& movie)
 
 Movie ManageMovieWindow::getMovieFromFields()
 {
-    // Check if the input fields are valid
-    checkInputFields();
 
     // Get the values from the input fields
     QString titleStr = titleEdit->toPlainText();
@@ -136,7 +143,6 @@ void ManageMovieWindow::updateFields()
 
 void ManageMovieWindow::setLimitationsOnFields()
 {
-    //TODO 
     durationTime->setValidator(new QIntValidator(0, 500, this));
 }
 
@@ -195,6 +201,10 @@ void ManageMovieWindow::updateMovie()
 {
     if (selectedMovieId == -1) {
         QMessageBox::information(this, "Information", "Select a movie to update.");
+        return;
+    }
+
+    if (!checkInputFields()) {
         return;
     }
 
