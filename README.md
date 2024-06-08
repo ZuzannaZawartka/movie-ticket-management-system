@@ -12,6 +12,9 @@ The Cinema Ticket Management System is a cinema system simulation designed to ma
 - **Show Movie List**: View the current list of all movies available in the cinema. <br>
 - **Show Schedule**: View the current schedule of all movie showings. <br>
 
+## Functionality Description:
+Adding and editing movies are restricted by appropriate validators, ensuring data accuracy. Schedules can only be added to existing movies, and if a movie is deleted, all its schedules are automatically removed. This ensures that you can only book tickets for confirmed movie showings. Whenever there are changes in movies or movie schedules, all existing bookings are automatically refreshed.  When a cinema room is changed, all existing bookings are automatically deleted. Canceling a reserved seat makes it available for booking again. Every input in the application is validated appropriately. For example, regular expressions are used to ensure that there is a valid email address in the purchaser details.
+
 ## Screenshots
 ![MainWindow](https://github.com/ZuzannaZawartka/movie-ticket-management-system/assets/163564160/2369d190-3a4a-4a0d-97d3-4b9bf0bf047b)
 
