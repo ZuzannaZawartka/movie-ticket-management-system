@@ -220,6 +220,8 @@ void ManageMovieWindow::updateMovie()
     // update the tableWidget
     movieTableWidget->setMoviesInTableWidget();
 
+    emit moviesChanged();
+
     // clear the input fields
     updateFields();
 }

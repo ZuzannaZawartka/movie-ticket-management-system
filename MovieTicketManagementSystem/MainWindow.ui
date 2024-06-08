@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>926</width>
+    <width>1004</width>
     <height>704</height>
    </rect>
   </property>
@@ -513,7 +513,7 @@ color: rgb(243, 250, 250);</string>
                <widget class="QTableWidget" name="showScheduleTable">
                 <property name="minimumSize">
                  <size>
-                  <width>350</width>
+                  <width>400</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -765,7 +765,7 @@ font: 900 12pt &quot;Source Sans Pro Black&quot;;
                  <widget class="QTableWidget" name="manageMovieTableWidget">
                   <property name="minimumSize">
                    <size>
-                    <width>550</width>
+                    <width>630</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -1239,7 +1239,7 @@ font: 900 12pt &quot;Source Sans Pro Black&quot;;
                   <widget class="QTableWidget" name="tableScheduleWidget">
                    <property name="minimumSize">
                     <size>
-                     <width>550</width>
+                     <width>630</width>
                      <height>0</height>
                     </size>
                    </property>
@@ -1714,7 +1714,7 @@ background-color: rgb(36, 46, 61);</string>
                <widget class="QTableWidget" name="movieTableWidget">
                 <property name="minimumSize">
                  <size>
-                  <width>350</width>
+                  <width>400</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -2620,7 +2620,7 @@ font: 900 12pt &quot;Source Sans Pro Black&quot;;
                    </property>
                    <property name="minimumSize">
                     <size>
-                     <width>550</width>
+                     <width>630</width>
                      <height>0</height>
                     </size>
                    </property>
@@ -3017,7 +3017,7 @@ color: rgb(36, 46, 61);</string>
                <widget class="QTableWidget" name="selectMovieTableWidget">
                 <property name="minimumSize">
                  <size>
-                  <width>350</width>
+                  <width>400</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -3283,7 +3283,7 @@ color: rgb(36, 46, 61);</string>
                <widget class="QTableWidget" name="selectScheduleTableWidget">
                 <property name="minimumSize">
                  <size>
-                  <width>350</width>
+                  <width>400</width>
                   <height>0</height>
                  </size>
                 </property>
