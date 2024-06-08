@@ -1,6 +1,6 @@
 # Cinema Management System
 ## Overview
-The Cinema Ticket Management System is a comprehensive tool designed to manage all aspects of a cinema's operations, from scheduling movies to booking tickets. The application provides a user-friendly interface that allows cinema managers to easily navigate through various functionalities. All data, including movie listings, schedules and bookings with user information, is securely stored in a robust database, ensuring data integrity and reliability.
+The Cinema Ticket Management System is a cinema system simulation designed to manage all aspects of cinema operations, from scheduling screenings to booking tickets. The application has a friendly interface that allows cinema managers to easily navigate through various functionalities. All data, including movie lists, schedules and reservations with user information, is stored in the database.
 
 ## Application Components
 - **Main Window**: Manages the user interface and serves as the main window of the application. <br>
@@ -73,4 +73,4 @@ To build and run this project, you need the following:
       
 ## Graphics Resources
 
-The images used in this project were generated using OpenAI's ChatGPT. The generation of these images involved providing descriptive text prompts to the AI, which then created the corresponding graphics. For more information about the process or to generate similar images, you can visit [OpenAI's website](https://www.openai.com/).
+The images used in this project were generated using OpenAI's ChatGPT.
