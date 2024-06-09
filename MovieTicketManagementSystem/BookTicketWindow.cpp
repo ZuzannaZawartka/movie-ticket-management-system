@@ -7,7 +7,6 @@
 #include "Seat.h"
 #include <QMessageBox>
 
-
 BookTicketWindow::BookTicketWindow(SelectMovieWindow* selectMovieWindow, SelectScheduleWindow* selectScheduleWindow, ReserveSeatsWindow* reserveSeatsWindow, InputPersonalDataWindow* inputPersonalDataWindow)
     : selectMovieWindow(selectMovieWindow),
     selectScheduleWindow(selectScheduleWindow),
