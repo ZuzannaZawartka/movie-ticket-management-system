@@ -28,13 +28,13 @@ private:
     QPushButton* editButton;
     ScheduleDatabase scheduleDatabase;
     ScheduleTableWidget* scheduleTableWidget;
-    int selectedScheduleId;
     MovieDatabase movieDatabase;
+    Schedule getScheduleFromFields();
     bool checkInputFields();
     void updateFields();
     void updateDuration();
     void updateFields(const Schedule& schedule);
-    Schedule getScheduleFromFields();
+    int selectedScheduleId;
 
 public slots:
     void refreshSchedules();

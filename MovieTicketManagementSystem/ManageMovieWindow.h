@@ -25,13 +25,13 @@ private:
     QPushButton* removeButton;
     MovieDatabase movieDatabase;
     MovieTableWidget* movieTableWidget;
-    int selectedMovieId;
-
+    Movie getMovieFromFields();
     void setLimitationsOnFields();
     bool checkInputFields();
     void updateFields();
     void updateFields(const Movie& movie);
-    Movie getMovieFromFields();
+    int selectedMovieId;
+
 signals:
     void moviesChanged();
 

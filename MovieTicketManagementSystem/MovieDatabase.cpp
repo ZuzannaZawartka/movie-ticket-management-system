@@ -3,15 +3,11 @@
 #include <QSqlRecord>
 #include <QMessageBox>
 
-
-MovieDatabase::MovieDatabase()
-{
+MovieDatabase::MovieDatabase() {
     createTable();
 }
 
-
-bool MovieDatabase::createTable()
-{
+bool MovieDatabase::createTable() {
     QString query = "CREATE TABLE IF NOT EXISTS movies ("
         "id INTEGER PRIMARY KEY AUTOINCREMENT,"
         "title TEXT NOT NULL,"
@@ -23,8 +19,7 @@ bool MovieDatabase::createTable()
     return executeQuery(query, QVariantList());
 }
 
-bool MovieDatabase::addMovie(const Movie& movie)
-{
+bool MovieDatabase::addMovie(const Movie& movie) {
     //if movie already exists, return false
     if (movieExists(movie)) {
         QMessageBox::critical(nullptr, "Database Error", "Movie already exists!");
@@ -40,8 +35,7 @@ bool MovieDatabase::addMovie(const Movie& movie)
     return executeQuery(query, values);
 }
 
-bool MovieDatabase::deleteMovie(const Movie& movie)
-{
+bool MovieDatabase::deleteMovie(const Movie& movie) {
     int movieId = getMovieId(movie);
 
     if (movieId == -1) {
@@ -49,7 +43,7 @@ bool MovieDatabase::deleteMovie(const Movie& movie)
         return false;
     }
 
-    QString query = "DELETE FROM movies WHERE id = :id;"; // U¿yj nazwanego parametru ":id"
+    QString query = "DELETE FROM movies WHERE id = :id;";
 
     QVariantList values;
     values << movieId;
@@ -57,8 +51,7 @@ bool MovieDatabase::deleteMovie(const Movie& movie)
     return executeQuery(query, values);
 }
 
-bool MovieDatabase::movieExists(const Movie& movie)
-{
+bool MovieDatabase::movieExists(const Movie& movie) {
     QString queryStr = "SELECT COUNT(*) FROM movies WHERE title = :title AND director = :director AND type = :type AND duration = :duration;";
     QVariantList values;
     values << movie.getTitle() << movie.getDirector() << movie.getType() << movie.getDuration();
@@ -71,19 +64,17 @@ bool MovieDatabase::movieExists(const Movie& movie)
     }
 
     query.next();
-    int count = query.value(0).toInt(); //how many rows have been found
+    int count = query.value(0).toInt();
 
     return count != 0;
 }
 
-bool MovieDatabase::isTableExists()
-{
+bool MovieDatabase::isTableExists() {
     QString query = "SELECT 1 FROM movies LIMIT 1;";
     return executeQuery(query, QVariantList());
 }
 
-Movie MovieDatabase::getMovieById(int id)
-{
+Movie MovieDatabase::getMovieById(int id) {
     QString queryStr = "SELECT * FROM movies WHERE id = :id;";
     QVariantList values;
     values << id;
@@ -108,9 +99,7 @@ Movie MovieDatabase::getMovieById(int id)
     }
 }
 
-
-int MovieDatabase::getMovieId(const Movie& movie)
-{
+int MovieDatabase::getMovieId(const Movie& movie) {
     QString queryStr = "SELECT id FROM movies WHERE title = :title AND director = :director AND type = :type AND duration = :duration;";
     QVariantList values;
 
@@ -132,15 +121,10 @@ int MovieDatabase::getMovieId(const Movie& movie)
     }
 }
 
-
-QList<Movie> MovieDatabase::getAllMovies()
-{
+QList<Movie> MovieDatabase::getAllMovies() {
     try {
-
         QList<Movie> movies;
-
         QString queryStr = "SELECT * FROM movies;";
-
         QSqlQuery query = prepareQueryWithBindings(queryStr);
 
         if (!query.exec()) {
@@ -159,16 +143,13 @@ QList<Movie> MovieDatabase::getAllMovies()
         }
 
         return movies;
-
     }
     catch (const std::exception& e) {
         QMessageBox::critical(nullptr, "Database Error", QString("Error: ") + e.what());
     }
 }
 
-
-bool MovieDatabase::updateMovie(const Movie& oldMovie, const Movie& newMovie)
-{
+bool MovieDatabase::updateMovie(const Movie& oldMovie, const Movie& newMovie) {
     // check if the old movie exists
     int movieId = getMovieId(oldMovie);
     if (movieId == -1) {
@@ -176,7 +157,6 @@ bool MovieDatabase::updateMovie(const Movie& oldMovie, const Movie& newMovie)
         return false;
     }
 
-    // check if the new movie already exists
     if (movieExists(newMovie)) {
         QMessageBox::critical(nullptr, "Database Error", "New movie already exists.");
         return false;
@@ -188,8 +168,8 @@ bool MovieDatabase::updateMovie(const Movie& oldMovie, const Movie& newMovie)
 
     return executeQuery(queryStr, values);
 }
-Movie MovieDatabase::getMovieByTitle(const QString& title)
-{
+
+Movie MovieDatabase::getMovieByTitle(const QString& title) {
     QString queryStr = "SELECT * FROM movies WHERE title = :title;";
     QVariantList values;
     values << title;
@@ -198,7 +178,7 @@ Movie MovieDatabase::getMovieByTitle(const QString& title)
 
     if (!query.exec()) {
         QMessageBox::critical(nullptr, "Database Error", "Failed to retrieve movie by title!");
-        return Movie("", "", "", -1); // Return empty movie object
+        return Movie("", "", "", -1); 
     }
 
     if (query.next()) {
@@ -210,7 +190,8 @@ Movie MovieDatabase::getMovieByTitle(const QString& title)
     }
     else {
         QMessageBox::critical(nullptr, "Database Error", "Movie with title " + title + " not found!");
-        return Movie("", "", "", -1); // Return empty movie object
+
+        return Movie("", "", "", -1); 
     }
 }
 

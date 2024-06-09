@@ -3,28 +3,18 @@
 #include <QMessageBox>
 
 ScheduleTableWidget::ScheduleTableWidget(QTableWidget* tableWidget)
-    : tableWidget(tableWidget)
-{
+    : tableWidget(tableWidget) {
     tableWidget->setColumnCount(4);
     tableWidget->setHorizontalHeaderLabels({ "Title", "Date", "Time", "Duration" });
     tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows); // select entire row
     tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers); // turn off editing
-
     setSchedulesInTableWidget();
 }
 
-ScheduleTableWidget::~ScheduleTableWidget()
-{
-  
-
-}
-void ScheduleTableWidget::setSchedulesInTableWidget(int movieId)
-{
+void ScheduleTableWidget::setSchedulesInTableWidget(int movieId) {
     tableWidget->clearContents();
-
     QList<Schedule> schedules;
 
-    // if default value -1 is passed, get all schedules , else get schedules by movie id
     if (movieId == -1) {
         schedules = scheduleDatabase.getAllSchedules();
     }
@@ -40,12 +30,10 @@ void ScheduleTableWidget::setSchedulesInTableWidget(int movieId)
         QTableWidgetItem* titleItem = new QTableWidgetItem(movie.getTitle());
         tableWidget->setItem(row, 0, titleItem);
        
-     
         QTableWidgetItem* dateItem = new QTableWidgetItem(schedule.getDate().toString("yyyy-MM-dd"));
         QTableWidgetItem* timeItem = new QTableWidgetItem(schedule.getTime().toString("HH:mm:ss"));
         QTableWidgetItem* durationItem = new QTableWidgetItem(QString::number(movie.getDuration()));
-
-        
+ 
         tableWidget->setItem(row, 1, dateItem);
         tableWidget->setItem(row, 2, timeItem);
         tableWidget->setItem(row, 3, durationItem);
@@ -54,7 +42,6 @@ void ScheduleTableWidget::setSchedulesInTableWidget(int movieId)
     tableWidget->resizeColumnsToContents();
 }
 
-QTableWidget* ScheduleTableWidget::getTableWidget() const
-{
+QTableWidget* ScheduleTableWidget::getTableWidget() const {
     return tableWidget;
 }

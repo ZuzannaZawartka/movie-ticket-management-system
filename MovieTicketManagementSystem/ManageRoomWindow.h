@@ -19,7 +19,6 @@ private:
     QPlainTextEdit* plainTextEdit;
     QPushButton* acceptButton;
     QString fileName = "numbers.txt";
-
     bool validateFile();
     void loadDataFromFile();
 

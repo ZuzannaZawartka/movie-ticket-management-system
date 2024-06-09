@@ -11,7 +11,6 @@ class ScheduleDatabase : public DatabaseManager
 {
 public:
     ScheduleDatabase();
-
     bool createScheduleTable();
     bool addSchedule(const Schedule& schedule);
     bool deleteSchedule(const Schedule& schedule);

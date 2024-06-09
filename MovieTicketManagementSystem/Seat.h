@@ -6,21 +6,20 @@
 class Seat : public QObject
 {
     Q_OBJECT
+
 public:
     Seat(int row, int col, QChar type);
     ~Seat();
-
-    QPushButton* getButton() const;
     int row() const;
     int col() const;
-    bool chooseSeat(); // returns true if seat was taken
+    bool chooseSeat(); 
     bool isSelectedSeat() const;
     void resetSeat();
     void setEnabled(bool variable);
-    void setSeat(bool variable); // returns true if seat was taken
+    void setSeat(bool variable);
     QChar type() const; // 0,1,2
+    QPushButton* getButton() const;
     QString getSeatNumber() const; // A1, B2, C3, etc.
-
 
 signals:
     void clicked(QString seatNumber);
@@ -32,9 +31,7 @@ private:
     QChar seatType;
     QString seatNumber;
     QPushButton* button;
-
     void updateColor();
-
 
 private slots:
     void onButtonClicked();

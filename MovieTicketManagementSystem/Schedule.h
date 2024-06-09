@@ -4,12 +4,10 @@
 #include <QTime>
 #include <QDateTime>
 
-
 class Schedule
 {
 public:
     Schedule(int movieId, const QDate& date, const QTime& time, int durationMinutes);
-
     int getMovieId() const;
     QDate getDate() const;
     QTime getTime() const;

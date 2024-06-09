@@ -15,10 +15,7 @@ public:
     bool isSeatReserved();
     void resetReservedSeats();
     void reloadSeatData();
-
-
     std::vector<Seat*> getReservedSeats() const;
-
 
 public slots:
     void initializeSeatsAfterSchedule(int ScheduleId);// Slot to initialize seats
@@ -30,15 +27,13 @@ private:
     void generateSeats();
     void loadSeatData();
     void onButtonClicked(QString seatNumber);
-    Seat* findSeatByNumber(const QString& seatNumber);
     void setOccupiedSeats(int scheduleID);
-
+    Seat* findSeatByNumber(const QString& seatNumber);
     QPushButton* acceptButton;
     QGridLayout* layout;
     QString fileName;
     std::vector<Seat*> seats;      // To store seat pointers
     std::vector<QString> seatData; // To store seat data from the file
-
     BookingDatabase bookingDatabase;
 
 private slots:

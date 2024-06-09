@@ -4,8 +4,7 @@
 #include <QSqlRecord>
 #include <QMessageBox>
 
-BookingDatabase::BookingDatabase()
-{
+BookingDatabase::BookingDatabase() {
     createTable();
 }
 
@@ -29,9 +28,9 @@ bool BookingDatabase::addBooking(const Booking& booking) {
         return false;
     }
 
-
     QString query = "INSERT INTO Booking (movieId, scheduleId, seat, name, surname, email) "
         "VALUES (?, ?, ?, ?, ?, ?);";
+
     QVariantList values;
     values << booking.getMovieId() << booking.getScheduleId() << booking.getSeat()
         << booking.getName() << booking.getSurname() << booking.getEmail();
@@ -40,7 +39,6 @@ bool BookingDatabase::addBooking(const Booking& booking) {
         QMessageBox::critical(nullptr, "Database Error", "Failed to add booking to database!");
         return false;
     }
-
 
     return true;
 }
@@ -53,9 +51,11 @@ bool BookingDatabase::deleteBooking(const Booking& booking) {
         "name = ? AND "
         "surname = ? AND "
         "email = ?;";
+
     QVariantList values;
     values << booking.getMovieId() << booking.getScheduleId() << booking.getSeat()
         << booking.getName() << booking.getSurname() << booking.getEmail();
+
     return executeQuery(query, values);
 }
 
@@ -91,6 +91,7 @@ bool BookingDatabase::bookingExists(const Booking& booking) {
         "name = ? AND "
         "surname = ? AND "
         "email = ?;";
+
     QVariantList values;
     values << booking.getMovieId() << booking.getScheduleId() << booking.getSeat()
         << booking.getName() << booking.getSurname() << booking.getEmail();
@@ -191,14 +192,12 @@ Booking BookingDatabase::getBookingById(int id)
 
 bool BookingDatabase::updateBooking(const Booking& oldBooking, const Booking& newBooking)
 {
-    // check if the old booking exists
     int bookingId = getBookingId(oldBooking);
     if (bookingId == -1) {
         QMessageBox::critical(nullptr, "Database Error", "Old booking not found.");
         return false;
     }
 
-    // check if the new booking already exists
     if (bookingExists(newBooking)) {
         QMessageBox::critical(nullptr, "Database Error", "New booking already exists.");
         return false;
@@ -212,6 +211,7 @@ bool BookingDatabase::updateBooking(const Booking& oldBooking, const Booking& ne
         "surname = :newSurname, "
         "email = :newEmail "
         "WHERE id = :id;";
+
     QVariantList values;
     values << newBooking.getMovieId() << newBooking.getScheduleId() << newBooking.getSeat()
         << newBooking.getName() << newBooking.getSurname() << newBooking.getEmail() << bookingId;
@@ -234,7 +234,6 @@ void BookingDatabase::removeInvalidBookings() {
             QSqlQuery deleteQuery;
             deleteQuery.prepare(deleteQueryStr);
             deleteQuery.addBindValue(scheduleId);
-
             if (!deleteQuery.exec()) {
                 QString errorMessage = QString("Failed to delete invalid booking for schedule ID %1").arg(scheduleId);
                 QMessageBox::critical(nullptr, "Database Error", errorMessage);

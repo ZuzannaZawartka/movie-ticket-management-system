@@ -10,10 +10,6 @@ Booking::Booking(int movieId, int scheduleId, QString seat, QString name, QStrin
 	this->email = email;
 }
 
-Booking::~Booking()
-{
-}
-
 int Booking::getMovieId() const
 {
 	return movieId;

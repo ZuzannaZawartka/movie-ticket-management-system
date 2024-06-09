@@ -5,33 +5,24 @@
 
 const QString DatabasePath = "database.db";
 
-DatabaseManager::DatabaseManager()
-{
-
+DatabaseManager::DatabaseManager() {
     db = QSqlDatabase::addDatabase("QSQLITE");
-
-    // set database name
     db.setDatabaseName(DatabasePath);
-
-    // open database
     if (!db.open()) {
         QMessageBox::critical(nullptr, "Database Error", "Failed to open database: ");
     }
 }
 
-DatabaseManager::~DatabaseManager()
-{
+DatabaseManager::~DatabaseManager() {
    db.close();   
 }
 
 
-QSqlDatabase& DatabaseManager::database()
-{
+QSqlDatabase& DatabaseManager::database() {
     return db;
 }
 
-bool DatabaseManager::executeQuery(const QString& queryStr, const QVariantList& values)
-{
+bool DatabaseManager::executeQuery(const QString& queryStr, const QVariantList& values) {
     QSqlQuery query = prepareQueryWithBindings(queryStr, values);
 
     if (!query.exec()) {
@@ -42,9 +33,7 @@ bool DatabaseManager::executeQuery(const QString& queryStr, const QVariantList& 
     return true;
 }
 
-
-QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr, const QVariantList& values)
-{
+QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr, const QVariantList& values) {
     QSqlQuery query(db);
 
     query.prepare(queryStr);
@@ -59,7 +48,6 @@ QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr, con
         return query;
     }
 
-    // Bind values to query
     for (int i = 0; i < values.size(); ++i) {
         query.bindValue(i, values.at(i));
     }
@@ -68,8 +56,7 @@ QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr, con
 }
 
 
-QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr)
-{
+QSqlQuery DatabaseManager::prepareQueryWithBindings(const QString& queryStr) {
     QVariantList emptyValues;
     return prepareQueryWithBindings(queryStr, emptyValues);
 }

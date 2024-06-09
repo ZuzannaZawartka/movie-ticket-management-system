@@ -3,28 +3,15 @@
 
 
 MovieTableWidget::MovieTableWidget(QTableWidget* tableWidget)
-    : tableWidget(tableWidget)
-
-{
+    : tableWidget(tableWidget) {
     tableWidget->setColumnCount(4);
-
     tableWidget->setHorizontalHeaderLabels({ "Title", "Director", "Type", "Duration" });
-
     tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows); // select entire row
     tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers); // turn off editing
-
-
     setMoviesInTableWidget();
 }
 
-MovieTableWidget::~MovieTableWidget()
-{
-   
-}
-
-void MovieTableWidget::setMoviesInTableWidget()
-{
-
+void MovieTableWidget::setMoviesInTableWidget() {
     tableWidget->clearContents();
 
     // download all movies from database
@@ -50,7 +37,6 @@ void MovieTableWidget::setMoviesInTableWidget()
     tableWidget->resizeColumnsToContents();
 }
 
-QTableWidget* MovieTableWidget::getTableWidget() const
-{
+QTableWidget* MovieTableWidget::getTableWidget() const {
     return tableWidget;
 }

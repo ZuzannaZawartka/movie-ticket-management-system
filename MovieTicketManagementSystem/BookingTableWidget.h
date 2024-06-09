@@ -1,11 +1,9 @@
 #pragma once
-
 #include <QWidget>
 #include <QTableWidget>
 #include "BookingDatabase.h"
 #include "MovieDatabase.h"
 #include "ScheduleDatabase.h"
-
 
 class BookingTableWidget : public QWidget
 {
@@ -13,7 +11,6 @@ class BookingTableWidget : public QWidget
 
 public:
     BookingTableWidget(QTableWidget* tableWidget);
-    ~BookingTableWidget();
     void setBookingsInTableWidget();
     QTableWidget* getTableWidget() const;
 
@@ -22,8 +19,6 @@ protected:
     MovieDatabase movieDatabase;
     ScheduleDatabase scheduleDatabase;
 
-
 private:
     QTableWidget* tableWidget;
-
 };

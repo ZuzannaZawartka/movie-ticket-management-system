@@ -1,34 +1,25 @@
 #include "SelectScheduleWindow.h"
 #include <QMessageBox>
 
-SelectScheduleWindow::SelectScheduleWindow(QPushButton* acceptButton, QTableWidget* tableWidget): ScheduleTableWidget(tableWidget)
-{
+SelectScheduleWindow::SelectScheduleWindow(QPushButton* acceptButton, QTableWidget* tableWidget): ScheduleTableWidget(tableWidget) {
 	this->acceptButton = acceptButton;
 	this->tableWidget = tableWidget;
-
     this->selectedScheduleId = -1;
     this->movieId = -1;
-
-	//connect the signal emitted when the user selects a schedule to the onSelectItem slot
 	connect(tableWidget->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(onSelectItem()));
-
-    //connect the signal emitted when the user clicks the accept button to the onAcceptButton2 slot
 	connect(acceptButton, SIGNAL(clicked()), this, SLOT(onAcceptButton2()));
 }
 
-SelectScheduleWindow::~SelectScheduleWindow()
-{
+SelectScheduleWindow::~SelectScheduleWindow() {
 	delete acceptButton;
 	delete tableWidget;
 }
 
-int SelectScheduleWindow::getSelectedScheduleId()
-{
+int SelectScheduleWindow::getSelectedScheduleId() {
     return this->selectedScheduleId;
 }
 
-int SelectScheduleWindow::setSelectedScheduleId()
-{
+int SelectScheduleWindow::setSelectedScheduleId() {
     int currentRow = tableWidget->currentRow();
     if (currentRow != -1) {
       
@@ -65,20 +56,15 @@ void SelectScheduleWindow::onSelectItem() {
     }
 }
 
-void SelectScheduleWindow::setMovieId(int movieId)
-{
+void SelectScheduleWindow::setMovieId(int movieId) {
     	this->movieId = movieId;
 }
 
-
-void SelectScheduleWindow::onAcceptButton2()
-{
+void SelectScheduleWindow::onAcceptButton2() {
 	if (getSelectedScheduleId() != -1) {
 		emit scheduleSelected(this->selectedScheduleId);
 	}
 	else {
 		QMessageBox::warning(this, "Warning", "Please select a schedule.");
 	}
-
-
 }

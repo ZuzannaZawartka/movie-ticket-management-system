@@ -2,11 +2,10 @@
 #include "ScheduleTableWidget.h"
 #include <QPushButton>
 
-
 class SelectScheduleWindow :
     public ScheduleTableWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 	SelectScheduleWindow(QPushButton* acceptButton, QTableWidget* tableWidget);
@@ -25,9 +24,8 @@ private:
 	int selectedScheduleId;
 	int movieId;
 
-	private slots:
-		void onAcceptButton2();
-		void onSelectItem();
-
+private slots:
+	void onAcceptButton2();
+	void onSelectItem();
 };
 

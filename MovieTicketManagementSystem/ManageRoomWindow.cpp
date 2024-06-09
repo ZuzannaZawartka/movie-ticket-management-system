@@ -4,22 +4,15 @@
 #include <QPlainTextEdit>
 #include <QRegularExpression>
 
-ManageRoomWindow::ManageRoomWindow(QPlainTextEdit* plainTextEdit, QPushButton* acceptButton): plainTextEdit(plainTextEdit), acceptButton(acceptButton)
-{
+ManageRoomWindow::ManageRoomWindow(QPlainTextEdit* plainTextEdit, QPushButton* acceptButton): plainTextEdit(plainTextEdit), acceptButton(acceptButton) {
     fileName = "numbers.txt";
-
     connect(acceptButton, SIGNAL(clicked()), this, SLOT(saveToFile()));
-
     loadDataFromFile();
-    
 }
 
-
-ManageRoomWindow::~ManageRoomWindow()
-{
+ManageRoomWindow::~ManageRoomWindow() {
     delete plainTextEdit;
     delete acceptButton;
-
 }
 
 void ManageRoomWindow::loadDataFromFile() {
@@ -30,17 +23,13 @@ void ManageRoomWindow::loadDataFromFile() {
     }
 
     QTextStream in(&file);
-    QString fileContent = in.readAll(); // Odczyt ca³ej zawartoœci pliku
-
-    plainTextEdit->setPlainText(fileContent); // Ustawienie zawartoœci pliku w plainTextEdit
- 
+    QString fileContent = in.readAll(); 
+    plainTextEdit->setPlainText(fileContent);
     file.close();
 }
 
-void ManageRoomWindow::saveToFile()
-{
+void ManageRoomWindow::saveToFile() {
     if (validateFile()) {
-
         QFile file(fileName);
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::critical(nullptr, "Error", "Cannot open file for writing.");
@@ -49,24 +38,15 @@ void ManageRoomWindow::saveToFile()
 
         QTextStream out(&file);
         out << plainTextEdit->toPlainText();
-
         file.close();
 
         QMessageBox::information(nullptr, "Success", "File saved successfully.");
-
         emit fileSaved();
     }
-
-
-
 }
 
-
-// Validate the file content
-//Only 0, 1, 2, and spaces at the end are allowed
-bool ManageRoomWindow::validateFile()
-{
-
+//Only 0, 1, 2, and spaces at the end are allowed,  Validate the file content
+bool ManageRoomWindow::validateFile() {
     QString text = plainTextEdit->toPlainText();
 
     // Split the text into lines
@@ -102,6 +82,5 @@ bool ManageRoomWindow::validateFile()
             return false;
         }
     }
-
     return true;
 }

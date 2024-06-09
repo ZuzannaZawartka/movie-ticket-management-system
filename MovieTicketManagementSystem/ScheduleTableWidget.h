@@ -1,5 +1,4 @@
 #pragma once
-
 #include <QWidget>
 #include <QTableWidget>
 #include <QStringListModel>
@@ -11,14 +10,11 @@ class ScheduleTableWidget : public QWidget
 
 public:
     ScheduleTableWidget(QTableWidget* tableWidget);
-    ~ScheduleTableWidget();
     void setSchedulesInTableWidget(int movieId = -1);
     QTableWidget* getTableWidget() const;
-
 
 private:
     QTableWidget* tableWidget;
     ScheduleDatabase scheduleDatabase;
     MovieDatabase movieDatabase;
-
 };

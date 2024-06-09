@@ -8,9 +8,7 @@
 #include <QMessageBox>
 #include <QStringListModel>
 
-MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent)
-{
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     ui.setupUi(this);
     movieTableWidget = new MovieTableWidget(ui.movieTableWidget);
     showScheduleTable = new ScheduleTableWidget(ui.showScheduleTable);
@@ -24,7 +22,6 @@ MainWindow::MainWindow(QWidget* parent)
     bookTicketWindow = new BookTicketWindow(selectMovieWindow,selectScheduleWindow,reserveSeatsWindow,inputPersonalDataWindow);
     bookingTableWidget = new BookingTableWidget(ui.manageBookingTableWidget);
     manageBookingWindow = new ManageBookingWindow(ui.titleBookingComboBox, ui.scheduleBookingComboBox, ui.seatManageLineEdit, ui.nameManageLineEdit, ui.surnameManageLineEdit, ui.emailManageLineEdit,ui.saveBookingButton, ui.removeBookingButton, ui.manageBookingTableWidget);
-
 
     //connections to refresh lists in windows
     connect(manageMovieWindow, &ManageMovieWindow::moviesChanged, manageScheduleWindow, &ManageScheduleWindow::refreshSchedules);
@@ -43,8 +40,7 @@ MainWindow::MainWindow(QWidget* parent)
     connect(selectScheduleWindow, &SelectScheduleWindow::scheduleSelected, this, &MainWindow::changeToReserveSeatsWindow);
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete movieTableWidget;
     delete showScheduleTable;
     delete manageScheduleWindow;
@@ -59,76 +55,63 @@ MainWindow::~MainWindow()
     delete manageBookingWindow;
 }
 
-void MainWindow::changeToMainWindow()
-{
+void MainWindow::changeToMainWindow() {
     ui.stackedWidget->setCurrentWidget(ui.mainWindow);
 }
 
-void MainWindow::changeToManageScheduleWindow()
-{
+void MainWindow::changeToManageScheduleWindow() {
     ui.stackedWidget->setCurrentWidget(ui.manageScheduleWindow);
 }
 
-void MainWindow::changeToSelectMovieWindow()
-{
+void MainWindow::changeToSelectMovieWindow() {
     ui.stackedWidget->setCurrentWidget(ui.selectMovieWindow);
 }
 
-void MainWindow::changeToSelectScheduleWindow()
-{
-    if (selectMovieWindow->getSelectedMovieId() != -1)
-    {
+void MainWindow::changeToSelectScheduleWindow() {
+    if (selectMovieWindow->getSelectedMovieId() != -1) {
         selectScheduleWindow->setSchedulesInTableWidget(selectMovieWindow->getSelectedMovieId());
         selectScheduleWindow->setMovieId(selectMovieWindow->getSelectedMovieId());
         ui.stackedWidget->setCurrentWidget(ui.selectScheduleWindow);
     }
 }
 
-void MainWindow::changeToReserveSeatsWindow()
-{
+void MainWindow::changeToReserveSeatsWindow() {
     if (selectScheduleWindow->getSelectedScheduleId() != -1) {
         ui.stackedWidget->setCurrentWidget(ui.reserveSeatsWindow);
     }   	
 }
 
-void MainWindow::changeToInputPersonalDataWindow()
-{
+void MainWindow::changeToInputPersonalDataWindow() {
     if (reserveSeatsWindow->isSeatReserved())
     {
 		ui.stackedWidget->setCurrentWidget(ui.inputPersonalDataWindow);
 	}   
 }
 
-void MainWindow::changeToShowScheduleWindow()
-{
+void MainWindow::changeToShowScheduleWindow() {
     showScheduleTable->setSchedulesInTableWidget();
     ui.stackedWidget->setCurrentWidget(ui.showScheduleWindow);
 }
 
-void MainWindow::changeToManageMovieWindow()
-{
+void MainWindow::changeToManageMovieWindow() {
     ui.stackedWidget->setCurrentWidget(ui.manageMovieWindow);
 }
 
-void MainWindow::changeToBookTicketWindow()
-{
+void MainWindow::changeToBookTicketWindow() {
     ui.stackedWidget->setCurrentWidget(ui.selectMovieWindow);
 }
 
-void MainWindow::changeToShowMovieListWindow()
-{
+void MainWindow::changeToShowMovieListWindow() {
     movieTableWidget->setMoviesInTableWidget();
     ui.stackedWidget->setCurrentWidget(ui.showMovieListWindow);
 
 }
 
-void MainWindow::changeToViewBookingsWindow()
-{
+void MainWindow::changeToViewBookingsWindow() {
     bookingTableWidget->setBookingsInTableWidget();
     ui.stackedWidget->setCurrentWidget(ui.viewBookingsWindow);
 }
 
-void MainWindow::changeToManageRoomWindow()
-{
+void MainWindow::changeToManageRoomWindow() {
     ui.stackedWidget->setCurrentWidget(ui.manageRoomWindow);
 }

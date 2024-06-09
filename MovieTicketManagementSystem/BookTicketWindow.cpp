@@ -12,62 +12,43 @@ BookTicketWindow::BookTicketWindow(SelectMovieWindow* selectMovieWindow, SelectS
     : selectMovieWindow(selectMovieWindow),
     selectScheduleWindow(selectScheduleWindow),
     reserveSeatsWindow(reserveSeatsWindow),
-    inputPersonalDataWindow(inputPersonalDataWindow)
+    inputPersonalDataWindow(inputPersonalDataWindow) {
 
-{
     movieID = -1;
 	scheduleID = -1;
     name = "";
     surname = "";
     email = "";
 
-    // Connect signals to slots
     connect(selectMovieWindow, &SelectMovieWindow::movieSelected, this, &BookTicketWindow::onMovieAccepted);
     connect(selectScheduleWindow, &SelectScheduleWindow::scheduleSelected, this, &BookTicketWindow::onScheduleAccepted);
     connect(reserveSeatsWindow, &ReserveSeatsWindow::seatsAccepted, this, &BookTicketWindow::onSeatsAccepted);
     connect(inputPersonalDataWindow, &InputPersonalDataWindow::personalDataAccepted, this, &BookTicketWindow::onPersonalDataAccepted);
- 
     connect(selectScheduleWindow, &SelectScheduleWindow::scheduleSelected, reserveSeatsWindow, &ReserveSeatsWindow::initializeSeatsAfterSchedule);
 }
 
-BookTicketWindow::~BookTicketWindow()
-{
-
-}
-
-
-void BookTicketWindow::onMovieAccepted(int movieID)
-{
+void BookTicketWindow::onMovieAccepted(int movieID) {
     this->movieID = movieID;
     Movie movie = movieDatabase.getMovieById(movieID);
     inputPersonalDataWindow->setMovie(movie);
-
-  
 }
 
-void BookTicketWindow::onScheduleAccepted(int scheduleID)
-{
+void BookTicketWindow::onScheduleAccepted(int scheduleID) {
     this->scheduleID = scheduleID;
     Schedule schedule = scheduleDatabase.getScheduleById(scheduleID);
     inputPersonalDataWindow->setDateTime(schedule.getDateTime());
-
 }
 
-void BookTicketWindow::onSeatsAccepted(std::vector<Seat*> seats)
-{
+void BookTicketWindow::onSeatsAccepted(std::vector<Seat*> seats) {
     this->seats = seats;
     inputPersonalDataWindow->setSeat(seats.size());
-
 }
 
-void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QString email)
-{
+void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QString email) {
     this->name = name;
     this->surname = surname;
     this->email = email;
 
-    
-    //for each seat in seats
     for (Seat* seat : seats) {
         Booking booking(movieID, scheduleID, seat->getSeatNumber(), name, surname, email); 
         if (!bookingDatabase.addBooking(booking)) {
@@ -76,7 +57,6 @@ void BookTicketWindow::onPersonalDataAccepted(QString name, QString surname, QSt
         }
     }
 
-    // clear all data
     selectMovieWindow->resetSelectedMovieId();
     reserveSeatsWindow->resetReservedSeats();
     inputPersonalDataWindow->resetInputs();

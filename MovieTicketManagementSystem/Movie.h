@@ -13,7 +13,6 @@ private:
 	QString title;
 	QString director;
 	QString type;
-	int duration; // in minutes
-
+	int duration;
 };
 

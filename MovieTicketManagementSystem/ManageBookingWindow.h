@@ -16,6 +16,9 @@ public:
     explicit ManageBookingWindow(QComboBox* titleEdit, QComboBox* dateTimeEdit,  QLineEdit* name, QLineEdit* surname, QLineEdit* Email, QLineEdit* seat, QPushButton* removeButton, QPushButton* editButton, QTableWidget* bookingTableWidget);
     ~ManageBookingWindow();
 
+public slots:
+    void refreshBookings();
+
 private:
     QComboBox* titleEdit;
     QComboBox* dateTimeEdit;
@@ -26,19 +29,14 @@ private:
     QPushButton* removeButton;
     QPushButton* editButton;
     BookingTableWidget* bookingTableWidget;
-    int selectedBookingId;
-
     BookingDatabase bookingDatabase;
     MovieDatabase movieDatabase;
     ScheduleDatabase scheduleDatabase;
-
+    Booking getBookingFromFields();
     bool checkInputFields();
     void updateFields();
     void updateFields(const Booking& Booking);
-    Booking getBookingFromFields();
-
-public slots:
-    void refreshBookings();
+    int selectedBookingId;
 
 private slots:
     void removeCurrentBooking();

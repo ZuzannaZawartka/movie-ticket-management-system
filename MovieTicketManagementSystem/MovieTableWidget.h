@@ -1,5 +1,4 @@
 #pragma once
-
 #include <QWidget>
 #include <QTableWidget>
 #include <QStringListModel>
@@ -11,7 +10,6 @@ class MovieTableWidget : public QWidget
 
 public:
     MovieTableWidget(QTableWidget* tableWidget);
-    ~MovieTableWidget();
     void setMoviesInTableWidget();
     QTableWidget* getTableWidget() const;
 
@@ -20,6 +18,4 @@ protected:
 
 private:
     QTableWidget* tableWidget;
-    
-
 };
