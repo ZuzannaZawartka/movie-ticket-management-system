@@ -36,7 +36,6 @@ void BookingTableWidget::setBookingsInTableWidget() {
     tableWidget->resizeColumnsToContents();
 }
 
-QTableWidget* BookingTableWidget::getTableWidget() const
-{
+QTableWidget* BookingTableWidget::getTableWidget() const {
     return tableWidget;
 }
